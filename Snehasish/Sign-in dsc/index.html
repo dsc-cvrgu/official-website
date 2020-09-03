@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section id="sign-in-container">
+        <div id="left-container" class="container">
+            <div id="logo-container">
+                <img src="images/logo.png" id="logo" alt="DSC Logo">
+                <h5>Developer Student Clubs<br>CVRGU</h5>
+            </div>
+            <div id="welcome">
+                <img src="images/illustration.png" alt="illustration " id="illustration"> 
+                <h1>WELCOME !</h1>
+            </div>
+        </div>
+        <div id="right-container" class="container">
+            <div id="sign-in">
+                <img src="images/avatar.png" alt="avatar" id="avatar">
+                <form action="">
+                    <div class="input-container">
+                        <img src="images/email.svg" alt="mail" id="mail">
+                        <input type="email" name="email" id="signin-email" placeholder="Email" required class="input-box">
+                    </div>
+                    <div class="input-container">
+                        <img src="images/password.svg" alt="password" id="password">
+                        <input type="password" name="email" id="signin-pass" placeholder="Password" required class="input-box"> 
+                    </div>
+                    <a href="#" id="forgot-password"><h5>Forgot password ?</h5></a>
+                    <div id="buttons">
+                        <input type="submit" value="Sign-in">
+                    </div>
+                    <div id="other-options">
+                        <h5>Or you can join with</h5>
+                        <img src="images/google.svg" alt="google" class="join" id="google">
+                        <img src="images/github.svg" alt="github" class="join" id="github">
+                        <img src="images/linkedin.svg" alt="linkedin" class="join" id="linkedin">
+                    </div>
+
+                </form>
+                <a href="#" id="register" class="switch" onclick="register()">Not registered yet ? <span>Sign up here</span></a>
+               
+            </div>
+            <div id="sign-up">
+                <img src="images/avatar.png" alt="avatar" id="avatar">
+                <form action="">
+                    <div class="input-container">
+                        <img src="images/user.svg" alt="user" id="user">
+                        <input type="text" name="name" id="name" placeholder="Name" required class="input-box">
+                    </div>
+                    <div class="input-container">
+                        <img src="images/email.svg" alt="mail" id="mail">
+                        <input type="email" name="email" id="signup-email" placeholder="Email" required class="input-box">
+                    </div>
+                    <div class="input-container">
+                        <img src="images/password.svg" alt="password" id="password">
+                        <input type="password" name="password" id="signup-pass" placeholder="Password" required class="input-box"> 
+                    </div>
+                    <div id="buttons">
+                        <input type="submit" value="Sign-up">
+                    </div>
+                    <div id="other-options">
+                        <h5>Or you can join with</h5>
+                        <img src="images/google.svg" alt="google" class="join" id="google">
+                        <img src="images/github.svg" alt="github" class="join" id="github">
+                        <img src="images/linkedin.svg" alt="linkedin" class="join" id="linkedin">
+                    </div>
+                </form>
+                <a href="#" id="login" class="switch" onclick="login()">Already registered ? <span>Sign in here</span></a>
+               
+            </div>
+            
+        </div>
+    </section>
+    
+</body>
+</html>

@@ -1,0 +1,47 @@
+.Contact{
+ padding: 20px;
+}
+.Contact p{
+    font-size: 22px;
+    font-weight: 400;
+}
+.Contact_social_icons{
+    display: flex;
+    width: 400px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.Contact_icons{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+    width: 200px;
+    justify-content: space-evenly;
+    
+   
+}
+.Contact_r_img{
+    width: 400px;
+    height: 500px;
+    object-fit: fill;
+}
+.Contact_l a{
+    text-decoration: none;
+}
+@media(min-width:500px){
+    .Contact_social_icons{
+        width: 400px;
+    }
+    .Contact{
+        padding: 100px;
+    }
+}
+
+@media (max-width:460px){
+    .Contact_r{
+        margin-top: 20px;
+    }
+}

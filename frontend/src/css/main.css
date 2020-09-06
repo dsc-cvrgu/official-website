@@ -1,0 +1,97 @@
+#one {
+  border-right: 1px solid var(--mblue);
+  border-left: 1px solid var(--mblue);
+}
+
+#two {
+  border-right: 1px solid var(--mgreen);
+  border-left: 1px solid var(--mgreen);
+}
+
+#three {
+  border-right: 1px solid var(--myellow);
+  border-left: 1px solid var(--myellow);
+}
+
+#four {
+  border-right: 1px solid var(--mred);
+  border-left: 1px solid var(--mred);
+}
+@keyframes fontalicious {
+  0% {
+    font-family: helvetica;
+  }
+
+  10% {
+    font-family: times;
+  }
+
+  20% {
+    font-family: Geneva;
+  }
+
+  30% {
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  }
+
+  40% {
+    font-family: Palatino;
+  }
+
+  50% {
+    font-family: Tahoma;
+  }
+
+  60% {
+    font-family: impact;
+  }
+
+  70% {
+    font-family: cursive;
+  }
+
+  80% {
+    font-family: Times New Roman;
+  }
+
+  85% {
+    font-family: Tahoma, Geneva, sans-serif;
+  }
+
+  90% {
+    font-family: Geneva;
+  }
+
+  99% {
+    font-family: futura;
+  }
+
+  100% {
+    font-family: Arial;
+  }
+}
+
+.fontalicious {
+  animation-name: fontalicious;
+  animation-iteration-count: 4;
+  animation-duration: 1s;
+}
+
+.text-142849 {
+  color: #142849;
+}
+
+.map-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+
+.map-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}

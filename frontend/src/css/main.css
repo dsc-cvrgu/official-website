@@ -17,9 +17,15 @@
   border-right: 1px solid var(--mred);
   border-left: 1px solid var(--mred);
 }
+#one,
+#two,
+#three,
+#four {
+  font-size: 26px;
+}
 @keyframes fontalicious {
   0% {
-    font-family: helvetica;
+    font-family: Geneva;
   }
 
   10% {
@@ -59,7 +65,7 @@
   }
 
   90% {
-    font-family: Geneva;
+    font-family: Arial;
   }
 
   99% {
@@ -67,7 +73,7 @@
   }
 
   100% {
-    font-family: Arial;
+    font-family: Helvetica;
   }
 }
 
@@ -79,19 +85,4 @@
 
 .text-142849 {
   color: #142849;
-}
-
-.map-responsive {
-  overflow: hidden;
-  padding-bottom: 56.25%;
-  position: relative;
-  height: 0;
-}
-
-.map-responsive iframe {
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  position: absolute;
 }

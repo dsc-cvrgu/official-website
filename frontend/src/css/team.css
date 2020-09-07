@@ -1,0 +1,66 @@
+.team-icons a {
+  transition: all 2s ease-in-out;
+}
+.linkedin {
+  color: #0e76a8;
+}
+.twitter {
+  color: #00acee;
+}
+.instagram {
+  color: #c13584;
+}
+.team-icons a {
+  margin: 0 12px;
+  text-decoration: none !important;
+}
+.card {
+  border-radius: 5px;
+}
+.card img {
+  position: relative;
+  width: 60%;
+}
+.team-icons a:hover {
+  transform: translateY(-5px);
+}
+
+h1 {
+  font-family: "Gill Sans", sans-serif;
+}
+
+h4 {
+  color: black;
+  text-align: center;
+  margin-top: 0px;
+  font-family: georgia;
+  font-size: 19px;
+}
+h5 {
+  color: black;
+  font-weight: 160;
+  font-family: Courier;
+  font-size: 15px;
+  text-transform: capitalize !important;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.border {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #5185eb;
+  background-image: linear-gradient(
+    90deg,
+    #5185eb 0%,
+    #45995f 30%,
+    #f1bd42 66%,
+    #d95040 100%
+  );
+  height: 5px;
+  width: 150px;
+  left: 20px;
+  right: 30px;
+  border-radius: 4px;
+}

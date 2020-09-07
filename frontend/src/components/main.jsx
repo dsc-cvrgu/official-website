@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import Study from "../img/study.png";
+import Whatwedo from "../img/whatwedo.jpg";
 export default class main extends Component {
   render() {
     return (
-      <div>
+      <div className="container-fluid">
         <div className="row">
           <div className="col-sm-12 col-md-6 d-md-none p-0 m-0 mt-2 d-flex justify-content-center">
             <img src={Study} className="img-fluid" alt="alt" />
           </div>
-
           <div className="col-sm-12 col-md-5 p-0 mt-3 mt-md-5">
             <h3
-              className="text-primary text-center my-4 fontalicious"
+              className="text-primary text-center my-4 fontalicious ff-helvetica"
               style={{ fontSize: "44px" }}
             >
               Fuel Your Passion
@@ -27,7 +27,7 @@ export default class main extends Component {
             <div className="container row p-0">
               <div className="col-6 text-center p-0">
                 <a
-                  href="#"
+                  href="https://dsc.community.dev/c-v-raman-global-university/"
                   className="mt-5 px-4 py-2 hvr-wobble-horizontal hvr-sweep-to-right"
                 >
                   JOIN US
@@ -35,7 +35,7 @@ export default class main extends Component {
               </div>
               <div className="col-6 text-center p-0">
                 <a
-                  href="#"
+                  href="https://developers.google.com/community/dsc/"
                   className="mt-5 px-4 py-2 hvr-wobble-horizontal hvr-sweep-to-right"
                 >
                   READ MORE
@@ -47,7 +47,7 @@ export default class main extends Component {
             <img src={Study} className="img-fluid" alt="alt" />
           </div>
         </div>
-        <hr />
+        <hr className="mt-5" />
         <div className="container mx-auto row py-3">
           <div className="col text-blue text-center py-3" id="one">
             Connect
@@ -62,61 +62,46 @@ export default class main extends Component {
             Grow
           </div>
         </div>
-        <hr />
-        <div className="row" style={{ padding: "40px 10px" }}>
-          <div className="col-md-6 text-center m-auto">
-            <p className="h2">Who We Are</p>
-          </div>
-          <div className="col-md-6 p-5 text-142849">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
-            porro sunt neque ipsa recusandae excepturi dolorum fuga est ea
-            sapiente, itaque magni. Eligendi error aliquid adipisci inventore.
-            Dignissimos, ad fugiat!
+        <hr className="mb-3" />
+        <div className="row d-flex justify-content-center">
+          <div className="col-md-8 p-5 text-142849 fs-20">
+            We at <span className="text-blue">DSC CVRGU</span> believe in
+            building a strong community where people can learn and grow
+            together. Our goal is to combine new ideas with technical skills to
+            build something innovative and exemplary. Share your ideas with us
+            and be a part of this amazing family . #Join_Us !!!
           </div>
         </div>
         <div className="row mb-50">
-          <div className="col-md-6 text-center m-auto d-sm-none">
-            <p className="h2">What We Do</p>
+          <div className="col-md-6 text-center m-auto">
+            <img src={Whatwedo} className="img-fluid" alt="whatwedo" />
           </div>
           <div className="col-md-6 px-4 text-center">
-            <div className="col-8 hvr-grow-shadow mt-3">
+            <div className="col-10 mt-3">
+              <p className="py-3 m-0 ff-helvetica h2">What We Do</p>
+            </div>
+            <div className="col-10 hvr-grow-shadow mt-3">
               <p className="py-3 m-0">Web Development</p>
             </div>
-            <div className="col-8 hvr-grow-shadow mt-3">
+            <div className="col-10 hvr-grow-shadow mt-3">
               <p className="py-3 m-0">Flutter</p>
             </div>
-            <div className="col-8 hvr-grow-shadow mt-3">
+            <div className="col-10 hvr-grow-shadow mt-3">
               <p className="py-3 m-0">Native Android</p>
             </div>
-            <div className="col-8 hvr-grow-shadow mt-3">
+            <div className="col-10 hvr-grow-shadow mt-3">
               <p className="py-3 m-0">Machine Learning</p>
             </div>
-            <div className="col-8 hvr-grow-shadow mt-3">
+            <div className="col-10 hvr-grow-shadow mt-3">
               <p className="py-3 m-0">UI/UX</p>
             </div>
-            <div className="col-8 hvr-grow-shadow mt-3">
+            <div className="col-10 hvr-grow-shadow mt-3">
               <p className="py-3 m-0">Actions on Google</p>
             </div>
-            <div className="col-8 hvr-grow-shadow mt-3">
+            <div className="col-10 hvr-grow-shadow mt-3">
               <p className="py-3 m-0">Competitive Coding</p>
             </div>
           </div>
-          <div className="col-md-6 text-center m-auto d-none d-sm-block">
-            <p className="h2">What We Do</p>
-          </div>
-        </div>
-        <h4 className="text-center my-5">LOCATE US</h4>
-        <div className="map-responsive">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3743.9519226406846!2d85.73354961425309!3d20.2193187864424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19a8fa59ac3c81%3A0xc81fc475faa77274!2sC.%20V.%20Raman%20Global%20University!5e0!3m2!1sen!2sin!4v1599297494906!5m2!1sen!2sin"
-            width="600"
-            height="450"
-            frameborder="0"
-            style={{ border: 0 }}
-            allowfullscreen=""
-            aria-hidden="false"
-            tabindex="0"
-          ></iframe>
         </div>
       </div>
     );

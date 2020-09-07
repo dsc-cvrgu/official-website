@@ -13,18 +13,16 @@
 body {
   overflow-x: hidden;
 }
-
-.text-blue,
-.text-green,
-.text-red,
-.text-yellow {
-  font-size: 26px;
-}
 .bg-blue {
   background-color: var(--mblue);
   color: white !important;
 }
-
+.ff-helvetica {
+  font-family: Helvetica, sans-serif;
+}
+.fs-20 {
+  font-size: 20px;
+}
 .text-green {
   color: var(--mgreen);
 }

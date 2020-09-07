@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import DSC from "../img/dsc.png";
+import { Navbar, Nav } from "react-bootstrap";
 export default class navbar extends Component {
   render() {
     return (
       <div>
-        <canvas id="bubble"></canvas>
-        <nav className="navbar navbar-expand-md navbar-light bg-light z-depth-1">
-          <a className="navbar-brand hvr-pulse" href="#">
+        {/* <canvas id="bubble"></canvas> */}
+        <Navbar bg="light" expand="md" className="z-depth-1">
+          <Navbar.Brand className="hvr-pulse my-2" href="/">
             <img
               src={DSC}
               className="mr-3 rotating"
@@ -15,20 +16,10 @@ export default class navbar extends Component {
               alt="navbar-brand-icon"
             />
             DSC CVRGU
-          </a>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#collapsedNav"
-            aria-controls="collapsedNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="collapsedNav">
-            <ul className="navbar-nav ml-auto">
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="collapsedNav" />
+          <Navbar.Collapse id="collapsedNav">
+            <Nav className="ml-auto">
               <li className="nav-item active hvr-underline-from-left">
                 <a className="nav-link magictime puffIn" href="/">
                   HOME<span className="sr-only">(current)</span>
@@ -40,7 +31,7 @@ export default class navbar extends Component {
                 </a>
               </li>
               <li className="nav-item hvr-underline-from-left">
-                <a className="nav-link magictime puffIn" id="TEAM" href="#">
+                <a className="nav-link magictime puffIn" id="TEAM" href="/team">
                   TEAM
                 </a>
               </li>
@@ -58,9 +49,9 @@ export default class navbar extends Component {
                   LOG IN
                 </a>
               </li>
-            </ul>
-          </div>
-        </nav>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
       </div>
     );
   }

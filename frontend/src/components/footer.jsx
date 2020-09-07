@@ -1,17 +1,32 @@
 import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import {
+  faLinkedin,
+  faFacebook,
+  faTwitter,
+  faInstagram,
+} from "@fortawesome/free-brands-svg-icons";
 
 export default class footer extends Component {
   render() {
     return (
-      <div>
+      <footer>
         <div id="footer-container">
-          <div id="about" className="content">
-            <h1>About us</h1>
-            <p>
-              Lorem ipsum dolor sit amet consecteturadipisicing elit. Eos
-              molestias esse officiis ratione fugit quisquam ipsa sint ad soluta
-              eligendi?
-            </p>
+          <div className="content">
+            <h1>Locate Us</h1>
+            <div className="map-responsive">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3743.9519226406846!2d85.73354961425309!3d20.2193187864424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19a8fa59ac3c81%3A0xc81fc475faa77274!2sC.%20V.%20Raman%20Global%20University!5e0!3m2!1sen!2sin!4v1599297494906!5m2!1sen!2sin"
+                width="600"
+                height="450"
+                frameborder="0"
+                style={{ border: 0 }}
+                allowfullscreen=""
+                aria-hidden="false"
+                tabindex="0"
+              ></iframe>
+            </div>
           </div>
           <div id="quick-links" className="content">
             <h1>Quick links</h1>
@@ -23,13 +38,10 @@ export default class footer extends Component {
                 <a href="#">Past events</a>
               </li>
               <li>
-                <a href="#">Team members</a>
+                <a href="/team">Team members</a>
               </li>
               <li>
-                <a href="#">About us</a>
-              </li>
-              <li>
-                <a href="#">Contact us</a>
+                <a href="/contact">Contact us</a>
               </li>
             </ul>
           </div>
@@ -39,17 +51,17 @@ export default class footer extends Component {
             <p>Phone: 1800 000 000</p>
             <p>Email: dsccvrgu@gmail.com</p>
             <div id="social">
-              <a href="#">
-                <i className="fab fa-linkedin-in"></i>
+              <a href="https://www.linkedin.com/company/69065757">
+                <FontAwesomeIcon icon={faLinkedin} className="social-icon" />
+              </a>
+              <a href="https://www.facebook.com/dsccvrgu/">
+                <FontAwesomeIcon icon={faFacebook} className="social-icon" />
               </a>
               <a href="#">
-                <i className="fab fa-facebook-f"></i>
+                <FontAwesomeIcon icon={faTwitter} className="social-icon" />
               </a>
-              <a href="#">
-                <i className="fab fa-twitter"></i>
-              </a>
-              <a href="#">
-                <i className="fab fa-instagram"></i>
+              <a href="https://www.instagram.com/dsccvrgu/">
+                <FontAwesomeIcon icon={faInstagram} className="social-icon" />
               </a>
             </div>
           </div>
@@ -68,15 +80,15 @@ export default class footer extends Component {
             </form>
           </div>
         </div>
-        <div id="copyright">
-          <h5>&copy; 2020 Developer Student Club CVRGU</h5>
+        <div id="copyright" className="py-3">
+          <h5>&copy; 2020 Developer Student Clubs CVRGU</h5>
           <h5>
             Made with <span>&hearts;</span> by Atman, Deepak, Snehasish &
             Rukaiya
           </h5>
         </div>
         <a href="#"></a>
-      </div>
+      </footer>
     );
   }
 }

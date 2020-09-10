@@ -1,21 +1,28 @@
 import React, { useState } from "react";
-import "../css/register.css";
 import { ToastContainer, toast } from "react-toastify";
+import $ from "jquery";
 import axios from "axios";
+import Navbar from "./navbar";
+import Footer from "./footer";
 
-const ForgetPassword = ({ history }) => {
+const ForgetPassword = () => {
   const [formData, setFormData] = useState({
     email: "",
-    textChange: "Submit",
   });
-  const { email, textChange } = formData;
+  const { email } = formData;
   const handleChange = (text) => (e) => {
     setFormData({ ...formData, [text]: e.target.value });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (email) {
-      setFormData({ ...formData, textChange: "Submitting" });
+      // loader + disable button
+      $("[type=submit]")
+        .html(
+          '<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>Loading...'
+        )
+        .attr("disabled", true);
+      setFormData({ ...formData });
       axios
         .put("http://localhost:5000/api/forgotpassword", {
           email,
@@ -26,9 +33,10 @@ const ForgetPassword = ({ history }) => {
             email: "",
           });
           toast.success(`Please check your email`);
+          $("[type=submit]").html("Submit").attr("disabled", false);
         })
         .catch((err) => {
-          console.log(err.response);
+          $("[type=submit]").html("Submit").attr("disabled", false);
           toast.error(err.response.data.error);
         });
     } else {
@@ -36,40 +44,31 @@ const ForgetPassword = ({ history }) => {
     }
   };
   return (
-    <div className="body">
-      {/* {isAuth() ? <Redirect to="/login" /> : null} */}
+    <div>
+      <Navbar />
       <ToastContainer />
       <section id="sign-in-containers">
         <div id="left-containers" className="containers">
-          <div id="logo-containers">
-            <img src={require("../images/logo.png")} id="logo" alt="DSC Logo" />
-            <h5>
-              Developer Student Clubs
-              <br />
-              CVRGU
-            </h5>
-          </div>
           <div id="welcome">
             <img
-              src={require("../images/illustration.png")}
-              alt="illustration "
+              src={require("../img/authentication/forgot.svg")}
+              alt="forgotpassword"
               id="illustration"
             />
-            <h1>WELCOME !</h1>
           </div>
         </div>
         <div id="right-containers" className="containers">
-          <div id="sign-up">
+          <h3 className="text-center">Forgot Password</h3>
+          <div id="sign-up" className="text-center">
             <img
-              src={require("../images/avatar.png")}
+              src={require("../img/authentication/avatar.png")}
               alt="avatar"
               id="avatar"
-              className="ml-auto"
             />
             <form onSubmit={handleSubmit}>
               <div className="input-containers">
                 <img
-                  src={require("../images/email.svg")}
+                  src={require("../img/authentication/email.svg")}
                   alt="mail"
                   id="mail"
                 />
@@ -83,12 +82,15 @@ const ForgetPassword = ({ history }) => {
                 />
               </div>
               <div id="buttons">
-                <input type="submit" />
+                <button type="submit" className="btn btn-primary btn-block">
+                  Submit
+                </button>
               </div>
             </form>
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import "../css/register.css";
+import $ from "jquery";
 import { ToastContainer, toast } from "react-toastify";
 import { authenticate, isAuth } from "../helpers/auth";
 import axios from "axios";
+import Navbar from "./navbar";
+import Footer from "./footer";
 // import { Link, Redirect } from "react-router-dom";
 
 const Login = ({ history }) => {
@@ -19,6 +21,11 @@ const Login = ({ history }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (email && password1) {
+      $("[type=submit]")
+        .html(
+          '<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>Loading...'
+        )
+        .attr("disabled", true);
       axios
         // .post(`${process.env.APP_URL}/register`, {
         .post("http://localhost:5000/api/login", {
@@ -33,67 +40,50 @@ const Login = ({ history }) => {
               password1: "",
               textChange: "Submitted",
             });
+            toast.success(`Hey ${res.data.user.name}, Welcome back!`);
             isAuth() && isAuth().role === "admin"
               ? history.push("/admin")
               : history.push("/private");
-            toast.success(`Hey ${res.data.user.name}, Welcome back!`);
           });
         })
-        //   setFormData({
-        //     ...formData,
-        //     email: "",
-        //     password1: "",
-        //   });
-        //   toast.success(`Welcome, ${res.data.user.name}`);
-        // })
         .catch((err) => {
-          toast.error(err);
+          $("[type=submit]").html("Submit").attr("disabled", false);
+          toast.error(err.response.data.error);
         });
     } else {
       toast.error("Please fill all fields");
     }
   };
   return (
-    <div className="body">
-      {/* {isAuth() ? <Redirect to="/login" /> : null} */}
+    <div>
+      <Navbar />
       <ToastContainer />
       <section id="sign-in-containers">
         <div id="left-containers" className="containers">
-          <div id="logo-containers">
-            <img src={require("../images/logo.png")} id="logo" alt="DSC Logo" />
-            <h5>
-              Developer Student Clubs
-              <br />
-              CVRGU
-            </h5>
-          </div>
           <div id="welcome">
             <img
-              src={require("../images/illustration.png")}
+              src={require("../img/authentication/login.svg")}
               alt="illustration "
               id="illustration"
             />
-            <h1>WELCOME !</h1>
           </div>
         </div>
         <div id="right-containers" className="containers">
-          <div id="sign-up">
+          <div id="sign-up" className="text-center">
             <img
-              src={require("../images/avatar.png")}
+              src={require("../img/authentication/avatar.png")}
               alt="avatar"
               id="avatar"
-              className="ml-auto"
             />
             <form onSubmit={handleSubmit}>
               <div className="input-containers">
                 <img
-                  src={require("../images/email.svg")}
+                  src={require("../img/authentication/email.svg")}
                   alt="mail"
                   id="mail"
                 />
                 <input
                   type="email"
-                  //   name="email"
                   id="signup-email"
                   placeholder="Email"
                   className="input-box"
@@ -104,13 +94,12 @@ const Login = ({ history }) => {
               {/* password */}
               <div className="input-containers">
                 <img
-                  src={require("../images/password.svg")}
+                  src={require("../img/authentication/password.svg")}
                   alt="password"
                   className="password"
                 />
                 <input
                   type="password"
-                  //   name="password"
                   placeholder="Password"
                   className="input-box signup-pass"
                   onChange={handleChange("password1")}
@@ -121,24 +110,26 @@ const Login = ({ history }) => {
                 <h5>Forgot password ?</h5>
               </a>
               <div id="buttons">
-                <input type="submit" />
+                <button type="submit" className="btn btn-primary btn-block">
+                  Submit
+                </button>
               </div>
-              <div id="other-options">
+              <div id="other-options" className="my-3">
                 <h5>Or you can join with</h5>
                 <img
-                  src={require("../images/google.svg")}
+                  src={require("../img/authentication/google.svg")}
                   alt="google"
                   className="join"
                   id="google"
                 />
                 <img
-                  src={require("../images/github.svg")}
+                  src={require("../img/authentication/github.svg")}
                   alt="github"
                   className="join"
                   id="github"
                 />
                 <img
-                  src={require("../images/linkedin.svg")}
+                  src={require("../img/authentication/linkedin.svg")}
                   alt="linkedin"
                   className="join"
                   id="linkedin"
@@ -151,6 +142,7 @@ const Login = ({ history }) => {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };

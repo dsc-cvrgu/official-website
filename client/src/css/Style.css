@@ -10,8 +10,8 @@
   padding: 0;
   box-sizing: border-box;
 }
-.mt-50 {
-  margin-top: 50px;
+.my-50 {
+  margin: 50px 0;
 }
 body {
   overflow-x: hidden;
@@ -53,21 +53,12 @@ body {
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
 }
 
-/* magic time */
-.magictime {
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-
-@media (print), (prefers-reduced-motion) {
-  .magictime {
-    -webkit-animation: unset !important;
-    animation: unset !important;
-    transition: none !important;
-  }
-}
 .mb-50 {
   margin-bottom: 50px;
+}
+
+/* google fonts */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+.ff-open-sans {
+  font-family: "Open Sans", sans-serif;
 }

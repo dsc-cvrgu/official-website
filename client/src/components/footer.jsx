@@ -20,11 +20,8 @@ export default class footer extends Component {
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3743.9519226406846!2d85.73354961425309!3d20.2193187864424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19a8fa59ac3c81%3A0xc81fc475faa77274!2sC.%20V.%20Raman%20Global%20University!5e0!3m2!1sen!2sin!4v1599297494906!5m2!1sen!2sin"
                 width="600"
                 height="450"
-                frameborder="0"
                 style={{ border: 0 }}
-                allowfullscreen=""
                 aria-hidden="false"
-                tabindex="0"
               ></iframe>
             </div>
           </div>
@@ -70,13 +67,14 @@ export default class footer extends Component {
             <p>Subscribe us to never miss an update.</p>
             <form action="" id="newsletter">
               <input
+                className="form-control"
                 type="email"
                 name="email"
                 id="email"
                 required
                 placeholder="Email"
               />
-              <input type="submit" value="Subscribe" />
+              <input type="submit" className="form-control" value="Subscribe" />
             </form>
           </div>
         </div>

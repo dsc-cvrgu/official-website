@@ -7,7 +7,7 @@
     "build": "cd client && npm run build",
     "install-client": "cd client && npm install",
     "heroku-postbuild": "npm run install-client && npm run build",
-    "start": "NODE_ENV=production node server",
+    "start": "node server",
     "dev": "nodemon server"
   },
   "author": "dsc-cgu-web-dev",

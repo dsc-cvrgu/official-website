@@ -37,7 +37,8 @@ const ResetPassword = ({ match }) => {
           .attr("disabled", true);
         setFormData({ ...formData, textChange: "Submitting" });
         axios
-          .put("http://localhost:5000/api/resetpassword", {
+          // .put("http://localhost:5000/api/resetpassword", {
+          .put(`${process.env.REACT_APP_URL}/api/resetpassword`, {
             newPassword: password1,
             resetPasswordLink: token,
           })

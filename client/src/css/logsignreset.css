@@ -67,7 +67,7 @@
   animation: show 1s ease-in-out;
 }
 #avatar {
-  max-width: 30%;
+  max-width: 200px;
 }
 form {
   width: 100%;
@@ -163,9 +163,9 @@ form .input-containers {
     margin: 0 10px;
   }
 
-  #avatar {
+  /* #avatar {
     max-width: 35%;
-  }
+  } */
   .input-containers img {
     max-width: 20px;
     padding-right: 5px;

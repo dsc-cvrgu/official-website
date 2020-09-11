@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import Navbar from "./navbar";
 import Footer from "./footer";
+require("dotenv").config();
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -33,10 +34,12 @@ const Register = () => {
               '<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>Loading...'
             )
             .attr("disabled", true);
-
           setFormData({ ...formData, textChange: "Submitting" });
+          console.log(process.env.REACT_APP_URL);
           axios
-            .post("http://localhost:5000/api/register", {
+            // .post(`${process.env.REACT_APP_URL}/register`, {
+            // .post("http://localhost:5000/api/register", {
+            .post(`${process.env.REACT_APP_URL}/register`, {
               name,
               email,
               password: password1,

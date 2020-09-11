@@ -27,8 +27,8 @@ const Login = ({ history }) => {
         )
         .attr("disabled", true);
       axios
-        // .post(`${process.env.APP_URL}/register`, {
-        .post("http://localhost:5000/api/login", {
+        .post(`${process.env.REACT_APP_URL}/login`, {
+          // .post("http://localhost:5000/api/login", {
           email,
           password: password1,
         })

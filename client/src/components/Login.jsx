@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import $ from "jquery";
 import { ToastContainer, toast } from "react-toastify";
-import { authenticate, isAuth } from "../helpers/auth";
 import axios from "axios";
 import Navbar from "./navbar";
 import Footer from "./footer";
+import { useHistory } from "react-router-dom";
 // import { Link, Redirect } from "react-router-dom";
 
-const Login = ({ history }) => {
+const Login = () => {
+  const history = useHistory();
+
   const [formData, setFormData] = useState({
     email: "",
     password1: "",
@@ -33,27 +35,55 @@ const Login = ({ history }) => {
           password: password1,
         })
         .then((res) => {
-          authenticate(res, () => {
-            setFormData({
-              ...formData,
-              email: "",
-              password1: "",
-              textChange: "Submitted",
-            });
-            toast.success(`Hey ${res.data.user.name}, Welcome back!`);
-            isAuth() && isAuth().role === "admin"
-              ? history.push("/admin")
-              : history.push("/private");
-          });
+          console.log(res);
+          toast.success(res.data.message);
+          $("[type=submit]").html("Submit").attr("disabled", false);
+          // history.push("/user");
+          // console.log(isAuthenticated());
+          // return <Redirect to="/contact" />;
+          // authenticate(res, () => {
+          //   setFormData({
+          //     ...formData,
+          //     email: "",
+          //     password1: "",
+          //     textChange: "Submitted",
+          //   });
+          //   toast.success(`Hey ${res.data.user.name}, Welcome back!`);
+          //   isAuth() && isAuth().role === "admin"
+          //     ? history.push("/admin")
+          //     : history.push("/private");
+          // });
         })
         .catch((err) => {
           $("[type=submit]").html("Submit").attr("disabled", false);
-          toast.error(err.response.data.error);
+          console.log(err);
+          // toast.error(err.response.data.error);
         });
     } else {
       toast.error("Please fill all fields");
     }
   };
+  const [data, setData] = useState(null);
+  // const getUser = (e) => {
+  //   e.preventDefault();
+  //   axios.get(`${process.env.REACT_APP_URL}/logout`).then((res) => {
+  //     setData(res.data);
+  //     console.log(res);
+  //   });
+  // };
+
+  const getUser = (e) => {
+    e.preventDefault();
+    axios({
+      method: "GET",
+      withCredentials: true,
+      url: "http://localhost:5000/api/logout",
+    }).then((res) => {
+      setData(res.data);
+      console.log(data);
+    });
+  };
+
   return (
     <div>
       <Navbar />
@@ -136,12 +166,18 @@ const Login = ({ history }) => {
                 />
               </div>
             </form>
+            Not registered yet ?
             <a href="/register" id="login" className="switch">
-              Not registered yet ? <span>Sign up here</span>
+              <span>Sign up here</span>
             </a>
           </div>
         </div>
       </section>
+
+      <form>
+        <button onClick={getUser}>Logout</button>
+        {data ? "welcome" : null}
+      </form>
       <Footer />
     </div>
   );

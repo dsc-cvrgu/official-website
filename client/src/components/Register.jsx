@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import $ from "jquery";
 import { ToastContainer, toast } from "react-toastify";
-// import { authenticate, isAuth } from "./helpers/auth";
 import axios from "axios";
 import Navbar from "./navbar";
 import Footer from "./footer";
@@ -37,8 +36,6 @@ const Register = () => {
           setFormData({ ...formData, textChange: "Submitting" });
           console.log(process.env.REACT_APP_URL);
           axios
-            // .post(`${process.env.REACT_APP_URL}/register`, {
-            // .post("http://localhost:5000/api/register", {
             .post(`${process.env.REACT_APP_URL}/register`, {
               name,
               email,

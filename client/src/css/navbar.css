@@ -31,8 +31,9 @@
   color: var(--mblue) !important;
 }
 
-#LOGIN:hover {
+.LOGINOUT:hover {
   color: var(--myellow) !important;
+  cursor: pointer;
 }
 
 /* hover pulse */

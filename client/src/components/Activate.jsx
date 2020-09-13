@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import jwt from "jsonwebtoken";
-import { authenticate, isAuth } from "../helpers/auth";
-import { Link, Redirect } from "react-router-dom";
+// import { Link, Redirect } from "react-router-dom";
 import Navbar from "./navbar";
 import Footer from "./footer";
 
@@ -11,7 +10,6 @@ const Activate = ({ match }) => {
   const [formData, setFormData] = useState({
     name: "",
     token: "",
-    show: true,
   });
 
   useEffect(() => {
@@ -24,7 +22,7 @@ const Activate = ({ match }) => {
 
     console.log(token, name, email);
   }, [match.params]);
-  const { name, token, show } = formData;
+  const { name, token } = formData;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,13 +34,12 @@ const Activate = ({ match }) => {
       .then((res) => {
         setFormData({
           ...formData,
-          show: false,
         });
 
         toast.success(res.data.message);
       })
       .catch((err) => {
-        toast.error(err.response.data.errors);
+        toast.error(err.response.data.error);
       });
   };
 

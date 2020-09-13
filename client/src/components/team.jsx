@@ -33,6 +33,8 @@ import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 // components
 import Navbar from "./navbar";
 import Footer from "./footer";
+// local css
+import "../css/team.css";
 
 class Team extends React.Component {
   render() {

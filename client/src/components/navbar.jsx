@@ -32,7 +32,7 @@ const Navigation = () => {
               </a>
             </li>
             <li className="nav-item hvr-underline-from-left">
-              <a className="nav-link magictime tinRightIn" id="EVENTS" href="#">
+              <a className="nav-link magictime tinRightIn" id="EVENTS" href="/events">
                 EVENTS
               </a>
             </li>

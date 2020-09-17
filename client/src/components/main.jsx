@@ -1,6 +1,15 @@
 import React, { Component } from "react";
 import Study from "../img/study.png";
-import Whatwedo from "../img/whatwedo.jpg";
+import "../particles";
+import community from '../img/community.svg'
+import web from '../img/web.svg'
+import ml from '../img/ml.svg'
+import flutter from '../img/flutter.svg'
+import android from '../img/android.svg'
+import competitive from '../img/competitive.svg'
+import google from '../img/google.png'
+import ui from '../img/ui.png'
+
 // local css
 import "../css/main.css";
 export default class main extends Component {
@@ -11,14 +20,13 @@ export default class main extends Component {
           <div className="col-sm-12 col-md-6 d-md-none px-2 m-0 mt-2 d-flex justify-content-center">
             <img src={Study} className="img-fluid" alt="alt" />
           </div>
-          <div className="col-sm-12 col-md-5 p-0 mt-3 mt-md-5">
+          <div className="col-sm-12 col-md-5 p-0 mt-3 mt-md-5 container">
             <h3
-              className="text-primary text-center my-4 fontalicious ff-helvetica"
-              style={{ fontSize: "44px" }}
-            >
-              FUEL YOUR PASSION{" "}
+              className="text-primary my-4 pl-4 fontalicious ff-fantasy"
+              style={{ fontSize: "38px" }}>
+              FUEL YOUR PASSION
             </h3>
-            <p className="text-142849 mx-auto px-5">
+            <p className="text-142849 mx-auto mt-3 px-4 md-px-5">
               Developer Student Clubs are university based community groups for
               students interested in Google developer technologies. Students
               from all undergraduate or graduate programs with an interest in
@@ -65,43 +73,61 @@ export default class main extends Component {
           </div>
         </div>
         <hr className="mb-3" />
-        <div className="row d-flex justify-content-center">
-          <div className="col-md-8 p-5 text-142849 fs-20">
+        <div id="who-we-are" className="my-5">
+          <p className="text-center pt-4 fs-40">Who We Are</p>
+          <div className="col-md-8 pt-3 pb-5 text-142849 fs-20 mx-auto">
             We at <span className="text-blue">DSC CVRGU</span> believe in
             building a strong community where people can learn and grow
             together. Our goal is to combine new ideas with technical skills to
             build something innovative and exemplary. Share your ideas with us
-            and be a part of this amazing family . #Join_Us !!!
+            and be a part of this amazing family . <span className="text-green">#Join_Us !!!</span>
           </div>
         </div>
-        <div className="row mb-50">
-          <div className="col-md-6 text-center m-auto">
-            <img src={Whatwedo} className="img-fluid" alt="whatwedo" />
+        {/* what we do */}
+        <p className="text-center pt-4 fs-40">What We Do</p>
+        <div className="container-fluid row mx-auto">
+          <div className="col-auto col-md-3 my-3">
+            <div className="card py-4" style={{ borderRadius: "20px", width: "15rem" }}>
+              <img src={web} alt="web" className="mx-auto" style={{ width: "50px" }} />
+              <div className="text-center">Web Development</div>
+            </div>
           </div>
-          <div className="col-md-6 px-4 text-center">
-            <div className="col-10 mt-3">
-              <p className="py-3 m-0 ff-helvetica h2">What We Do</p>
+          <div className="col-auto col-md-3 my-3">
+            <div className="card py-4" style={{ borderRadius: "20px", width: "15rem" }}>
+              <img src={ml} alt="ml" className="mx-auto" style={{ width: "50px" }} />
+              <div className="text-center">Machine Learning</div>
             </div>
-            <div className="col-10 hvr-grow-shadow mt-3">
-              <p className="py-3 m-0">Web Development</p>
+          </div>
+          <div className="col-auto col-md-3 my-3">
+            <div className="card py-4" style={{ borderRadius: "20px", width: "15rem" }}>
+              <img src={flutter} alt="cloud" className="mx-auto" style={{ height: "50px" }} />
+              <div className="text-center">Flutter</div>
             </div>
-            <div className="col-10 hvr-grow-shadow mt-3">
-              <p className="py-3 m-0">Flutter</p>
+          </div>
+          <div className="col-auto col-md-3 my-3">
+            <div className="card py-4" style={{ borderRadius: "20px", width: "15rem" }}>
+              <img src={android} alt="android" className="mx-auto" style={{ width: "50px" }} />
+              <div className="text-center">Android Development</div>
             </div>
-            <div className="col-10 hvr-grow-shadow mt-3">
-              <p className="py-3 m-0">Native Android</p>
+          </div>
+        </div>
+        <div className="row d-flex justify-content-center mb-5">
+          <div className="col-auto col-md-3 my-3">
+            <div className="card py-4" style={{ borderRadius: "20px", width: "15rem" }}>
+              <img src={competitive} alt="competitive" className="mx-auto" style={{ width: "50px" }} />
+              <div className="text-center">Competitive Coding</div>
             </div>
-            <div className="col-10 hvr-grow-shadow mt-3">
-              <p className="py-3 m-0">Machine Learning</p>
+          </div>
+          <div className="col-auto col-md-3 my-3">
+            <div className="card py-4" style={{ borderRadius: "20px", width: "15rem" }}>
+              <img src={google} alt="google" className="mx-auto" style={{ width: "70px" }} />
+              <div className="text-center">Actions on Google</div>
             </div>
-            <div className="col-10 hvr-grow-shadow mt-3">
-              <p className="py-3 m-0">UI/UX</p>
-            </div>
-            <div className="col-10 hvr-grow-shadow mt-3">
-              <p className="py-3 m-0">Actions on Google</p>
-            </div>
-            <div className="col-10 hvr-grow-shadow mt-3">
-              <p className="py-3 m-0">Competitive Coding</p>
+          </div>
+          <div className="col-auto col-md-3 my-3">
+            <div className="card py-4" style={{ borderRadius: "20px", width: "15rem" }}>
+              <img src={ui} alt="android" className="mx-auto" style={{ width: "60px" }} />
+              <div className="text-center">UI / UX</div>
             </div>
           </div>
         </div>

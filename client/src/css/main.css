@@ -1,3 +1,8 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
 #one {
   border-right: 1px solid var(--mblue);
   border-left: 1px solid var(--mblue);
@@ -17,61 +22,48 @@
   border-right: 1px solid var(--mred);
   border-left: 1px solid var(--mred);
 }
-#one,
-#two,
-#three,
-#four {
+
+#one, #two, #three, #four {
   font-size: 26px;
 }
+
 @keyframes fontalicious {
   0% {
     font-family: Geneva;
   }
-
   10% {
     font-family: times;
   }
-
   20% {
     font-family: Geneva;
   }
-
   30% {
     font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   }
-
   40% {
     font-family: Palatino;
   }
-
   50% {
     font-family: Tahoma;
   }
-
   60% {
     font-family: impact;
   }
-
   70% {
     font-family: cursive;
   }
-
   80% {
     font-family: Times New Roman;
   }
-
   85% {
     font-family: Tahoma, Geneva, sans-serif;
   }
-
   90% {
     font-family: Arial;
   }
-
   99% {
     font-family: futura;
   }
-
   100% {
     font-family: Helvetica;
   }
@@ -85,4 +77,32 @@
 
 .text-142849 {
   color: #142849;
+}
+
+#who-we-are {
+  position: relative;
+  /* overflow: hidden; */
+  /* background-image: url('../img/community.svg'); */
+  background: rgba(82, 171, 255, 0.1);
+  /* background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover; */
+  /* width: 80%;  */
+  /* height: 300px; */
+  /* opacity: 0.7; */
+}
+
+/* #who-we-are {
+  overflow: hidden;
+} */
+
+#community {
+  position: absolute;
+  /* left: 0;
+  top: 0; */
+  /* z-index: -1; */
+  /* height: auto; */
+  /* width: 50%; */
+  /* max-height: 300px; */
+  opacity: 0.3;
 }

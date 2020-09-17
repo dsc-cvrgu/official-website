@@ -12,7 +12,7 @@ import {
 export default class footer extends Component {
   render() {
     return (
-      <footer>
+      <footer className="mt-5">
         <div id="footer-container">
           <div className="content">
             <h1>Locate Us</h1>

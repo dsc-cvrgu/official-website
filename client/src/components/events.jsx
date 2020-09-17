@@ -40,14 +40,14 @@ function Events() {
       eventLocation: "bs block bbsr",
       eventTime: "0900hrs - 1200hrs",
       posterLink: "",
-      eventId:123
+      eventId: 123
     },
     {
       eventDate: "21th sep 2020",
       eventLocation: "bs block bbsr",
       eventTime: "0900hrs - 1200hrs",
       posterLink: "",
-      eventId:124
+      eventId: 124
 
     },
     {
@@ -55,7 +55,7 @@ function Events() {
       eventLocation: "bs block bbsr",
       eventTime: "0900hrs - 1200hrs",
       posterLink: "",
-      eventId:125
+      eventId: 125
 
     },
     {
@@ -63,15 +63,15 @@ function Events() {
       eventLocation: "bs block bbsr",
       eventTime: "0900hrs - 1200hrs",
       posterLink: "",
-      eventId:126
+      eventId: 126
 
     },
-     {
+    {
       eventDate: "24th sep 2020",
       eventLocation: "bs block bbsr",
       eventTime: "0900hrs - 1200hrs",
       posterLink: "",
-      eventId:127
+      eventId: 127
 
     },
     {
@@ -79,12 +79,12 @@ function Events() {
       eventLocation: "bs block bbsr",
       eventTime: "0900hrs - 1200hrs",
       posterLink: "",
-      eventId:128
+      eventId: 128
 
     },
-    
+
   ]);
-  const[pastEvents ,setPastEvents] = useState([])
+  const [pastEvents, setPastEvents] = useState([])
 
   const columns = [
     { id: "name", label: "Event Name", minWidth: 250 },
@@ -99,23 +99,23 @@ function Events() {
 
   // {name:"android dev" , date:"2020-20-98" , seemore:"seemore" , eventId:7678web
   //TODO : useEffect()
-  useEffect(()=>{
+  useEffect(() => {
     //TODO: fill the rows array with event objects 
     const rows = [
-      {name:"android dev" , date:"2020-20-98" , seemore:"See More" , eventId:7678528528},
-      {name:"web dev" , date:"2020-20-98" , seemore:"See More" , eventId:7678528528},
-      {name:"android dev" , date:"2020-20-98" , seemore:"See More" , eventId:7678528528},
-      {name:"web dev" , date:"2020-20-98" , seemore:"See More" , eventId:7678528528},
-      {name:"android dev" , date:"2020-20-98" , seemore:"See More" , eventId:7678528528},
-      {name:"web dev" , date:"2020-20-98" , seemore:"See More" , eventId:7678528528},
-      {name:"android dev" , date:"2020-20-98" , seemore:"See More" , eventId:7678528528},
-      {name:"android dev" , date:"2020-20-98" , seemore:"See More" , eventId:7678528528},
-      {name:"android dev" , date:"2020-20-98" , seemore:"See More" , eventId:7678528528}
+      { name: "android dev", date: "2020-20-98", seemore: "See More", eventId: 7678528528 },
+      { name: "web dev", date: "2020-20-98", seemore: "See More", eventId: 7678528528 },
+      { name: "android dev", date: "2020-20-98", seemore: "See More", eventId: 7678528528 },
+      { name: "web dev", date: "2020-20-98", seemore: "See More", eventId: 7678528528 },
+      { name: "android dev", date: "2020-20-98", seemore: "See More", eventId: 7678528528 },
+      { name: "web dev", date: "2020-20-98", seemore: "See More", eventId: 7678528528 },
+      { name: "android dev", date: "2020-20-98", seemore: "See More", eventId: 7678528528 },
+      { name: "android dev", date: "2020-20-98", seemore: "See More", eventId: 7678528528 },
+      { name: "android dev", date: "2020-20-98", seemore: "See More", eventId: 7678528528 }
     ];
-    
-    setPastEvents(rows) ;
 
-  } ,[])
+    setPastEvents(rows);
+
+  }, [])
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -129,64 +129,64 @@ function Events() {
   return (
     <div>
       <Navbar />
-       {/*list of upcoming events */}
-       <div className="upcoming_events_headers" style={{marginBottom:"45px"}}>
-       <h1>Our<span className="text-primary"> Events</span></h1>
-       <h5>come ,learn ,share and connect</h5>
-       
-       </div>
-       <div  className="upcoming_events_headers">
-       <h3><span className="text-primary">Upcoming Events</span></h3>
-       <p>Our events are open to newbies, developers, managers, and organizations who are interested in Google's technologies or use them as part of their projects.</p>
-       </div>
-      <div className="upcoming_events" >
-      <Carousel >
-        {upcomingEvents.map((event, index) => {
-          if (index % 4 === 0) {
-            const arr = [];
-            for (let i = index; i < index + 4; i++) {
-              if (!upcomingEvents[i]) {
-                break;
-              }
-              arr.push(upcomingEvents[i]);
-            }
+      {/*list of upcoming events */}
+      <div className="upcoming_events_headers" style={{ marginBottom: "45px" }}>
+        <h1>Our<span className="text-primary"> Events</span></h1>
+        <h5>come ,learn ,share and connect</h5>
 
-             console.log(arr)
-            return (
-              <Carousel.Item >
-                {arr.map((e) => {
-                  return (
-                 
-                    <EventCard
-                      key={e.eventId}
-                      eventTime={e.eventTime}
-                      eventDate={e.eventDate}
-                      eventLocation={e.eventLocation}
-                      posterLink={e.posterLink}
-                      eventTitle={e.eventTitle}
-                      eventId={e.eventId}
-                    />
-                  );
-                })}
-              </Carousel.Item>
-            );
-          }
-        })}
-      </Carousel>
-    </div>
-      {/*search bar */} 
-      
-      <div style={{ width: "80%", margin: "10px  auto 50px auto"  }}>
-      <div className="row " style={{marginBottom:"20px"}}>
-      <div className="col-md-8">
-       <h3><span className="text-primary">Past</span> Events</h3>
-       </div>
-      <div className="col-md-4" >
-      
-      <FormControl  className="searchBar " type="text" placeholder="Search" className="mr-sm-2" /> 
-      
       </div>
-     </div>
+      <div className="upcoming_events_headers">
+        <h3><span className="text-primary">Upcoming Events</span></h3>
+        <p>Our events are open to newbies, developers, managers, and organizations who are interested in Google's technologies or use them as part of their projects.</p>
+      </div>
+      <div className="upcoming_events" >
+        <Carousel >
+          {upcomingEvents.map((event, index) => {
+            if (index % 4 === 0) {
+              const arr = [];
+              for (let i = index; i < index + 4; i++) {
+                if (!upcomingEvents[i]) {
+                  break;
+                }
+                arr.push(upcomingEvents[i]);
+              }
+
+              console.log(arr)
+              return (
+                <Carousel.Item >
+                  {arr.map((e) => {
+                    return (
+
+                      <EventCard
+                        key={e.eventId}
+                        eventTime={e.eventTime}
+                        eventDate={e.eventDate}
+                        eventLocation={e.eventLocation}
+                        posterLink={e.posterLink}
+                        eventTitle={e.eventTitle}
+                        eventId={e.eventId}
+                      />
+                    );
+                  })}
+                </Carousel.Item>
+              );
+            }
+          })}
+        </Carousel>
+      </div>
+      {/*search bar */}
+
+      <div style={{ width: "80%", margin: "10px  auto 50px auto" }}>
+        <div className="row " style={{ marginBottom: "20px" }}>
+          <div className="col-md-8">
+            <h3><span className="text-primary">Past</span> Events</h3>
+          </div>
+          <div className="col-md-4" >
+
+            <FormControl className="searchBar " type="text" placeholder="Search" className="mr-sm-2" />
+
+          </div>
+        </div>
         <Paper className={classes.root}>
           <TableContainer className={classes.container}>
             <Table stickyHeader aria-label="sticky table">
@@ -268,7 +268,7 @@ function Events() {
       </div>
 
       {/*list of carosaol events  */}
-    <Footer/>
+      <Footer />
     </div>
   );
 }

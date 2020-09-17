@@ -19,30 +19,29 @@
   font-weight: 500;
 }
 
-#EVENTS:hover {
+#EVENTS {
   color: var(--mgreen) !important;
 }
 
-#TEAM:hover {
+#TEAM {
   color: var(--mred) !important;
 }
 
-#CONTACT:hover {
+#CONTACT {
   color: var(--mblue) !important;
 }
 
-.LOGINOUT:hover {
+.LOGINOUT {
   color: var(--myellow) !important;
-  cursor: pointer;
 }
 
 /* hover pulse */
+
 @-webkit-keyframes hvr-pulse {
   25% {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
   }
-
   75% {
     -webkit-transform: scale(0.9);
     transform: scale(0.9);
@@ -54,7 +53,6 @@
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
   }
-
   75% {
     -webkit-transform: scale(0.9);
     transform: scale(0.9);
@@ -69,9 +67,7 @@
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 }
 
-.hvr-pulse:hover,
-.hvr-pulse:focus,
-.hvr-pulse:active {
+.hvr-pulse:hover, .hvr-pulse:focus, .hvr-pulse:active {
   -webkit-animation-name: hvr-pulse;
   animation-name: hvr-pulse;
   -webkit-animation-duration: 1s;
@@ -83,6 +79,7 @@
 }
 
 /* Underline From Left */
+
 .hvr-underline-from-left {
   display: inline-block;
   vertical-align: middle;
@@ -100,13 +97,7 @@
   left: 0;
   right: 100%;
   bottom: 0;
-  background-image: linear-gradient(
-    to right,
-    #0f9d58,
-    #ea4335,
-    #4285f4,
-    #fbbc04
-  );
+  background-image: linear-gradient( to right, #0f9d58, #ea4335, #4285f4, #fbbc04);
   height: 4px;
   -webkit-transition-property: right;
   transition-property: right;
@@ -116,12 +107,12 @@
   transition-timing-function: ease-out;
 }
 
-.hvr-underline-from-left:hover:before,
-.hvr-underline-from-left:focus:before,
-.hvr-underline-from-left:active:before {
+.hvr-underline-from-left:hover:before, .hvr-underline-from-left:focus:before, .hvr-underline-from-left:active:before {
   right: 0;
 }
+
 /* navbar brand icon */
+
 .rotating {
   animation: rotating 3s linear infinite;
 }
@@ -134,7 +125,6 @@
     -o-transform: rotate(0deg);
     transform: rotate(0deg);
   }
-
   to {
     -ms-transform: rotateY(360deg);
     -moz-transform: rotateY(360deg);

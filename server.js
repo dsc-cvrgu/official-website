@@ -1,29 +1,26 @@
 const express = require("express");
 const cors = require("cors");
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 require("dotenv").config();
 const path = require("path");
-const session = require("express-session");
-const passport = require("passport");
-const cookieParser = require("cookie-parser");
 const app = express();
 const port = process.env.PORT || 5000;
 app.use(bodyParser.json());
 app.use(cors());
-const User = require("./models/user");
+// const User = require("./models/user");
 
-const uri = process.env.ATLAS_URI;
+// const uri = process.env.ATLAS_URI;
 
-mongoose
-  .connect(uri, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-  })
-  .then((result) => console.log("mongodb connected"))
-  .catch((err) => console.log(err));
+// mongoose
+//   .connect(uri, {
+//     useNewUrlParser: true,
+//     useCreateIndex: true,
+//     useUnifiedTopology: true,
+//   })
+//   .then((result) => console.log("mongodb connected"))
+//   .catch((err) => console.log(err));
 
 if (process.env.NODE_ENV === "development") {
   app.use(
@@ -36,6 +33,9 @@ if (process.env.NODE_ENV === "development") {
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
   app.use(
     cors({
       origin: "https://dsccvrgu.herokuapp.com",

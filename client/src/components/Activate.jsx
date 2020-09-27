@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import jwt from "jsonwebtoken";
-import { authenticate, isAuth } from "../helpers/auth";
-import { Link, Redirect } from "react-router-dom";
+// import { Link, Redirect } from "react-router-dom";
+import Navbar from "./navbar";
+import Footer from "./footer";
 
 const Activate = ({ match }) => {
   const [formData, setFormData] = useState({
     name: "",
     token: "",
-    show: true,
   });
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const Activate = ({ match }) => {
 
     console.log(token, name, email);
   }, [match.params]);
-  const { name, token, show } = formData;
+  const { name, token } = formData;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,41 +34,31 @@ const Activate = ({ match }) => {
       .then((res) => {
         setFormData({
           ...formData,
-          show: false,
         });
 
         toast.success(res.data.message);
       })
       .catch((err) => {
-        toast.error(err.response.data.errors);
+        toast.error(err.response.data.error);
       });
   };
 
   return (
-    <div className="body">
-      {/* {isAuth() ?
-    <Redirect to="/login" /> : null} */}
-      <ToastContainer />
+    <div>
+      <Navbar />
       <section id="sign-in-containers">
+        <ToastContainer />
         <div id="left-containers" className="containers">
-          <div id="logo-containers">
-            <img src={require("../images/logo.png")} id="logo" alt="DSC Logo" />
-            <h5>
-              Developer Student Clubs
-              <br />
-              CVRGU
-            </h5>
-          </div>
           <div id="welcome">
             <img
-              src={require("../images/illustration.png")}
+              src={require("../img/authentication/illustration.png")}
               alt="illustration "
               id="illustration"
             />
             <h1>WELCOME !</h1>
           </div>
         </div>
-        <div id="right-containers" className="containers mt-50">
+        <div id="right-containers" className="containers my-50 text-center">
           <div id="sign-up">
             <form onSubmit={handleSubmit}>
               <h1>Welcome {name}</h1>
@@ -85,6 +75,7 @@ const Activate = ({ match }) => {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };

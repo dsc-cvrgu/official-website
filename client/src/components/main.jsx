@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Study from "../img/study.png";
 import Whatwedo from "../img/whatwedo.jpg";
+// local css
+import "../css/main.css";
 export default class main extends Component {
   render() {
     return (
@@ -14,7 +16,7 @@ export default class main extends Component {
               className="text-primary text-center my-4 fontalicious ff-helvetica"
               style={{ fontSize: "44px" }}
             >
-              Fuel Your Passion
+              FUEL YOUR PASSION{" "}
             </h3>
             <p className="text-142849 mx-auto px-5">
               Developer Student Clubs are university based community groups for

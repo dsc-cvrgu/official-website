@@ -1,8 +1,8 @@
 import React from "react";
-
 import { Button } from "@material-ui/core";
-// import { Link } from "react-router-dom";
 import Contactlogo from "../img/contact.png";
+// css
+import "../css/contact.css";
 import Navbar from "./navbar";
 import Footer from "./footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -74,7 +74,7 @@ const Contact = () => {
               <Button variant="contained">#DUMMY</Button>
             </span>
           </div>
-          <div className="col-12 col-md-4">
+          <div className="col-12 col-md-4 d-none d-md-block">
             <img className="img-fluid" src={Contactlogo} alt="cvrgu logo" />
           </div>
         </div>

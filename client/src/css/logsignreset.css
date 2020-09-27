@@ -3,10 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-.body {
-  width: 100%;
-  height: 100vh;
-}
+
 #sign-in-containers {
   width: 100%;
   height: 100%;
@@ -23,6 +20,13 @@
 }
 #left-containers {
   background-color: #e8e8e8;
+}
+#illustration {
+  max-width: 80%;
+  height: 100vh;
+}
+#right-containers {
+  margin-top: 20px;
 }
 #logo-containers {
   width: 100%;
@@ -50,12 +54,6 @@
   animation: show 1s ease-in-out;
 }
 
-#illustration {
-  max-width: 80%;
-}
-#welcome h1 {
-  font-size: 2em;
-}
 #logo-containers h5 {
   font-size: 14px;
 }
@@ -69,7 +67,7 @@
   animation: show 1s ease-in-out;
 }
 #avatar {
-  max-width: 30%;
+  max-width: 200px;
 }
 form {
   width: 100%;
@@ -112,19 +110,10 @@ form .input-containers {
   align-items: center;
   justify-content: space-evenly;
   margin: 10px 0;
-  width: 100%;
-}
-#buttons input {
   width: 60%;
-  height: 40px;
   cursor: pointer;
-  outline: none;
-  border: 0;
-  border-radius: 18px;
-  background-color: #3a96ff;
-  color: white;
-  font-size: 16px;
 }
+
 #other-options {
   width: 100%;
   text-align: center;
@@ -148,7 +137,6 @@ form .input-containers {
 #sign-up {
   width: 100%;
   height: 100%;
-  /* display:none; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -164,39 +152,20 @@ form .input-containers {
     position: relative;
   }
   #left-containers {
-    height: 10%;
-    background-color: #ffffff;
-  }
-  #welcome {
     display: none;
   }
   #right-containers {
-    height: 90%;
     overflow-y: auto;
   }
-  #illustration {
-    max-width: 50%;
-  }
+
   #logo {
     max-width: 10%;
     margin: 0 10px;
   }
-  #logo-containers h5 {
-    font-size: 12px;
-  }
-  #logo-containers {
-    height: 50px;
-  }
-  #sign-in,
-  #sign-up {
-    justify-content: center;
-  }
-  #welcome h1 {
-    font-size: 1em;
-  }
-  #avatar {
+
+  /* #avatar {
     max-width: 35%;
-  }
+  } */
   .input-containers img {
     max-width: 20px;
     padding-right: 5px;

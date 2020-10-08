@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Study from "../img/study.png";
 import "../particles";
-import community from '../img/community.svg'
 import web from '../img/web.svg'
 import ml from '../img/ml.svg'
 import flutter from '../img/flutter.svg'
@@ -9,9 +8,11 @@ import android from '../img/android.svg'
 import competitive from '../img/competitive.svg'
 import google from '../img/google.png'
 import ui from '../img/ui.png'
+import TechStack from './TechStack'
 
 // local css
 import "../css/main.css";
+
 export default class main extends Component {
   render() {
     return (
@@ -21,9 +22,7 @@ export default class main extends Component {
             <img src={Study} className="img-fluid" alt="alt" />
           </div>
           <div className="col-sm-12 col-md-5 p-0 mt-3 mt-md-5 container">
-            <h3
-              className="text-primary my-4 pl-4 fontalicious ff-fantasy"
-              style={{ fontSize: "38px" }}>
+            <h3 className="text-primary my-4 pl-4 fontalicious ff-fantasy" style={{ fontSize: "38px" }}>
               FUEL YOUR PASSION
             </h3>
             <p className="text-142849 mx-auto mt-3 px-4 md-px-5">
@@ -34,20 +33,16 @@ export default class main extends Component {
               grow their knowledge in a peer-to-peer learning environment and
               build solutions for local businesses and their community.
             </p>
-            <div className="container row p-0">
-              <div className="col-6 text-center p-0">
-                <a
-                  href="https://dsc.community.dev/c-v-raman-global-university/"
-                  className="mt-5 px-4 py-2 hvr-wobble-horizontal hvr-sweep-to-right"
-                >
+            <div className="container row">
+              <div className="col-6 pr-0 pl-4">
+                <a href="https://dsc.community.dev/c-v-raman-global-university/"
+                  className="mt-5 px-4 py-2 hvr-wobble-horizontal hvr-sweep-to-right">
                   JOIN US
                 </a>
               </div>
               <div className="col-6 text-center p-0">
-                <a
-                  href="https://developers.google.com/community/dsc/"
-                  className="mt-5 px-4 py-2 hvr-wobble-horizontal hvr-sweep-to-right"
-                >
+                <a href="https://developers.google.com/community/dsc/"
+                  className="mt-5 px-4 py-2 hvr-wobble-horizontal hvr-sweep-to-right">
                   READ MORE
                 </a>
               </div>
@@ -59,18 +54,10 @@ export default class main extends Component {
         </div>
         <hr className="mt-5" />
         <div className="container mx-auto row py-3">
-          <div className="col text-blue text-center py-3" id="one">
-            Connect
-          </div>
-          <div className="col text-green text-center py-3" id="two">
-            Learn
-          </div>
-          <div className="col text-yellow text-center py-3" id="three">
-            Develop
-          </div>
-          <div className="col text-red text-center py-3" id="four">
-            Grow
-          </div>
+          <div className="col text-blue text-center py-3" id="one">Connect</div>
+          <div className="col text-green text-center py-3" id="two">Learn</div>
+          <div className="col text-yellow text-center py-3" id="three">Develop</div>
+          <div className="col text-red text-center py-3" id="four">Grow</div>
         </div>
         <hr className="mb-3" />
         <div id="who-we-are" className="my-5">
@@ -85,51 +72,16 @@ export default class main extends Component {
         </div>
         {/* what we do */}
         <p className="text-center pt-4 fs-40">What We Do</p>
-        <div className="container-fluid row mx-auto">
-          <div className="col-auto col-md-3 my-3">
-            <div className="card py-4" style={{ borderRadius: "20px", width: "15rem" }}>
-              <img src={web} alt="web" className="mx-auto" style={{ width: "50px" }} />
-              <div className="text-center">Web Development</div>
-            </div>
-          </div>
-          <div className="col-auto col-md-3 my-3">
-            <div className="card py-4" style={{ borderRadius: "20px", width: "15rem" }}>
-              <img src={ml} alt="ml" className="mx-auto" style={{ width: "50px" }} />
-              <div className="text-center">Machine Learning</div>
-            </div>
-          </div>
-          <div className="col-auto col-md-3 my-3">
-            <div className="card py-4" style={{ borderRadius: "20px", width: "15rem" }}>
-              <img src={flutter} alt="cloud" className="mx-auto" style={{ height: "50px" }} />
-              <div className="text-center">Flutter</div>
-            </div>
-          </div>
-          <div className="col-auto col-md-3 my-3">
-            <div className="card py-4" style={{ borderRadius: "20px", width: "15rem" }}>
-              <img src={android} alt="android" className="mx-auto" style={{ width: "50px" }} />
-              <div className="text-center">Android Development</div>
-            </div>
-          </div>
+        <div className="row d-flex justify-content-center mb-2 mx-auto">
+          <TechStack data={{ src: web, name: "Web Development", style: { width: "60px" } }} />
+          <TechStack data={{ src: ml, name: "Machine Learning", style: { width: "60px" } }} />
+          <TechStack data={{ src: flutter, name: "Flutter", style: { height: "60px" } }} />
+          <TechStack data={{ src: android, name: "Android Development", style: { width: "60px" } }} />
         </div>
-        <div className="row d-flex justify-content-center mb-5">
-          <div className="col-auto col-md-3 my-3">
-            <div className="card py-4" style={{ borderRadius: "20px", width: "15rem" }}>
-              <img src={competitive} alt="competitive" className="mx-auto" style={{ width: "50px" }} />
-              <div className="text-center">Competitive Coding</div>
-            </div>
-          </div>
-          <div className="col-auto col-md-3 my-3">
-            <div className="card py-4" style={{ borderRadius: "20px", width: "15rem" }}>
-              <img src={google} alt="google" className="mx-auto" style={{ width: "70px" }} />
-              <div className="text-center">Actions on Google</div>
-            </div>
-          </div>
-          <div className="col-auto col-md-3 my-3">
-            <div className="card py-4" style={{ borderRadius: "20px", width: "15rem" }}>
-              <img src={ui} alt="android" className="mx-auto" style={{ width: "60px" }} />
-              <div className="text-center">UI / UX</div>
-            </div>
-          </div>
+        <div className="row d-flex justify-content-center mb-5 mx-auto">
+          <TechStack data={{ src: competitive, name: "Competitive Coding", style: { width: "60px" } }} />
+          <TechStack data={{ src: google, name: "Actions on Google", style: { width: "85px" } }} />
+          <TechStack data={{ src: ui, name: "UI / UX", style: { width: "60px" } }} />
         </div>
       </div>
     );

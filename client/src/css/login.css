@@ -12,22 +12,27 @@
   display: flex;
   font-family: "Poppins", sans-serif;
 }
+
 .containers {
   width: 50%;
   height: 100%;
   position: relative;
   overflow: hidden;
 }
+
 #left-containers {
   background-color: #e8e8e8;
 }
+
 #illustration {
   max-width: 80%;
   height: 100vh;
 }
+
 #right-containers {
   margin-top: 20px;
 }
+
 #logo-containers {
   width: 100%;
   height: 80px;
@@ -39,6 +44,7 @@
   top: 0;
   left: 0;
 }
+
 #logo {
   max-width: 30%;
   margin: 0 10px;
@@ -57,6 +63,7 @@
 #logo-containers h5 {
   font-size: 14px;
 }
+
 #sign-in {
   width: 100%;
   height: 100%;
@@ -66,15 +73,18 @@
   align-items: center;
   animation: show 1s ease-in-out;
 }
+
 #avatar {
   max-width: 200px;
 }
+
 form {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 form .input-containers {
   width: 60%;
   height: 40px;
@@ -86,18 +96,22 @@ form .input-containers {
   margin-top: 20px;
   border-radius: 10px;
 }
+
 .input-containers img {
   max-width: 25px;
   margin: 0 5px;
   border-right: 2px solid black;
   padding-right: 10px;
 }
+
 #right-containers .input-box {
+  margin-top: 200px !important;
   border: 0;
   width: 90%;
   background-color: transparent;
   outline: none;
 }
+
 #forgot-password {
   text-decoration: none;
   color: black;
@@ -105,6 +119,7 @@ form .input-containers {
   margin-top: 5px;
   width: 60%;
 }
+
 #buttons {
   display: flex;
   align-items: center;
@@ -119,21 +134,26 @@ form .input-containers {
   text-align: center;
   margin-top: 10px;
 }
+
 #other-options h5 {
   margin-bottom: 10px;
 }
+
 .join {
   width: 40px;
   margin-right: 10px;
 }
+
 .switch {
   text-decoration: none;
   color: black;
   margin: 5px 0 30px 0;
 }
+
 .switch span {
   color: #3a96ff;
 }
+
 #sign-up {
   width: 100%;
   height: 100%;
@@ -142,7 +162,9 @@ form .input-containers {
   align-items: center;
   animation: show 1s ease-in-out;
 }
+
 /* Responsive css */
+
 @media only screen and (max-width: 767px) {
   #sign-in-containers {
     display: block;
@@ -157,12 +179,10 @@ form .input-containers {
   #right-containers {
     overflow-y: auto;
   }
-
   #logo {
     max-width: 10%;
     margin: 0 10px;
   }
-
   /* #avatar {
     max-width: 35%;
   } */
@@ -171,6 +191,7 @@ form .input-containers {
     padding-right: 5px;
   }
 }
+
 @keyframes show {
   0% {
     opacity: 0;
@@ -190,6 +211,7 @@ form .input-containers {
     margin-left: 0;
   }
 }
+
 @-webkit-keyframes show {
   0% {
     opacity: 0;

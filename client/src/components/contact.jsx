@@ -1,22 +1,20 @@
 import React from "react";
 import { Button } from "@material-ui/core";
 import Contactlogo from "../img/contact.png";
+
 // css
 import "../css/contact.css";
+
+// components
 import Navbar from "./navbar";
 import Footer from "./footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebook,
-  faInstagram,
-  faLinkedin,
-  faYoutube,
-} from "@fortawesome/free-brands-svg-icons";
+import { faFacebook, faInstagram, faLinkedin, faYoutube, } from "@fortawesome/free-brands-svg-icons";
 
-const Contact = () => {
+const Contact = (state) => {
   return (
     <div>
-      <Navbar />
+      <Navbar isSignedIn={state.isSignedIn} />
       <div className="container mt-5">
         <div className="row">
           <div className="col-12 col-md-8">
@@ -42,25 +40,13 @@ const Contact = () => {
               >
                 <FontAwesomeIcon icon={faFacebook} className="social-icons" />
               </a>
-              <a
-                href="https://www.instagram.com/dsccvrgu/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://www.instagram.com/dsccvrgu/" target="_blank" rel="noopener noreferrer"              >
                 <FontAwesomeIcon icon={faInstagram} className="social-icons" />
               </a>
-              <a
-                href="https://www.linkedin.com/company/69065757"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://www.linkedin.com/company/69065757" target="_blank" rel="noopener noreferrer"              >
                 <FontAwesomeIcon icon={faLinkedin} className="social-icons" />
               </a>
-              <a
-                href="https://www.youtube.com/channel/UCim8zUhSy9SRfV6faRTYRiw"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://www.youtube.com/channel/UCim8zUhSy9SRfV6faRTYRiw" target="_blank" rel="noopener noreferrer"              >
                 <FontAwesomeIcon icon={faYoutube} className="social-icons" />
               </a>
             </div>

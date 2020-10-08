@@ -18,7 +18,7 @@ import Footer from './footer'
 
 import "../css/events.css";
 
-function Events() {
+function Events(state) {
   //TODO: setUpcomingEvents
   //TODO : setPastEvents
   const useStyles = makeStyles({
@@ -128,7 +128,7 @@ function Events() {
 
   return (
     <div>
-      <Navbar />
+      <Navbar isSignedIn={state.isSignedIn} />
       {/*list of upcoming events */}
       <div className="upcoming_events_headers" style={{ marginBottom: "45px" }}>
         <h1>Our<span className="text-primary"> Events</span></h1>
@@ -183,7 +183,7 @@ function Events() {
           </div>
           <div className="col-md-4" >
 
-            <FormControl className="searchBar " type="text" placeholder="Search" className="mr-sm-2" />
+            <FormControl className="searchBar mr-sm-2" type="text" placeholder="Search" />
 
           </div>
         </div>

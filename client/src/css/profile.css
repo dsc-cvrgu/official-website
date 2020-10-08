@@ -1,0 +1,195 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+p {
+    margin: 0;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+}
+
+#user-profile {
+    width: 100%;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+
+#user-profile #details {
+    width: 30%;
+    /* position: fixed; */
+    float: left;
+    text-align: center;
+    padding-top: 30px;
+}
+
+#user-profile #events {
+    width: 70%;
+    height: 100%;
+    float: right;
+    background-color: #EEEEEE;
+    overflow-y: scroll;
+}
+
+#details h1 {
+    margin-bottom: 30px;
+    color: #3A96FF;
+    font-size: 30px;
+}
+
+#details .details-value {
+    width: 80%;
+    height: 50px;
+    display: flex;
+    overflow: hidden;
+    background-color: #EEEEEE;
+    margin: 0 auto;
+    align-items: center;
+    margin-top: 20px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.details-value img {
+    max-width: 30px;
+    margin: 0 5px;
+    border-right: 2px solid black;
+    padding-right: 10px;
+}
+
+#details #profile-pic {
+    max-width: 30%;
+    border-radius: 50%;
+}
+
+.input-box {
+    border: 0;
+    width: 90%;
+    background-color: transparent;
+    outline: none;
+}
+
+#buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 30px 0;
+    width: 100%;
+}
+
+#buttons input {
+    width: 60%;
+    height: 40px;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    border-radius: 18px;
+    background-color: #3A96FF;
+    color: white;
+    font-size: 16px;
+}
+
+#events .events-detail {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    padding-top: 20px;
+}
+
+#events .events-detail h1 {
+    margin-bottom: 25px;
+    font-size: 25px;
+    color: #3A96FF;
+}
+
+.card-container {
+    width: 100%;
+    height: 80%;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.card-container .cards {
+    width: 40%;
+    height: 90%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.card-container .cards p {
+    font-size: 14px;
+}
+
+.card-container .cards .poster {
+    width: 100%;
+    height: 80%;
+    overflow-y: hidden;
+}
+
+.card-container .cards .poster .event-poster {
+    width: 100%;
+    height: 100%;
+}
+
+@media only screen and (max-width:767px) {
+    #user-profile #details {
+        width: 100%;
+        height: 100%;
+        position: static;
+        float: none;
+        padding-top: 30px;
+    }
+    #user-profile #events {
+        width: 100%;
+        height: 100%;
+        float: none;
+        overflow: scroll;
+    }
+    #events .events-detail {
+        width: 100%;
+        height: auto;
+        text-align: center;
+        padding-top: 20px;
+    }
+    .card-container {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+    .card-container .cards {
+        width: 270px;
+        height: 190px;
+        background-color: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        margin-bottom: 20px;
+    }
+    .card-container .cards .poster {
+        width: 100%;
+        height: 152px;
+        overflow-y: hidden;
+    }
+}
+
+#dropdown-basic::after {
+    content: none;
+}
+
+button#dropdown-basic.dropdown-toggle.btn.btn- {
+    padding: 0;
+}
+
+.z-index-2 {
+    z-index: 20000;
+}

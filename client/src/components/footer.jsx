@@ -22,7 +22,7 @@ export default class footer extends Component {
                 width="600"
                 height="450"
                 style={{ border: 0 }}
-                aria-hidden="false"
+                aria-hidden="false" title="map"
               ></iframe>
             </div>
           </div>
@@ -63,18 +63,17 @@ export default class footer extends Component {
               </a>
             </div>
           </div>
-          <div id="newsletter" className="content">
+          <div className="content">
             <h1>Subscribe us</h1>
             <p>Subscribe us to never miss an update.</p>
-            <form action="" id="newsletter">
+            <form id="newsletter">
               <input
                 className="form-control"
                 type="email"
                 name="email"
                 id="email"
                 required
-                placeholder="Email"
-              />
+                placeholder="Email" />
               <input type="submit" className="form-control" value="Subscribe" />
             </form>
           </div>

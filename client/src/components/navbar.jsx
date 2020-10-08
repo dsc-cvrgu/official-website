@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import DSC from "../img/dsc.png";
-import { Navbar, Nav } from "react-bootstrap";
-import logo from '../img/logo.png'
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+
 // css
 import "../css/navbar.css";
 
-const Navigation = () => {
+// components
+import Login from "./LoginButton"
+import Profile from "./ProfileButton"
+
+const Navigation = (state) => {
+
   return (
     <div>
       <Navbar bg="light" expand="lg" className="z-depth-1">
@@ -16,17 +21,15 @@ const Navigation = () => {
               className="mr-3"
               height="30"
               width="60"
-              alt="navbar-brand-icon" style={{ verticalAlign: "middle" }}
-            />
+              alt="navbar-brand-icon" style={{ verticalAlign: "middle" }} />
           </div>
           <div className="col-auto p-0">
-            <div className="col p-0">Developer Student Clubs</div>
+            <div className="col p-0" style={{ fontSize: "17px", color: 'black' }}>Developer Student Clubs</div>
             <div className="col p-0"><small className="text-gray">C V Raman Global University</small></div>
           </div>
         </div>
         {/* <Navbar.Brand className="hvr-pulse my-2 ff-open-sans" href="/"> */}
         <Navbar.Toggle aria-controls="collapsedNav" />
-
 
         {/* </Navbar.Brand> */}
         <Navbar.Collapse id="collapsedNav">
@@ -37,44 +40,30 @@ const Navigation = () => {
               </a>
             </li>
             <li className="nav-item hvr-underline-from-left">
-              <a
-                className="nav-link magictime tinRightIn"
-                id="EVENTS"
-                href="/events"
-              >
+              <a className="nav-link magictime tinRightIn" id="EVENTS" href="/events"              >
                 EVENTS
               </a>
             </li>
             <li className="nav-item hvr-underline-from-left">
-              <a
-                className="nav-link magictime tinRightIn"
-                id="TEAM"
-                href="/team"
-              >
+              <a className="nav-link magictime tinRightIn" id="TEAM" href="/team"              >
                 TEAM
               </a>
             </li>
             <li className="nav-item hvr-underline-from-left">
-              <a
-                className="nav-link magictime tinRightIn"
-                id="CONTACT"
-                href="/contact"
-              >
+              <a className="nav-link magictime tinRightIn" id="CONTACT" href="/contact">
                 CONTACT US
-              </a>
+                </a>
             </li>
-            <li className="nav-item hvr-underline-from-left">
-              <a
-                className="nav-link magictime tinRightIn LOGINOUT"
-                href="#"
-              >
-                LOGIN
-              </a>
-            </li>
+            {state.isSignedIn ? <Profile /> : <Login />}
+            {/* {console.log(state.isSignedIn)} */}
+            {/* <Login /> */}
           </Nav>
         </Navbar.Collapse>
       </Navbar >
     </div >
   );
-};
+}
+
 export default Navigation;
+
+

@@ -4,6 +4,7 @@ footer {
   font-family: "Poppins", sans-serif;
   color: white;
 }
+
 #footer-container {
   width: 100%;
   display: flex;
@@ -11,34 +12,42 @@ footer {
   justify-content: space-evenly;
   margin-bottom: 20px;
 }
+
 #footer-container h1 {
   color: white;
   margin: 20px 0;
   font-size: 18px;
   text-transform: uppercase;
 }
+
 #footer-container h1::before {
   content: "| ";
   color: #3a96ff;
   font-size: 25px;
 }
+
 #footer-container .content {
   width: 22%;
 }
+
 #quick-links ul {
   list-style: none;
 }
+
 #quick-links ul li {
   margin-bottom: 5px;
 }
+
 #quick-links ul li::before {
   content: "> ";
   color: #3a96ff;
 }
+
 #quick-links ul li a {
   text-decoration: none;
   color: white;
 }
+
 #contact #social {
   width: 100%;
   height: 60px;
@@ -46,6 +55,7 @@ footer {
   display: flex;
   align-items: center;
 }
+
 #contact #social a {
   background-color: #494848;
   border-radius: 50%;
@@ -54,6 +64,7 @@ footer {
   display: inline-block;
   margin-left: 5px;
 }
+
 #contact #social .social-icon {
   color: #fff;
   font-size: 20px;
@@ -61,18 +72,22 @@ footer {
   height: 100%;
   padding: 10px 10px;
 }
+
 #copyright {
   width: 100%;
   background-color: rgb(12, 12, 12);
   text-align: center;
 }
+
 #copyright h5 {
   margin-top: 2px;
   color: white;
 }
+
 #copyright h5 span {
   color: red;
 }
+
 #newsletter input {
   border: 0;
   height: 30px;
@@ -87,6 +102,7 @@ footer {
   height: 35px;
   cursor: pointer;
 }
+
 @media only screen and (max-width: 767px) {
   footer {
     height: 100%;
@@ -102,10 +118,10 @@ footer {
     background-color: #3a96ff;
     color: white;
     cursor: pointer;
-    margin-left: -5px;
     font-size: 12px;
   }
 }
+
 .map-responsive {
   overflow: hidden;
   padding-bottom: 56.25%;

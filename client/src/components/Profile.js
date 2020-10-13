@@ -15,6 +15,7 @@ const Profile = (state) => {
     console.log(typeof (state.isSignedIn));
     useEffect(() => {
         firebase.auth().onAuthStateChanged(user => {
+           
             setEmail(user.email)
             setDisplayName(user.displayName)
             setPhotoURL(user.photoURL)

@@ -54,6 +54,11 @@ const Navigation = (state) => {
                 CONTACT US
                 </a>
             </li>
+            <li className="nav-item hvr-underline-from-left">
+              <a className="nav-link magictime tinRightIn" id="CONTACT" href="/admin">
+                ADMIN PANEL
+                </a>
+            </li>
             {state.isSignedIn ? <Profile /> : <Login />}
             {/* {console.log(state.isSignedIn)} */}
             {/* <Login /> */}

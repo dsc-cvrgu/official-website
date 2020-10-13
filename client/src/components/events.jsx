@@ -15,12 +15,14 @@ import Carousel from "react-bootstrap/Carousel";
 import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
 import Footer from './footer'
-
+import firebase from 'firebase'
 import "../css/events.css";
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
+
 
 function Events(state) {
-  //TODO: setUpcomingEvents
-  //TODO : setPastEvents
+  
   const useStyles = makeStyles({
     root: {
       width: "100%",
@@ -34,58 +36,15 @@ function Events(state) {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  const [upcomingEvents, setUpcomingEvents] = useState([
-    {
-      eventDate: "20th sep 2020",
-      eventLocation: "bs block bbsr",
-      eventTime: "0900hrs - 1200hrs",
-      posterLink: "",
-      eventId: 123
-    },
-    {
-      eventDate: "21th sep 2020",
-      eventLocation: "bs block bbsr",
-      eventTime: "0900hrs - 1200hrs",
-      posterLink: "",
-      eventId: 124
-
-    },
-    {
-      eventDate: "22th sep 2020",
-      eventLocation: "bs block bbsr",
-      eventTime: "0900hrs - 1200hrs",
-      posterLink: "",
-      eventId: 125
-
-    },
-    {
-      eventDate: "23th sep 2020",
-      eventLocation: "bs block bbsr",
-      eventTime: "0900hrs - 1200hrs",
-      posterLink: "",
-      eventId: 126
-
-    },
-    {
-      eventDate: "24th sep 2020",
-      eventLocation: "bs block bbsr",
-      eventTime: "0900hrs - 1200hrs",
-      posterLink: "",
-      eventId: 127
-
-    },
-    {
-      eventDate: "25th sep 2020",
-      eventLocation: "bs block bbsr",
-      eventTime: "0900hrs - 1200hrs",
-      posterLink: "",
-      eventId: 128
-
-    },
-
-  ]);
+  const [upcomingEvents, setUpcomingEvents] = useState([]);
   const [pastEvents, setPastEvents] = useState([])
+  const [show, setShow] = useState(false);
 
+
+ const handleClose = () => setShow(false);
+ const handleShow = () => setShow(true);
+   
+  
   const columns = [
     { id: "name", label: "Event Name", minWidth: 250 },
     { id: "date", label: "date", minWidth: 30 },
@@ -97,25 +56,114 @@ function Events(state) {
     },
   ];
 
-  // {name:"android dev" , date:"2020-20-98" , seemore:"seemore" , eventId:7678web
-  //TODO : useEffect()
+ 
   useEffect(() => {
-    //TODO: fill the rows array with event objects 
-    const rows = [
-      { name: "android dev", date: "2020-20-98", seemore: "See More", eventId: 7678528528 },
-      { name: "web dev", date: "2020-20-98", seemore: "See More", eventId: 7678528528 },
-      { name: "android dev", date: "2020-20-98", seemore: "See More", eventId: 7678528528 },
-      { name: "web dev", date: "2020-20-98", seemore: "See More", eventId: 7678528528 },
-      { name: "android dev", date: "2020-20-98", seemore: "See More", eventId: 7678528528 },
-      { name: "web dev", date: "2020-20-98", seemore: "See More", eventId: 7678528528 },
-      { name: "android dev", date: "2020-20-98", seemore: "See More", eventId: 7678528528 },
-      { name: "android dev", date: "2020-20-98", seemore: "See More", eventId: 7678528528 },
-      { name: "android dev", date: "2020-20-98", seemore: "See More", eventId: 7678528528 }
-    ];
-
-    setPastEvents(rows);
+    
+    getAllEvents()
 
   }, [])
+
+
+ //GET ALL EVENTS
+  const getAllEvents=()=>{
+    const rows = []
+    const upEvents =[]
+    const months ={
+        1:"Jan",
+        2:"Feb",
+        3:"March",
+        4:"April",
+        5:"May",
+        6:"June",
+        7:"July",
+        8:"Aug",
+        9:"Sep",
+        10:"Oct",
+        11:"Nov",
+        12:"Dec"
+    }
+    
+    firebase.firestore().collection('Events').get()
+            .then(snapshot=> {snapshot.docs.forEach(doc =>{
+              if(doc.data().Status==='past'){
+               
+                rows.push({
+                  name: doc.data().EventTitle,
+                  seemore:"See More",
+                  eventId:doc.data().EventId,
+                  date: doc.data().EventTime.From.split("T")[0],               
+                 
+                })
+              }
+
+               if(doc.data().Status ==='upcoming')
+               {  console.log("hiii up")
+                const From =doc.data().EventTime.From
+                const To = doc.data().EventTime.To
+                
+                const  FromInfo = From.split("T")
+                const ToInfo = To.split("T")
+                
+                const FromDate = FromInfo[0].split("-") 
+                const FromTime = FromInfo[1].split(":")
+                
+                let  eventTiming=""
+                if(FromDate[1].charAt(0)=== '0')
+                  {
+                    eventTiming = FromDate[2]+"th"+" "+months[FromDate[1].charAt(1)]+" "+FromDate[0]
+                  }
+                else{
+                    eventTiming = FromDate[2]+"th"+" "+months[FromDate[1]]+" "+FromDate[0]
+                }
+                              
+                
+                const ToDate = ToInfo[0].split("-")
+                const ToTime  = ToInfo[1].split(":")
+                let time1 = FromTime[0]+":"+FromTime[1]+"AM"
+                if(parseInt(FromTime[0])>=12){
+                   
+                     time1=FromTime[0]+":"+FromTime[1]+"PM"
+                     const t1 = parseInt(FromTime[0])
+                   if(t1>12){
+                     time1= (t1-12)+":"+FromTime[1]+"PM"
+                   }
+                }
+                let time2 = ToTime[0]+":"+ToTime[1]+"AM"
+                if(parseInt(ToTime[0])>=12)
+                  {
+                    time2 =ToTime[0]+":"+ToTime[1]+"PM"
+                    const t2 = parseInt(ToTime[0])
+                    if(t2>12){
+                      time2 = (t2-12)+":"+FromTime[1]+"PM"
+                    }
+                  }
+                const time = time1+" - "+ time2
+                 upEvents.push({
+                  eventDate: eventTiming,
+                  eventLocation: doc.data().EventLocation,
+                  eventTime: time,
+                  posterLink: doc.data().EventPoster,
+                  eventId: doc.data().EventId,
+                  hostedBy:doc.data().HostedBy,
+                  eventDescription:doc.data().EventDescription,
+                  eventLink:doc.data().EventLink,
+                  eventTitle:doc.data().EventTitle,
+                  Participants:doc.data().Participants
+                 })
+               } 
+             
+
+             
+            })
+
+            setPastEvents(rows);
+            setUpcomingEvents(upEvents)
+            console.log(upEvents)
+          })
+            .catch(err =>console.log(err))
+
+  }
+
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -125,15 +173,22 @@ function Events(state) {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+  
+
+  
+ 
+
 
   return (
     <div>
       <Navbar isSignedIn={state.isSignedIn} />
+      
       {/*list of upcoming events */}
       <div className="upcoming_events_headers" style={{ marginBottom: "45px" }}>
+       
         <h1>Our<span className="text-primary"> Events</span></h1>
         <h5>come ,learn ,share and connect</h5>
-
+         
       </div>
       <div className="upcoming_events_headers">
         <h3><span className="text-primary">Upcoming Events</span></h3>
@@ -165,6 +220,10 @@ function Events(state) {
                         posterLink={e.posterLink}
                         eventTitle={e.eventTitle}
                         eventId={e.eventId}
+                        eventLink={e.eventLink}
+                        hostedBy={e.hostedBy}
+                        eventDescription={e.eventDescription}
+                        Participants={e.Participants}
                       />
                     );
                   })}
@@ -226,7 +285,7 @@ function Events(state) {
                                 key={column.id}
                                 align={column.align}
                                 onClick={() =>
-                                  history.push(`/eventdetails/${row.eventId}`)
+                                  history.push(`/eventdetails/${row.eventId}`) // SEPARATE MODAL FOR PAST EVENTS
                                 }
                                 style={{
                                   textDecoration: "underline",

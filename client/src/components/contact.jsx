@@ -17,7 +17,7 @@ const Contact = (state) => {
       <Navbar isSignedIn={state.isSignedIn} />
       <div className="container mt-5">
         <div className="row">
-          <div className="col-12 col-md-8">
+          <div className="col-12 col-md-8 mb-5">
             <h1>
               <span className="text-primary">Contact</span> DSC CVRGU
             </h1>
@@ -37,27 +37,27 @@ const Contact = (state) => {
                 href="https://www.facebook.com/dsccvrgu/"
                 target="_blank"
                 rel="noopener noreferrer"
-              >
+                className="z-2">
                 <FontAwesomeIcon icon={faFacebook} className="social-icons" />
               </a>
-              <a href="https://www.instagram.com/dsccvrgu/" target="_blank" rel="noopener noreferrer"              >
+              <a href="https://www.instagram.com/dsccvrgu/" target="_blank" rel="noopener noreferrer" className="z-2" >
                 <FontAwesomeIcon icon={faInstagram} className="social-icons" />
               </a>
-              <a href="https://www.linkedin.com/company/69065757" target="_blank" rel="noopener noreferrer"              >
+              <a href="https://www.linkedin.com/company/69065757" target="_blank" rel="noopener noreferrer" className="z-2" >
                 <FontAwesomeIcon icon={faLinkedin} className="social-icons" />
               </a>
-              <a href="https://www.youtube.com/channel/UCim8zUhSy9SRfV6faRTYRiw" target="_blank" rel="noopener noreferrer"              >
+              <a href="https://www.youtube.com/channel/UCim8zUhSy9SRfV6faRTYRiw" target="_blank" rel="noopener noreferrer" className="z-2" >
                 <FontAwesomeIcon icon={faYoutube} className="social-icons" />
               </a>
             </div>
             <span>
-              <Button variant="contained">#CGU</Button>
+              <Button variant="contained">#DSC</Button>
             </span>
             <span style={{ padding: "0 20px" }}>
-              <Button variant="contained">#DSC-CGU</Button>
+              <Button variant="contained">#CVRGU</Button>
             </span>
             <span>
-              <Button variant="contained">#DUMMY</Button>
+              <Button variant="contained">#JOIN US</Button>
             </span>
           </div>
           <div className="col-12 col-md-4 d-none d-md-block">

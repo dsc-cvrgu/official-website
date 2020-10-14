@@ -1,31 +1,31 @@
-import React from 'react'
-import $ from 'jquery'
-import { DropdownButton, Dropdown } from "react-bootstrap";
-import profile from "../img/profile.png"
+import React, { useState } from 'react'
+import { Dropdown } from "react-bootstrap";
 import firebase from 'firebase';
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import "../css/profile.css"
 
 function ProfileButton() {
     const history = useHistory();
 
-    function handleClick(e) {
+    function handleAuth(e) {
         e.preventDefault();
         firebase.auth().signOut();
-        history.push('/');
     }
+    const [open, setOpen] = useState(false);
 
     return (
-        <li className="nav-item hvr-underline-from-lef">
-            <Dropdown>
-                <Dropdown.Toggle variant="" id="dropdown-basic">
-                    <a className="nav-link magictime tinRightIn LOGINOUT">PROFILE</a>
-                </Dropdown.Toggle>
-                <Dropdown.Menu className="z-index-222">
-                    <Dropdown.Item href="/user">Profile</Dropdown.Item>
-                    <Dropdown.Item onClick={handleClick}>Sign Out</Dropdown.Item>
-                </Dropdown.Menu>
-            </Dropdown>
-        </li>
+        <Dropdown
+            onMouseEnter={() => { setOpen(true) }}
+            onMouseLeave={() => { setOpen(false) }}
+            show={open}>
+            <Dropdown.Toggle variant="" id="dropdown-basic">
+                <a className="nav-link magictime tinRightIn LOGINOUT">ACCOUNT</a>
+            </Dropdown.Toggle>
+            <Dropdown.Menu style={{ top: '40px', left: '-35px', width: "fit-content", paddingTop: '10px' }}>
+                <Dropdown.Item href="/user">My Profile</Dropdown.Item>
+                <Dropdown.Item onClick={handleAuth}>Sign Out</Dropdown.Item>
+            </Dropdown.Menu>
+        </Dropdown>
     )
 }
 

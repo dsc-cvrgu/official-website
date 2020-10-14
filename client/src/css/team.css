@@ -1,29 +1,36 @@
 .team-icons a {
-  transition: all 2s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
+
 .linkedin {
   color: #0e76a8;
 }
+
 .twitter {
   color: #00acee;
 }
+
 .instagram {
   color: #c13584;
 }
+
 .team-icons a {
   margin: 0 12px;
   text-decoration: none !important;
 }
+
 .card {
   border-radius: 5px;
   transition: box-shadow 0.5s;
   max-width: 280px;
   padding: 10px 0 20px 0;
+  z-index: 2 !important;
 }
 .card img {
   position: relative;
   width: 70%;
 }
+
 .team-icons a:hover {
   transform: translateY(-5px);
 }
@@ -39,6 +46,7 @@ h4 {
   font-family: georgia;
   font-size: 19px;
 }
+
 h5 {
   color: black;
   font-weight: 160;
@@ -46,6 +54,7 @@ h5 {
   font-size: 15px;
   text-transform: capitalize !important;
 }
+
 .card:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -54,13 +63,7 @@ h5 {
   margin-left: auto;
   margin-right: auto;
   background-color: #5185eb;
-  background-image: linear-gradient(
-    90deg,
-    #5185eb 0%,
-    #45995f 30%,
-    #f1bd42 66%,
-    #d95040 100%
-  );
+  background-image: linear-gradient( 90deg, #5185eb 0%, #45995f 30%, #f1bd42 66%, #d95040 100%);
   height: 5px;
   width: 150px;
   left: 20px;

@@ -9,9 +9,20 @@ import competitive from '../img/competitive.svg'
 import google from '../img/google.png'
 import ui from '../img/ui.png'
 import TechStack from './TechStack'
-
 // local css
 import "../css/main.css";
+// import firebase from 'firebase'
+// function saveImg(e) {
+//   e.preventDefault();
+//   let file = e.target.files[0];
+//   if (!file.type.match('image.*')) {
+//     console.log('Only select img');
+//   } else {
+//     firebase.storage().ref(file.name).put(file).then(fileSnapshot => {
+//       return fileSnapshot.ref.getDownloadURL().then(url => console.log(url));
+//     }).catch(err => console.log(err))
+//   }
+// }
 
 export default class main extends Component {
   render() {
@@ -46,6 +57,9 @@ export default class main extends Component {
                   READ MORE
                 </a>
               </div>
+              {/* <div className="col text-center p-0 z-2">
+                <input type="file" accept="image/*" onChange={saveImg} />
+              </div> */}
             </div>
           </div>
           <div className="col-md-6 m-auto d-none d-md-block">

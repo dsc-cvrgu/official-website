@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 // import $ from "jquery";
 // import { ToastContainer, toast } from "react-toastify";
 import Navbar from "./navbar";
@@ -6,8 +6,12 @@ import Footer from "./footer";
 import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import "../css/login.css"
+import $ from 'jquery'
 
 const Login = (state) => {
+  useEffect(() => {
+    $('#bubble').css('z-index', '0');
+  }, [])
 
   // Configure FirebaseUI.
   const uiConfig = {
@@ -34,15 +38,14 @@ const Login = (state) => {
           </div>
         </div>
         <div id="right-containers" className="containers">
-          {/* <div id="sign-up" className="text-center"> */}
-          <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
-          {/* </div> */}
+          <div>
+            <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+          </div>
         </div>
       </section>
       <Footer />
     </div>
   );
 }
-
 
 export default Login;

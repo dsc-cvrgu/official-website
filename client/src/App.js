@@ -29,11 +29,6 @@ firebase.initializeApp({
   measurementId: process.env.REACT_APP_measurementId
 });
 
-console.log(firebase.auth().currentUser)
-firebase.auth().onAuthStateChanged(user => {
-  console.log(!!user)
-})
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -42,8 +37,6 @@ class App extends Component {
     }
     firebase.auth().onAuthStateChanged(user => {
       this.setState({ isSignedIn: !!user });
-      console.log(user);
-      console.log(!!user)
     })
   }
 

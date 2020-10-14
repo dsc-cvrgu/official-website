@@ -1,36 +1,32 @@
 .upcoming_events {
-      width: 80%;     
+      width: 80%;
       margin: 0 auto 100px auto;
-    
 }
 
-.upcoming_events_headers{
-
+.upcoming_events_headers {
       margin: 20px 160px;
 }
 
-.past_Events_header{
-      
+.past_Events_header {
       width: 80%;
-      margin:20px 150px ;
+      margin: 20px 150px;
 }
-.searchBar{
+
+.searchBar {
       margin-right: 30px;
 }
 
-@media(max-Width:500px){
-      .upcoming_events_headers{
+@media(max-Width:500px) {
+      .upcoming_events_headers {
             margin: 20px 20px;
       }
-
-      .past_Events_header{
+      .past_Events_header {
             margin: 20px 20px;
       }
-
-      .upcoming_events{
+      .upcoming_events {
             margin: 0 auto 100px 11px;
       }
-      .past_Events_header{
+      .past_Events_header {
             width: 90%;
       }
 }

@@ -6,10 +6,10 @@ var w = window.innerWidth,
   rate = 60,
   arc = 10,
   time,
-  count,
+  // count,
   size = 7,
   speed = 20,
-  lights = new Array(),
+  lights = [],
   colors = ["#ea4335", "#0f9d58", "#4285f4", "#fbbc04 "];
 
 canvas.setAttribute("width", w);
@@ -17,7 +17,7 @@ canvas.setAttribute("height", h);
 
 function init() {
   time = 0;
-  count = 0;
+  // count = 0;
 
   for (var i = 0; i < arc; i++) {
     lights[i] = {
@@ -61,10 +61,10 @@ function bubble() {
   if (time < speed) {
     time++;
   }
-  let timerID = setTimeout(bubble, 3000 / rate);
+  setTimeout(bubble, 3000 / rate);
 }
 init();
 bubble();
-var animation = "easeOutCubic";
-let delay = 60;
+// var animation = "easeOutCubic";
+// let delay = 60;
 $("#bubble").fadeIn();

@@ -15,7 +15,7 @@ import Carousel from "react-bootstrap/Carousel";
 import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
 import Footer from './footer'
-
+import $ from 'jquery'
 import "../css/events.css";
 
 function Events(state) {
@@ -100,6 +100,7 @@ function Events(state) {
   // {name:"android dev" , date:"2020-20-98" , seemore:"seemore" , eventId:7678web
   //TODO : useEffect()
   useEffect(() => {
+    $('#bubble').css('z-index', '-1');
     //TODO: fill the rows array with event objects 
     const rows = [
       { name: "android dev", date: "2020-20-98", seemore: "See More", eventId: 7678528528 },
@@ -127,20 +128,19 @@ function Events(state) {
   };
 
   return (
-    <div>
+    <>
       <Navbar isSignedIn={state.isSignedIn} />
       {/*list of upcoming events */}
       <div className="upcoming_events_headers" style={{ marginBottom: "45px" }}>
         <h1>Our<span className="text-primary"> Events</span></h1>
         <h5>come ,learn ,share and connect</h5>
-
       </div>
       <div className="upcoming_events_headers">
         <h3><span className="text-primary">Upcoming Events</span></h3>
         <p>Our events are open to newbies, developers, managers, and organizations who are interested in Google's technologies or use them as part of their projects.</p>
       </div>
       <div className="upcoming_events" >
-        <Carousel >
+        <Carousel>
           {upcomingEvents.map((event, index) => {
             if (index % 4 === 0) {
               const arr = [];
@@ -150,13 +150,11 @@ function Events(state) {
                 }
                 arr.push(upcomingEvents[i]);
               }
-
               console.log(arr)
               return (
                 <Carousel.Item >
                   {arr.map((e) => {
                     return (
-
                       <EventCard
                         key={e.eventId}
                         eventTime={e.eventTime}
@@ -177,18 +175,16 @@ function Events(state) {
       {/*search bar */}
 
       <div style={{ width: "80%", margin: "10px  auto 50px auto" }}>
-        <div className="row " style={{ marginBottom: "20px" }}>
+        <div className="row" style={{ marginBottom: "20px" }}>
           <div className="col-md-8">
             <h3><span className="text-primary">Past</span> Events</h3>
           </div>
           <div className="col-md-4" >
-
             <FormControl className="searchBar mr-sm-2" type="text" placeholder="Search" />
-
           </div>
         </div>
         <Paper className={classes.root}>
-          <TableContainer className={classes.container}>
+          <TableContainer className={classes.container} >
             <Table stickyHeader aria-label="sticky table">
               <TableHead>
                 <TableRow>
@@ -200,8 +196,7 @@ function Events(state) {
                         minWidth: column.minWidth,
                         maxWidth: column.maxWidth,
                         fontWeight: "bold",
-                      }}
-                    >
+                      }}                    >
                       {column.label}
                     </TableCell>
                   ))}
@@ -216,8 +211,7 @@ function Events(state) {
                         hover
                         role="checkbox"
                         tabIndex={-1}
-                        key={row.code}
-                      >
+                        key={row.code}>
                         {columns.map((column) => {
                           const value = row[column.id];
                           if (value === "See More") {
@@ -232,11 +226,8 @@ function Events(state) {
                                   textDecoration: "underline",
                                   color: "blue",
                                   cursor: "pointer",
-                                }}
-                              >
-                                {column.format && typeof value === "number"
-                                  ? column.format(value)
-                                  : value}
+                                }}>
+                                {column.format && typeof value === "number" ? column.format(value) : value}
                               </TableCell>
                             );
                           } else {
@@ -266,10 +257,9 @@ function Events(state) {
           />
         </Paper>
       </div>
-
-      {/*list of carosaol events  */}
+      {/*list of carousel events  */}
       <Footer />
-    </div>
+    </>
   );
 }
 

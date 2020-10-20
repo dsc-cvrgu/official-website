@@ -1,6 +1,3 @@
-/* .Contact {
-  padding: 50px;
-} */
 .Contact p {
   font-size: 22px;
   font-weight: 400;
@@ -11,13 +8,6 @@
   margin: 15px auto;
 }
 
-/* .Contact_icons {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  margin-right: 30px;
-  justify-content: space-evenly;
-} */
 .social-icons {
   font-size: 25px;
   color: gray;
@@ -27,8 +17,3 @@
 .Contact_l a {
   text-decoration: none;
 }
-/* @media (min-width: 500px) {
-  .Contact_social_icons {
-    width: 400px;
-  }
-} */

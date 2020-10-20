@@ -46,7 +46,7 @@ const Team = (state) => {
   return (
     <div>
       <Navbar isSignedIn={state.isSignedIn} />
-      <section id="team" className="my-4">
+      <section id="team" style={{ margin: '70px auto auto auto' }}>
         <div className="container">
           <h2 className="py-2 text-center">DSC Lead</h2>
           <div className="border"></div>

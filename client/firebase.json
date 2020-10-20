@@ -30,6 +30,12 @@
       "**/src/**",
       "**/build/**",
       "**/debug.log**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
     ]
   }
 ],

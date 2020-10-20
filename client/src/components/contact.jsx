@@ -17,7 +17,7 @@ const Contact = (state) => {
       <Navbar isSignedIn={state.isSignedIn} />
       <div className="container mt-5">
         <div className="row">
-          <div className="col-12 col-md-8 mb-5">
+          <div className="col-12 col-md-8 mt-5 mb-5">
             <h1>
               <span className="text-primary">Contact</span> DSC CVRGU
             </h1>

@@ -9,9 +9,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
-import { useHistory } from "react-router-dom";
 import EventCard from "./eventcard";
-import FormControl from 'react-bootstrap/FormControl'
 import Footer from './footer'
 import { firestore } from 'firebase/app'
 import "../css/events.css";
@@ -27,34 +25,16 @@ function Events(state) {
       maxHeight: 440,
     },
   });
-  const history = useHistory();
 
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [upcomingEvents, setUpcomingEvents] = useState([]);
   const [pastEvents, setPastEvents] = useState([])
-  const [show, setShow] = useState(false);
-
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-
-  const columns = [
-    { id: "name", label: "Event Name", minWidth: 250 },
-    { id: "date", label: "date", minWidth: 30 },
-    {
-      id: "seemore",
-      label: "See more",
-      minWidth: 30,
-      align: "right",
-    },
-  ];
-
 
   useEffect(() => {
-    getAllEvents()
+    getAllEvents();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const row = []
@@ -79,7 +59,6 @@ function Events(state) {
     firestore().collection('Events').get()
       .then(snapshot => {
         snapshot.docs.forEach(doc => {
-          console.log(doc.data());
           if (doc.data().EventStatus === 'past') {
             row.push({
               name: doc.data().EventTitle,
@@ -105,8 +84,6 @@ function Events(state) {
             else {
               eventTiming = FromDate[2] + " " + months[FromDate[1]] + " " + FromDate[0]
             }
-
-            const ToDate = ToInfo[0].split("-")
             const ToTime = ToInfo[1].split(":")
             let time1 = FromTime[0] + ":" + FromTime[1] + "AM"
             if (parseInt(FromTime[0]) >= 12) {
@@ -147,29 +124,27 @@ function Events(state) {
       .catch(err => console.log(err))
   }
 
-
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
 
   const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
+    setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
 
   return (
-    <>
+    <div>
       <Navbar isSignedIn={state.isSignedIn} />
       <ToastContainer />
-
       {/*list of upcoming events */}
-      <div className="container mt-4 mb-4 px-3">
+      <div className="container px-3" style={{ margin: "100px auto 50px auto" }}>
         <h1>Our<span className="text-primary"> Events</span></h1>
         <h5 className="mb-3">Connect, Learn, Develop, Grow</h5>
-        <h3><span className="text-primary">Upcoming Events</span></h3>
+        <h3><span className="text-primary">Upcoming</span> Events</h3>
         <p>Our events are open to newbies, developers, and organizations who are interested in Google's technologies or to use them as a part of their projects.</p>
 
-        <div className="row">
+        <div className="row container mx-auto">
           {upcomingEvents.map((e) => {
             return (
               <EventCard
@@ -194,9 +169,6 @@ function Events(state) {
           <div className="col-md-8">
             <h3><span className="text-primary">Past</span> Events</h3>
           </div>
-          <div className="col-md-4" >
-            <FormControl className="searchBar mr-sm-2" type="text" placeholder="Search" />
-          </div>
         </div>
         <Paper className={classes.root}>
           <TableContainer className={classes.container} >
@@ -209,7 +181,7 @@ function Events(state) {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {pastEvents.map(event => {
+                {pastEvents.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(event => {
                   return (
                     <TableRow key={event.name}>
                       <TableCell>{event.name}</TableCell>
@@ -233,7 +205,7 @@ function Events(state) {
         </Paper>
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
 

@@ -30,7 +30,7 @@
 }
 
 #right-containers {
-  margin-top: 20px;
+  margin: 160px 0px 110px 0px;
 }
 
 #logo-containers {
@@ -183,9 +183,6 @@ form .input-containers {
     max-width: 10%;
     margin: 0 10px;
   }
-  /* #avatar {
-    max-width: 35%;
-  } */
   .input-containers img {
     max-width: 20px;
     padding-right: 5px;

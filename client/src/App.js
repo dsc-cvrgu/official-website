@@ -16,7 +16,6 @@ import Team from "./components/team.jsx";
 import Contact from "./components/contact.jsx";
 import Login from "./components/Login.jsx"
 import UserProfile from "./components/Profile.js"
-import AdminPanel from './components/admin'
 
 // initialize firebase
 firebase.initializeApp({
@@ -51,7 +50,6 @@ class App extends Component {
           <Route path="/contact" exact ><Contact isSignedIn={this.state.isSignedIn} /></Route>
           <Route path="/login" exact><Login isSignedIn={this.state.isSignedIn} /></Route>
           <Route path="/user" exact><UserProfile isSignedIn={this.state.isSignedIn} /></Route>
-          <Route path="/admin" exact><AdminPanel isSignedIn={this.state.isSignedIn} /></Route>
         </Switch>
       </Router>
     );

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Study from "../img/study.png";
+import Study from "../img/studyc.png";
 import "../particles";
 import web from '../img/web.svg'
 import ml from '../img/ml.svg'
@@ -15,7 +15,7 @@ import "../css/main.css";
 export default class main extends Component {
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container-fluid" style={{ margin: '60px auto auto auto' }}>
         <div className="row">
           <div className="col-sm-12 col-md-6 d-md-none px-2 m-0 mt-2 d-flex justify-content-center">
             <img src={Study} className="img-fluid" alt="alt" />
@@ -35,7 +35,7 @@ export default class main extends Component {
             <div className="container row">
               <div className="col-6 pr-0 pl-4">
                 <a href="https://dsc.community.dev/c-v-raman-global-university/"
-                  className="mt-5 px-4 py-2 hvr-wobble-horizontal hvr-sweep-to-right">
+                  className="mt-5 py-2 hvr-wobble-horizontal hvr-sweep-to-right" style={{ padding: '8px 37px 8px 37px' }}>
                   JOIN US
                 </a>
               </div>

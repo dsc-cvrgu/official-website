@@ -13,19 +13,22 @@ const Navigation = (state) => {
 
   return (
     <div>
-      <Navbar bg="light" expand="lg">
+      <Navbar bg="light" expand="lg" className="pr-1 fixed-top">
         <div className="row py-2">
-          <div className="col-auto pr-0 pt-2">
+          <div className="col-auto pr-0 pt-1 pl-1 pl-sm-2">
             <img
+              id="nav-brand"
               src={DSC}
-              className="mr-3"
-              height="30"
-              width="60"
+              className="mr-2 mr-sm-3"
+              height="27"
+              width="50"
               alt="navbar-brand-icon" style={{ verticalAlign: "middle" }} />
           </div>
           <div className="col-auto p-0">
-            <div className="col p-0" style={{ fontSize: "17px", color: 'black' }}>Developer Student Clubs</div>
-            <div className="col p-0"><small className="text-gray">C V Raman Global University</small></div>
+            <a href="/" style={{ textDecoration: 'none', color: 'black' }}>
+              <div className="col p-0" style={{ fontSize: "17px", color: 'black' }}>Developer Student Clubs</div>
+              <div className="col p-0"><small className="text-gray">C V Raman Global University</small></div>
+            </a>
           </div>
         </div>
         <Navbar.Toggle aria-controls="collapsedNav" className="z-2" />
@@ -51,16 +54,9 @@ const Navigation = (state) => {
                 CONTACT US
                 </a>
             </li>
-            {/* <li className="nav-item hvr-underline-from-left">
-              <a className="nav-link magictime tinRightIn" id="CONTACT" href="/admin">
-                ADMIN PANEL
-                </a>
-            </li> */}
             <li className="nav-item hvr-underline-from-left z-2">
               {state.isSignedIn ? <Profile /> : <Login />}
             </li>
-            {/* {console.log(state.isSignedIn)} */}
-            {/* <Login /> */}
           </Nav>
         </Navbar.Collapse>
       </Navbar >

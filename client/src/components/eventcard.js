@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 import Modall from "./modal";
 import firebase, { auth, firestore } from 'firebase/app'
 import { toast } from "react-toastify";
-
+import $ from 'jquery'
 const Eventcard = (props) => {
   const {
     posterLink,
@@ -48,9 +48,9 @@ const Eventcard = (props) => {
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
 
-
   //REGISTER FOR EVENT
   const onRegister = () => {
+    $('#submit').html('Registering...').addClass('disabled');
     auth().onAuthStateChanged((user) => {
       firestore()
         .collection("Events")
@@ -62,17 +62,20 @@ const Eventcard = (props) => {
           toast.success("Successfully Registered!")
           setShowRegister(false);
           handleClose();
+          $('#submit').html('Register...').removeClass('disabled');
         })
-        .catch((err) => toast.error(err.message));
+        .catch((err) => {
+          $('#submit').html('Register').removeClass('disabled');
+          toast.error(err.message)
+        });
     });
   };
 
   return (
-    <div className="col-11 col-sm-6 col-lg-4 mx-auto my-4 mr-0">
+    <div className="col-11 col-sm-6 col-lg-4 my-4 px-0 mx-auto">
       <Card
         style={{
-          width: "18rem",
-          margin: "10px",
+          maxWidth: "18rem",
           display: "inline-block",
           paddingTop: "0px",
         }}>
@@ -105,7 +108,7 @@ const Eventcard = (props) => {
           <Button
             variant="success"
             onClick={handleShow}
-            style={{ marginLeft: "120px" }}          >
+            style={{ float: 'right' }}>
             View Details
           </Button>
         </Card.Body>

@@ -22,9 +22,11 @@
 .card {
   border-radius: 5px;
   transition: box-shadow 0.5s;
-  max-width: 280px;
   padding: 10px 0 20px 0;
   z-index: 2 !important;
+}
+.team-card{
+  max-width: 280px;
 }
 .card img {
   position: relative;

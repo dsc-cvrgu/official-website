@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import firebase from 'firebase';
+import { auth, firestore } from 'firebase/app'
 import "../css/profile.css"
 import Navbar from "./navbar";
 import { useHistory } from "react-router-dom";
@@ -12,20 +12,21 @@ const Profile = (state) => {
     const [displayName, setDisplayName] = useState('');
     const [photoURL, setPhotoURL] = useState('');
     useEffect(() => {
-        firebase.auth().onAuthStateChanged(user => {
+        auth().onAuthStateChanged(user => {
             if (user == null) {
                 history.push('/login');
             } else {
                 setEmail(user.email)
                 setDisplayName(user.displayName)
                 setPhotoURL(user.photoURL)
-                firebase.firestore().collection('User Data').doc(user.uid).get().then(doc => {
+                firestore().collection('User Data').doc(user.uid).get().then(doc => {
                     if (doc.exists) {
                         setFormData({ college: doc.data().CollegeName, stream: doc.data().Stream });
                     }
                 })
             }
         })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const [formData, setFormData] = useState({
@@ -36,21 +37,22 @@ const Profile = (state) => {
     const { college, stream } = formData;
     const handleChange = text => e => { setFormData({ ...formData, [text]: e.target.value }) };
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
-        $('#submit').html('<span className="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>Saving...').addClass('disabled');
-        const user = firebase.auth().currentUser;
+        $('#submit').html('Saving...').addClass('disabled');
+        const user = auth().currentUser;
         if (user != null) {
-            return firebase.firestore().collection('User Data').doc(user.uid).update({
-                CollegeName: college,
-                Stream: stream
-            }).then(() => {
+            try {
+                await firestore().collection('User Data').doc(user.uid).update({
+                    CollegeName: college,
+                    Stream: stream
+                });
                 toast.success("Successfully Updated");
-                setShow(false)
-            }).catch(err => {
-                $('#submit').html('<span className="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>Submitting...').removeClass('disabled');
-                toast.error(err)
-            });
+                setShow(false);
+            } catch (err) {
+                $('#submit').html('Save Changes').removeClass('disabled');
+                toast.error(err.message);
+            }
         }
     }
     // modal

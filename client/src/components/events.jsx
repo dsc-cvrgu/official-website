@@ -11,15 +11,11 @@ import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
 import { useHistory } from "react-router-dom";
 import EventCard from "./eventcard";
-import Carousel from "react-bootstrap/Carousel";
-import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
 import Footer from './footer'
-import firebase from 'firebase'
+import { firestore } from 'firebase/app'
 import "../css/events.css";
-import Modal from 'react-bootstrap/Modal'
-import Button from 'react-bootstrap/Button'
-
+import { ToastContainer } from "react-toastify";
 
 function Events(state) {
 
@@ -58,16 +54,14 @@ function Events(state) {
 
 
   useEffect(() => {
-
     getAllEvents()
-
   }, [])
 
-
+  const row = []
+  const upEvents = []
   //GET ALL EVENTS
   const getAllEvents = () => {
-    const rows = []
-    const upEvents = []
+
     const months = {
       1: "Jan",
       2: "Feb",
@@ -82,25 +76,21 @@ function Events(state) {
       11: "Nov",
       12: "Dec"
     }
-
-    firebase.firestore().collection('Events').get()
+    firestore().collection('Events').get()
       .then(snapshot => {
         snapshot.docs.forEach(doc => {
-          if (doc.data().Status === 'past') {
-
-            rows.push({
+          console.log(doc.data());
+          if (doc.data().EventStatus === 'past') {
+            row.push({
               name: doc.data().EventTitle,
               seemore: "See More",
               eventId: doc.data().EventId,
-              date: doc.data().EventTime.From.split("T")[0],
-
+              date: doc.data().From.split("T")[0],
             })
           }
-
-          if (doc.data().Status === 'upcoming') {
-            console.log("hiii up")
-            const From = doc.data().EventTime.From
-            const To = doc.data().EventTime.To
+          else if (doc.data().EventStatus === 'upcoming') {
+            const From = doc.data().From
+            const To = doc.data().To
 
             const FromInfo = From.split("T")
             const ToInfo = To.split("T")
@@ -110,12 +100,11 @@ function Events(state) {
 
             let eventTiming = ""
             if (FromDate[1].charAt(0) === '0') {
-              eventTiming = FromDate[2] + "th" + " " + months[FromDate[1].charAt(1)] + " " + FromDate[0]
+              eventTiming = FromDate[2] + " " + months[FromDate[1].charAt(1)] + " " + FromDate[0]
             }
             else {
-              eventTiming = FromDate[2] + "th" + " " + months[FromDate[1]] + " " + FromDate[0]
+              eventTiming = FromDate[2] + " " + months[FromDate[1]] + " " + FromDate[0]
             }
-
 
             const ToDate = ToInfo[0].split("-")
             const ToTime = ToInfo[1].split(":")
@@ -143,24 +132,19 @@ function Events(state) {
               eventTime: time,
               posterLink: doc.data().EventPoster,
               eventId: doc.data().EventId,
-              hostedBy: doc.data().HostedBy,
+              hostedBy: doc.data().EventHost,
               eventDescription: doc.data().EventDescription,
               eventLink: doc.data().EventLink,
               eventTitle: doc.data().EventTitle,
-              Participants: doc.data().Participants
+              Participants: doc.data().EventParticipants
             })
           }
-
-
-
         })
 
-        setPastEvents(rows);
-        setUpcomingEvents(upEvents)
-        console.log(upEvents)
+        setPastEvents(row);
+        setUpcomingEvents(upEvents);
       })
       .catch(err => console.log(err))
-
   }
 
 
@@ -173,66 +157,39 @@ function Events(state) {
     setPage(0);
   };
 
-
-
-
-
-
   return (
     <>
       <Navbar isSignedIn={state.isSignedIn} />
+      <ToastContainer />
 
       {/*list of upcoming events */}
-      <div className="upcoming_events_headers" style={{ marginBottom: "45px" }}>
-
+      <div className="container mt-4 mb-4 px-3">
         <h1>Our<span className="text-primary"> Events</span></h1>
-        <h5>come ,learn ,share and connect</h5>
-
-      </div>
-      <div className="upcoming_events_headers">
+        <h5 className="mb-3">Connect, Learn, Develop, Grow</h5>
         <h3><span className="text-primary">Upcoming Events</span></h3>
-        <p>Our events are open to newbies, developers, managers, and organizations who are interested in Google's technologies or use them as part of their projects.</p>
-      </div>
-      <div className="upcoming_events" >
-        <Carousel>
-          {upcomingEvents.map((event, index) => {
-            if (index % 4 === 0) {
-              const arr = [];
-              for (let i = index; i < index + 4; i++) {
-                if (!upcomingEvents[i]) {
-                  break;
-                }
-                arr.push(upcomingEvents[i]);
-              }
-              console.log(arr)
-              return (
-                <Carousel.Item >
-                  {arr.map((e) => {
-                    return (
-                      <EventCard
-                        key={e.eventId}
-                        eventTime={e.eventTime}
-                        eventDate={e.eventDate}
-                        eventLocation={e.eventLocation}
-                        posterLink={e.posterLink}
-                        eventTitle={e.eventTitle}
-                        eventId={e.eventId}
-                        eventLink={e.eventLink}
-                        hostedBy={e.hostedBy}
-                        eventDescription={e.eventDescription}
-                        Participants={e.Participants}
-                      />
-                    );
-                  })}
-                </Carousel.Item>
-              );
-            }
-          })}
-        </Carousel>
-      </div>
-      {/*search bar */}
+        <p>Our events are open to newbies, developers, and organizations who are interested in Google's technologies or to use them as a part of their projects.</p>
 
-      <div style={{ width: "80%", margin: "10px  auto 50px auto" }}>
+        <div className="row">
+          {upcomingEvents.map((e) => {
+            return (
+              <EventCard
+                key={e.eventId}
+                eventTime={e.eventTime}
+                eventDate={e.eventDate}
+                eventLocation={e.eventLocation}
+                posterLink={e.posterLink}
+                eventTitle={e.eventTitle}
+                eventId={e.eventId}
+                eventLink={e.eventLink}
+                hostedBy={e.hostedBy}
+                eventDescription={e.eventDescription}
+                Participants={e.Participants} />
+            );
+          })}
+        </div>
+      </div>
+
+      <div style={{ width: "90%", margin: "10px auto 50px auto" }}>
         <div className="row" style={{ marginBottom: "20px" }}>
           <div className="col-md-8">
             <h3><span className="text-primary">Past</span> Events</h3>
@@ -246,61 +203,21 @@ function Events(state) {
             <Table stickyHeader aria-label="sticky table">
               <TableHead>
                 <TableRow>
-                  {columns.map((column) => (
-                    <TableCell
-                      key={column.id}
-                      align={column.align}
-                      style={{
-                        minWidth: column.minWidth,
-                        maxWidth: column.maxWidth,
-                        fontWeight: "bold",
-                      }}                    >
-                      {column.label}
-                    </TableCell>
-                  ))}
+                  <TableCell className="font-weight-bold">Event Name</TableCell>
+                  <TableCell className="font-weight-bold">Date</TableCell>
+                  <TableCell className="font-weight-bold" align={"right"}>See more</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {pastEvents
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((row) => {
-                    return (
-                      <TableRow
-                        hover
-                        role="checkbox"
-                        tabIndex={-1}
-                        key={row.code}>
-                        {columns.map((column) => {
-                          const value = row[column.id];
-                          if (value === "See More") {
-                            return (
-                              <TableCell
-                                key={column.id}
-                                align={column.align}
-                                onClick={() =>
-                                  history.push(`/eventdetails/${row.eventId}`) // SEPARATE MODAL FOR PAST EVENTS
-                                }
-                                style={{
-                                  textDecoration: "underline",
-                                  color: "blue",
-                                  cursor: "pointer",
-                                }}>
-                                {column.format && typeof value === "number" ? column.format(value) : value}
-                              </TableCell>
-                            );
-                          } else {
-                            return (
-                              <TableCell key={column.id} align={column.align}>
-                                {column.format && typeof value === "number"
-                                  ? column.format(value)
-                                  : value}
-                              </TableCell>
-                            );
-                          }
-                        })}
-                      </TableRow>
-                    );
-                  })}
+                {pastEvents.map(event => {
+                  return (
+                    <TableRow key={event.name}>
+                      <TableCell>{event.name}</TableCell>
+                      <TableCell>{event.date}</TableCell>
+                      <TableCell align={"right"}>See more</TableCell>
+                    </TableRow>
+                  )
+                })}
               </TableBody>
             </Table>
           </TableContainer>
@@ -315,7 +232,6 @@ function Events(state) {
           />
         </Paper>
       </div>
-      {/*list of carousel events  */}
       <Footer />
     </>
   );

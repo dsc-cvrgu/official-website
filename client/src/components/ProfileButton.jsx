@@ -1,15 +1,12 @@
 import React, { useState } from 'react'
 import { Dropdown } from "react-bootstrap";
-import firebase from 'firebase';
-import { useHistory } from "react-router-dom";
+import { auth } from 'firebase/app';
 import "../css/profile.css"
 
 function ProfileButton() {
-    const history = useHistory();
-
     function handleAuth(e) {
         e.preventDefault();
-        firebase.auth().signOut();
+        auth().signOut();
     }
     const [open, setOpen] = useState(false);
 
@@ -19,7 +16,7 @@ function ProfileButton() {
             onMouseLeave={() => { setOpen(false) }}
             show={open}>
             <Dropdown.Toggle variant="" id="dropdown-basic">
-                <a className="nav-link magictime tinRightIn LOGINOUT">ACCOUNT</a>
+                <p className="nav-link magictime tinRightIn LOGINOUT">ACCOUNT</p>
             </Dropdown.Toggle>
             <Dropdown.Menu style={{ top: '40px', left: '-35px', width: "fit-content", paddingTop: '10px' }}>
                 <Dropdown.Item href="/user">My Profile</Dropdown.Item>

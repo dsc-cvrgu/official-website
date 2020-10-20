@@ -3,7 +3,9 @@ import React, { useEffect } from "react";
 // import { ToastContainer, toast } from "react-toastify";
 import Navbar from "./navbar";
 import Footer from "./footer";
-import firebase from 'firebase';
+import * as firebase from 'firebase/app'
+import 'firebase/auth'
+import 'firebase/firestore'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import "../css/login.css"
 import $ from 'jquery'

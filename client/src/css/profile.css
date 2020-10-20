@@ -63,7 +63,7 @@ body {
 }
 
 #details #profile-pic {
-    max-width: 30%;
+    width: 160px;
     border-radius: 50%;
 }
 

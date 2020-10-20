@@ -11,18 +11,6 @@ import ui from '../img/ui.png'
 import TechStack from './TechStack'
 // local css
 import "../css/main.css";
-// import firebase from 'firebase'
-// function saveImg(e) {
-//   e.preventDefault();
-//   let file = e.target.files[0];
-//   if (!file.type.match('image.*')) {
-//     console.log('Only select img');
-//   } else {
-//     firebase.storage().ref(file.name).put(file).then(fileSnapshot => {
-//       return fileSnapshot.ref.getDownloadURL().then(url => console.log(url));
-//     }).catch(err => console.log(err))
-//   }
-// }
 
 export default class main extends Component {
   render() {
@@ -57,9 +45,6 @@ export default class main extends Component {
                   READ MORE
                 </a>
               </div>
-              {/* <div className="col text-center p-0 z-2">
-                <input type="file" accept="image/*" onChange={saveImg} />
-              </div> */}
             </div>
           </div>
           <div className="col-md-6 m-auto d-none d-md-block">
@@ -86,13 +71,13 @@ export default class main extends Component {
         </div>
         {/* what we do */}
         <p className="text-center pt-4 fs-40">What We Do</p>
-        <div className="row d-flex justify-content-center mb-2 mx-auto">
+        <div className="row mb-2 mr-0 mx-auto">
           <TechStack data={{ src: web, name: "Web Development", style: { width: "60px" } }} />
           <TechStack data={{ src: ml, name: "Machine Learning", style: { width: "60px" } }} />
           <TechStack data={{ src: flutter, name: "Flutter", style: { height: "60px" } }} />
           <TechStack data={{ src: android, name: "Android Development", style: { width: "60px" } }} />
         </div>
-        <div className="row d-flex justify-content-center mb-5 mx-auto">
+        <div className="row mb-5 mx-auto mr-0 d-flex justify-content-center">
           <TechStack data={{ src: competitive, name: "Competitive Coding", style: { width: "60px" } }} />
           <TechStack data={{ src: google, name: "Actions on Google", style: { width: "85px" } }} />
           <TechStack data={{ src: ui, name: "UI / UX", style: { width: "60px" } }} />

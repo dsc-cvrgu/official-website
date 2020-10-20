@@ -31,4 +31,3 @@ exports.userOnCreate = functions.auth.user().onCreate((user) => {
         Stream: ""
     }).then(() => console.log("User saved in Firestore")).catch(err => console.log(err));
 })
-

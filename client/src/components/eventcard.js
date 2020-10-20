@@ -4,9 +4,9 @@ import DateRangeOutlinedIcon from "@material-ui/icons/DateRangeOutlined";
 import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import { useHistory } from "react-router-dom";
 import Modall from "./modal";
-import firebase from "firebase";
+import firebase, { auth, firestore } from 'firebase/app'
+import { toast } from "react-toastify";
 
 const Eventcard = (props) => {
   const {
@@ -22,21 +22,19 @@ const Eventcard = (props) => {
     Participants,
   } = props;
 
-  const history = useHistory();
   const [showModal, setShowModal] = useState(false);
   const [showRegister, setShowRegister] = useState(true);
   const [loginMessage, setLoginMessage] = useState("");
 
   useEffect(() => {
     if (showModal) {
-      firebase.auth().onAuthStateChanged((user) => {
+      auth().onAuthStateChanged((user) => {
         const EventParticipants = Participants;
-        console.log("USER", user);
         if (user == null) {
           setLoginMessage("Please Login First");
         } else {
           for (let i = 0; i < EventParticipants.length; i++) {
-            if (EventParticipants[i] && EventParticipants[i] === user.uid) {
+            if (EventParticipants[i] === user.uid) {
               setShowRegister(false);
               break;
             }
@@ -44,6 +42,7 @@ const Eventcard = (props) => {
         }
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showModal]);
 
   const handleClose = () => setShowModal(false);
@@ -52,43 +51,40 @@ const Eventcard = (props) => {
 
   //REGISTER FOR EVENT
   const onRegister = () => {
-    firebase.auth().onAuthStateChanged((user) => {
-      firebase
-        .firestore()
+    auth().onAuthStateChanged((user) => {
+      firestore()
         .collection("Events")
         .doc(eventId)
         .update({
-          Participants: firebase.firestore.FieldValue.arrayUnion(user.uid), //add uid in the bracket
+          EventParticipants: firebase.firestore.FieldValue.arrayUnion(user.uid), //add uid in the bracket
         })
         .then(() => {
-          console.log("Added Participant");
+          toast.success("Successfully Registered!")
           setShowRegister(false);
           handleClose();
         })
-        .catch((err) => console.log(err));
+        .catch((err) => toast.error(err.message));
     });
   };
 
   return (
-    <React.Fragment>
+    <div className="col-11 col-sm-6 col-lg-4 mx-auto my-4 mr-0">
       <Card
         style={{
           width: "18rem",
           margin: "10px",
           display: "inline-block",
           paddingTop: "0px",
-        }}
-      >
+        }}>
         <img
           src={posterLink}
-          alt=""
+          alt="alt"
           style={{
             width: "100%",
             height: "200px",
             objectFit: "fill",
             margin: "0 auto",
-          }}
-        />
+          }} />
         <Card.Body style={{ paddingBottom: "0" }}>
           <Card.Title>{eventTitle}</Card.Title>
           <p style={{ margin: "0" }}>
@@ -106,12 +102,10 @@ const Eventcard = (props) => {
             <LocationOnOutlinedIcon fontSize="small" style={{ color: "red" }} />
             <span style={{ marginLeft: "10px" }}>{eventLocation}</span>
           </p>
-
           <Button
             variant="success"
             onClick={handleShow}
-            style={{ marginLeft: "120px" }}
-          >
+            style={{ marginLeft: "120px" }}          >
             View Details
           </Button>
         </Card.Body>
@@ -131,10 +125,9 @@ const Eventcard = (props) => {
           register={onRegister}
           registerShow={showRegister}
           LoginMessage={loginMessage}
-
         />
       )}
-    </React.Fragment>
+    </div>
   );
 };
 

@@ -27,7 +27,7 @@ const Contact = (state) => {
               them as part of their projects.
             </p>
             <p>
-              Google Developer Group CGRGU is an initiative to concentrate the
+              Developer Student Club CVRGU is an initiative to concentrate the
               efforts of many developers in and around Bhubaneswar to learn,
               share and get productive using the various Google products.
             </p>

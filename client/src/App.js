@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import firebase from 'firebase'
+import firebase, { auth } from 'firebase/app';
 
 //global css
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -36,7 +36,7 @@ class App extends Component {
     this.state = {
       isSignedIn: false
     }
-    firebase.auth().onAuthStateChanged(user => {
+    auth().onAuthStateChanged(user => {
       this.setState({ isSignedIn: !!user });
     })
   }
@@ -52,7 +52,6 @@ class App extends Component {
           <Route path="/login" exact><Login isSignedIn={this.state.isSignedIn} /></Route>
           <Route path="/user" exact><UserProfile isSignedIn={this.state.isSignedIn} /></Route>
           <Route path="/admin" exact><AdminPanel isSignedIn={this.state.isSignedIn} /></Route>
-         
         </Switch>
       </Router>
     );

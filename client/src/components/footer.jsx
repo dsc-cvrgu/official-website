@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import firebase from 'firebase'
+// import * as firebase from 'firebase/app'
+// import 'firebase/auth'
+// import 'firebase/firestore'
+import { firestore } from 'firebase/app'
+
 import { ToastContainer, toast } from "react-toastify";
 
 // local css
@@ -23,7 +27,7 @@ const Footer = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    firebase.firestore().collection('Subscribers').add({ name: name, email: email })
+    firestore().collection('Subscribers').add({ name: name, email: email })
       .then(() => {
         setFormData({ ...formData, email: "", name: "" });
         toast.success("Subscribed");
@@ -75,7 +79,7 @@ const Footer = () => {
             <a href="https://www.facebook.com/dsccvrgu/" className="z-2">
               <FontAwesomeIcon icon={faFacebook} className="social-icon" />
             </a>
-            <a href="#" className="z-2">
+            <a href="https://twitter.com/DCvrgu" className="z-2">
               <FontAwesomeIcon icon={faTwitter} className="social-icon" />
             </a>
             <a href="https://www.instagram.com/dsccvrgu/" className="z-2">
@@ -100,7 +104,6 @@ const Footer = () => {
             Rukaiya
           </h5>
       </div>
-      <a href="#"></a>
     </footer>
   );
 }

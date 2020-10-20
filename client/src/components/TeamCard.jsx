@@ -5,7 +5,7 @@ import "../css/team.css";
 function TeamCard(props) {
     return (
         <div className="col-11 col-sm-6 col-md-4 mx-auto my-4 mr-0">
-            <div className="card pb-4 px-3 hvr-buzz-out mx-auto">
+            <div className="card pb-4 px-3 hvr-buzz-out mx-auto team-card">
                 <img src={props.data.src} alt={props.data.name} className="mx-auto img-fluid rounded-circle mb-2 mt-3 z-depth-1" />
                 <div className="card-body py-3 px-0">
                     <h4 className="text-capitalize">{props.data.name}</h4>

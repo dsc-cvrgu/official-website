@@ -9,7 +9,9 @@ import "../css/contact.css";
 import Navbar from "./navbar";
 import Footer from "./footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook, faInstagram, faLinkedin, faYoutube, } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook, faInstagram, faLinkedin, faYoutube, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+
 
 const Contact = (state) => {
   return (
@@ -24,14 +26,14 @@ const Contact = (state) => {
             <p>
               Our events are open to newbies, developers, managers, and
               organizations who are interested in Google's technologies or use
-              them as part of their projects.
+              them as a part of their projects.
             </p>
             <p>
               Developer Student Club CVRGU is an initiative to concentrate the
               efforts of many developers in and around Bhubaneswar to learn,
               share and get productive using the various Google products.
             </p>
-            <p>Questions? Please contact dsccvrgu@gmail.com</p>
+            <p>Questions? you can reach us out at the following handles.</p>
             <div className="Contact_social_icons">
               <a
                 href="https://www.facebook.com/dsccvrgu/"
@@ -46,8 +48,17 @@ const Contact = (state) => {
               <a href="https://www.linkedin.com/company/69065757" target="_blank" rel="noopener noreferrer" className="z-2" >
                 <FontAwesomeIcon icon={faLinkedin} className="social-icons" />
               </a>
+              <a href="https://twitter.com/DCvrgu" target="_blank" rel="noopener noreferrer" className="z-2">
+                <FontAwesomeIcon icon={faTwitter} className="social-icons" />
+              </a>
               <a href="https://www.youtube.com/channel/UCim8zUhSy9SRfV6faRTYRiw" target="_blank" rel="noopener noreferrer" className="z-2" >
                 <FontAwesomeIcon icon={faYoutube} className="social-icons" />
+              </a>
+              <a href="tel:+918249577644" target="_blank" rel="noopener noreferrer" className="z-2" >
+                <FontAwesomeIcon icon={faPhone} className="social-icons" />
+              </a>
+              <a href="mailto:lead@dsccvrgu.tech" target="_blank" rel="noopener noreferrer" className="z-2" >
+                <FontAwesomeIcon icon={faEnvelope} className="social-icons" />
               </a>
             </div>
             <span>
@@ -61,7 +72,7 @@ const Contact = (state) => {
             </span>
           </div>
           <div className="col-12 col-md-4 d-none d-md-block">
-            <img className="img-fluid" src={Contactlogo} alt="cvrgu logo" />
+            <img className="img-fluid" src={Contactlogo} alt="cvrgu" />
           </div>
         </div>
       </div>

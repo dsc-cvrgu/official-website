@@ -8,6 +8,7 @@ import android from '../img/android.svg'
 import competitive from '../img/competitive.svg'
 import google from '../img/google.png'
 import ui from '../img/ui.png'
+import cyber from '../img/cyber.png'
 import TechStack from './TechStack'
 // local css
 import "../css/main.css";
@@ -81,6 +82,7 @@ export default class main extends Component {
           <TechStack data={{ src: competitive, name: "Competitive Coding", style: { width: "60px" } }} />
           <TechStack data={{ src: google, name: "Actions on Google", style: { width: "85px" } }} />
           <TechStack data={{ src: ui, name: "UI / UX", style: { width: "60px" } }} />
+          <TechStack data={{ src: cyber, name: "Cyber Security", style: { width: "60px" } }} />
         </div>
       </div>
     );

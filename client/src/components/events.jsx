@@ -10,8 +10,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
 import EventCard from "./eventcard";
-import Footer from './footer'
-import { firestore } from 'firebase/app'
+import Footer from './footer';
+import { firestore } from 'firebase/app';
 import "../css/events.css";
 import { ToastContainer } from "react-toastify";
 
@@ -56,7 +56,7 @@ function Events(state) {
       11: "Nov",
       12: "Dec"
     }
-    firestore().collection('Events').get()
+    firestore().collection('Events').orderBy('timestamp', 'desc').get()
       .then(snapshot => {
         snapshot.docs.forEach(doc => {
           if (doc.data().EventStatus === 'past') {

@@ -5,9 +5,9 @@ import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Modall from "./modal";
-import firebase, { auth, firestore } from 'firebase/app'
+import firebase, { auth, firestore } from "firebase/app";
 import { toast } from "react-toastify";
-import $ from 'jquery'
+import $ from "jquery";
 const Eventcard = (props) => {
   const {
     posterLink,
@@ -50,7 +50,7 @@ const Eventcard = (props) => {
 
   //REGISTER FOR EVENT
   const onRegister = () => {
-    $('#submit').html('Registering...').addClass('disabled');
+    $("#submit").html("Registering...").addClass("disabled");
     auth().onAuthStateChanged((user) => {
       firestore()
         .collection("Events")
@@ -59,14 +59,14 @@ const Eventcard = (props) => {
           EventParticipants: firebase.firestore.FieldValue.arrayUnion(user.uid), //add uid in the bracket
         })
         .then(() => {
-          toast.success("Successfully Registered!")
+          toast.success("Successfully Registered!");
           setShowRegister(false);
           handleClose();
-          $('#submit').html('Register...').removeClass('disabled');
+          $("#submit").html("Register...").removeClass("disabled");
         })
         .catch((err) => {
-          $('#submit').html('Register').removeClass('disabled');
-          toast.error(err.message)
+          $("#submit").html("Register").removeClass("disabled");
+          toast.error(err.message);
         });
     });
   };
@@ -78,17 +78,20 @@ const Eventcard = (props) => {
           maxWidth: "18rem",
           display: "inline-block",
           paddingTop: "0px",
-        }}>
-        <img
-          src={posterLink}
-          alt="alt"
-          style={{
-            width: "100%",
-            height: "200px",
-            objectFit: "fill",
-            margin: "0 auto",
-          }} />
+        }}
+      >
         <Card.Body style={{ paddingBottom: "0" }}>
+          <div className="text-center">
+            <img
+              src={posterLink}
+              className="img-fluid"
+              alt="alt"
+              style={{
+                maxHeight: "200px",
+                // objectFit: "fill",
+              }}
+            />
+          </div>
           <Card.Title>{eventTitle}</Card.Title>
           <p style={{ margin: "0" }}>
             <DateRangeOutlinedIcon fontSize="small" style={{ color: "blue" }} />
@@ -108,7 +111,8 @@ const Eventcard = (props) => {
           <Button
             variant="success"
             onClick={handleShow}
-            style={{ float: 'right' }}>
+            style={{ float: "right" }}
+          >
             View Details
           </Button>
         </Card.Body>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Dashboard from './Dashboard'
 import Header from './Header'
 import NavBar from './NavBar'
@@ -6,7 +6,16 @@ import { firestore, storage } from 'firebase/app'
 import { ToastProvider, useToasts } from 'react-toast-notifications'
 import $ from 'jquery'
 import { Form } from 'react-bootstrap'
+import admin from 'firebase-admin';
+
 export const AddEvent = () => {
+    const loader = document.querySelector('.loader');
+    const hideLoader = () => loader.classList.add('loader--hide');
+
+    useEffect(() => {
+        document.title = "Admin | Add Event";
+        hideLoader();
+    }, []);
     return (
         <div>
             <ToastProvider>
@@ -15,7 +24,7 @@ export const AddEvent = () => {
                 <section id="breadcrumb">
                     <div className="container">
                         <ol className="breadcrumb">
-                            <li className="breadcrumb-item"><a href="/">Dashboard</a></li>
+                            <li className="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
                             <li className="breadcrumb-item active">Add Event</li>
                         </ol>
                     </div>
@@ -39,7 +48,7 @@ export const AddEvent = () => {
                     </div>
                 </section>
                 <footer id="footer">
-                    <p>Copyright DSC CVRGU &copy; 2020</p>
+                    <p>&copy; 2020 Developer Student Clubs CVRGU</p>
                 </footer>
             </ToastProvider>
         </div>
@@ -59,8 +68,7 @@ export const EventForm = () => {
         EventParticipants: [],
         EventStatus: "",
         From: "",
-        To: "",
-        timestamp: ""
+        To: ""
     });
 
     const handleChange = name => e => {
@@ -84,7 +92,20 @@ export const EventForm = () => {
         e.preventDefault();
         console.log(eventDetails);
         $('#submit').html('Adding...');
-        firestore().collection("Events").doc(eventDetails.EventId).set(eventDetails)
+        firestore().collection("Events").doc(eventDetails.EventId).set({
+            EventTitle: eventDetails.EventTitle,
+            EventId: eventDetails.EventId,
+            EventLink: eventDetails.EventLink,
+            EventLocation: eventDetails.EventLocation,
+            EventDescription: eventDetails.EventDescription,
+            EventPoster: eventDetails.EventPoster,
+            EventHost: eventDetails.EventHost,
+            EventParticipants: [],
+            EventStatus: eventDetails.EventStatus,
+            From: eventDetails.From,
+            To: eventDetails.To,
+            timestamp: admin.firestore.FieldValue.serverTimestamp()
+        })
             .then(() => {
                 $('#submit').html('Saving...');
                 addToast("Event added successfully", { appearance: 'success', autoDismiss: true });
@@ -146,7 +167,7 @@ export const EventForm = () => {
                         </tr>
                         <tr>
                             <td>Event Description</td>
-                            <td><textarea type="text" className='form-control' cols="3" placeholder="Event Description" onChange={handleChange('EventDescription')} ></textarea></td>
+                            <td><textarea type="text" className='form-control' rows="6" placeholder="Event Description" onChange={handleChange('EventDescription')} ></textarea></td>
                         </tr>
                         <tr>
                             <td>Event Host</td>

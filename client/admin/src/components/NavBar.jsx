@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar, Nav } from "react-bootstrap";
 import { auth } from 'firebase';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 const NavBar = () => {
     const [isAuth, setIsAuth] = useState(false);
@@ -16,14 +18,14 @@ const NavBar = () => {
         <div className="navbar-default">
             <Navbar variant='dark' expand="lg" className="container">
                 <a className="navbar-brand" href="/">DSC CVRGU</a>
-                <Navbar.Toggle aria-controls="collapsedNav" />
+                <Navbar.Toggle aria-controls="collapsedNav" ><FontAwesomeIcon icon={faBars} /></Navbar.Toggle>
                 <Navbar.Collapse id="collapsedNav">
                     <Nav className="ml-auto">
                         {
                             isAuth ?
                                 <>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="/">Dashboard</a>
+                                        <a className="nav-link" href="/dashboard">Dashboard</a>
                                     </li>
                                     <li className="nav-item">
                                         <a className="nav-link" href="/form">Add Event</a>

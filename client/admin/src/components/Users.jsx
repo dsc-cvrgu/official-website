@@ -1,16 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Dashboard from './Dashboard'
 import Header from './Header'
 import NavBar from './NavBar'
 import { firestore } from 'firebase/app'
 import { TableContainer, TableBody, TableCell, TableHead, TableRow, Table } from '@material-ui/core'
 import TablePagination from "@material-ui/core/TablePagination";
+import { Button, Spinner } from 'react-bootstrap'
+
 
 const Users = () => {
+    const loader = document.querySelector('.loader');
+    const hideLoader = () => loader.classList.add('loader--hide');
+
+    useEffect(() => {
+        document.title = "Admin | Users";
+        hideLoader();
+    }, []);
+
     const [userArr, setUserArr] = useState([]);
     const tempArr = [];
+    let [loading, setLoading] = useState(false);
 
     const fetchData = () => {
+        setLoading(true);
         firestore().collection('User Data').get()
             .then((snapshot) => {
                 snapshot.docs.forEach(doc => {
@@ -22,7 +34,11 @@ const Users = () => {
                     })
                 });
                 setUserArr(tempArr);
-            }).catch(err => console.log(err.message));
+                setLoading(false);
+            }).catch(err => {
+                setLoading(false);
+                console.log(err.message)
+            });
     }
 
     //table pagination
@@ -45,7 +61,7 @@ const Users = () => {
             <section id="breadcrumb">
                 <div className="container">
                     <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="/">Dashboard</a></li>
+                        <li className="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
                         <li className="breadcrumb-item active">Users</li>
                     </ol>
                 </div>
@@ -61,8 +77,11 @@ const Users = () => {
                             <div className="card-header main-color-bg">
                                 <h5 className="card-title mb-0">Users</h5>
                             </div>
-                            <button onClick={fetchData} className='btn btn-block main-color-bg my-2'>Fetch Data</button>
-
+                            {
+                                loading ?
+                                    <Button className="btn main-color-bg btn-block my-2" disabled><Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" /><span className='ml-2'>Fetching...</span></Button> :
+                                    <button className="btn main-color-bg btn-block my-2" type='button' onClick={fetchData}>Fetch Data</button>
+                            }
                             <div className="card">
                                 <div className="card-body">
                                     <TableContainer>
@@ -106,7 +125,7 @@ const Users = () => {
             </section>
 
             <footer id="footer">
-                <p>Copyright DSC CVRGU &copy; 2020</p>
+                <p>&copy; 2020 Developer Student Clubs CVRGU</p>
             </footer>
         </div>
     )

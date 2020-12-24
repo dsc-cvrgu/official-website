@@ -8,6 +8,14 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 
 const Index = () => {
+    const loader = document.querySelector('.loader');
+    const hideLoader = () => loader.classList.add('loader--hide');
+
+    useEffect(() => {
+        document.title = "Admin | Dashboard";
+        hideLoader();
+    }, []);
+
     let [userCount, setUserCount] = useState(0);
     let [eventCount, setEventCount] = useState(0);
     useEffect(() => {
@@ -60,7 +68,7 @@ const Index = () => {
             </section>
 
             <footer id="footer">
-                <p>Copyright DSC CVRGU &copy; 2020</p>
+                <p>&copy; 2020 Developer Student Clubs CVRGU</p>
             </footer>
         </div>
     )

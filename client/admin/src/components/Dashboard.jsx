@@ -4,7 +4,7 @@ import { faCogs, faUser, faCalendarAlt, faEdit } from "@fortawesome/free-solid-s
 function Dashboard() {
     return (
         <div className="list-group">
-            <a href="/" className="list-group-item active main-color-bg white"><FontAwesomeIcon icon={faCogs} /> Dashboard</a>
+            <a href="/dashboard" className="list-group-item active main-color-bg white"><FontAwesomeIcon icon={faCogs} /> Dashboard</a>
             <a href="/form" className="list-group-item black"><FontAwesomeIcon icon={faEdit} /> Add Event</a>
             <a href="/events" className="list-group-item black"><FontAwesomeIcon icon={faCalendarAlt} /> Events</a>
             <a href="/users" className="list-group-item black"><FontAwesomeIcon icon={faUser} /> Users</a>

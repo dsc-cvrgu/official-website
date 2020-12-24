@@ -8,6 +8,14 @@ import { ToastProvider, useToasts } from 'react-toast-notifications'
 import firebase from 'firebase/app'
 
 const Login = () => {
+    const loader = document.querySelector('.loader');
+    const hideLoader = () => loader.classList.add('loader--hide');
+
+    useEffect(() => {
+        hideLoader();
+        document.title = "Admin | Login";
+    }, []);
+
     firebase.auth().onAuthStateChanged(user => {
         if (user !== null) window.location.pathname = '/dashboard';
     });

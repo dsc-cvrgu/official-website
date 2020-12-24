@@ -16,6 +16,7 @@ import {
 import Index from "./components/Index";
 import { AddEvent } from "./components/AddEvent";
 import Events from "./components/Events";
+import { Event } from "./components/Event";
 import Users from "./components/Users";
 import Login from "./components/Login";
 
@@ -45,6 +46,7 @@ const App = () => {
             <Route path="/users" exact component={Users} />
             <Route path="/form" exact component={AddEvent} />
             <Route path="/dashboard" exact component={Index} />
+            <Route path="/events/:id" exact component={Event} />
           </>
         ) : (
           <Route path="/" exact component={Login} />

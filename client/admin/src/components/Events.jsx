@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from './Header'
 import NavBar from './NavBar'
 import Dashboard from './Dashboard'
@@ -11,15 +11,24 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
-import { Form } from 'react-bootstrap'
+import { Form, Button, Spinner } from 'react-bootstrap'
 
 
 const Events = () => {
+    const loader = document.querySelector('.loader');
+    const hideLoader = () => loader.classList.add('loader--hide');
+
+    useEffect(() => {
+        document.title = "Admin | Events";
+        hideLoader();
+    }, []);
+
     const [eventArr, setEventArr] = useState([]);
     const tempArr = [];
     //table pagination
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
+    let [loading, setLoading] = useState(false);
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -41,6 +50,7 @@ const Events = () => {
     }
 
     const fetchData = () => {
+        setLoading(true);
         firestore().collection('Events').orderBy('timestamp', 'desc').get()
             .then(snapshot => {
                 snapshot.docs.forEach(doc => {
@@ -52,7 +62,11 @@ const Events = () => {
                     })
                 })
                 setEventArr(tempArr);
-            }).catch(err => console.log(err.message));
+                setLoading(false);
+            }).catch(err => {
+                setLoading(false);
+                console.log(err.message)
+            });
     }
 
     return (
@@ -62,7 +76,7 @@ const Events = () => {
             <section id="breadcrumb">
                 <div className="container">
                     <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="/">Dashboard</a></li>
+                        <li className="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
                         <li className="breadcrumb-item active">Events</li>
                     </ol>
                 </div>
@@ -80,7 +94,11 @@ const Events = () => {
                                     <h5 className="col card-title mb-0">Events</h5>
                                 </div>
                             </div>
-                            <button className='btn btn-block main-color-bg my-2' onClick={fetchData}>Fetch Data</button>
+                            {
+                                loading ?
+                                    <Button className="btn main-color-bg btn-block my-2" disabled><Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" /><span className='ml-2'>Fetching...</span></Button> :
+                                    <button className="btn main-color-bg btn-block my-2" type='button' onClick={fetchData}>Fetch Data</button>
+                            }
 
                             <Paper>
                                 <TableContainer>
@@ -91,6 +109,7 @@ const Events = () => {
                                                 <TableCell className="font-weight-bold">Id</TableCell>
                                                 <TableCell className="font-weight-bold">Date</TableCell>
                                                 <TableCell className="font-weight-bold">Status</TableCell>
+                                                <TableCell className="font-weight-bold">Open</TableCell>
                                             </TableRow>
                                         </TableHead>
                                         <TableBody>
@@ -100,13 +119,8 @@ const Events = () => {
                                                         <TableCell>{event.name}</TableCell>
                                                         <TableCell>{event.id}</TableCell>
                                                         <TableCell>{event.date}</TableCell>
-                                                        <TableCell>
-                                                            <Form.Control as='select' id={event.id} onChange={handleChange} style={{ width: '120px' }}>
-                                                                <option>{event.status}</option>
-                                                                <option value="upcoming">Upcoming</option>
-                                                                <option value="past">Past</option>
-                                                            </Form.Control>
-                                                        </TableCell>
+                                                        <TableCell>{event.status}</TableCell>
+                                                        <TableCell><a href={`/events/${event.id}`}>Edit</a></TableCell>
                                                     </TableRow>
                                                 )
                                             })}
@@ -129,7 +143,7 @@ const Events = () => {
             </section>
 
             <footer id="footer">
-                <p>Copyright DSC CVRGU &copy; 2020</p>
+                <p>&copy; 2020 Developer Student Clubs CVRGU</p>
             </footer>
         </div>
     )

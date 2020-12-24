@@ -25,7 +25,10 @@
 .LOGINOUT {
   color: var(--myellow) !important;
 }
-
+button.navbar-toggler {
+  outline: none;
+  border: none;
+}
 /* hover pulse */
 
 @-webkit-keyframes hvr-pulse {
@@ -58,7 +61,9 @@
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 }
 
-.hvr-pulse:hover, .hvr-pulse:focus, .hvr-pulse:active {
+.hvr-pulse:hover,
+.hvr-pulse:focus,
+.hvr-pulse:active {
   -webkit-animation-name: hvr-pulse;
   animation-name: hvr-pulse;
   -webkit-animation-duration: 1s;
@@ -88,7 +93,13 @@
   left: 0;
   right: 100%;
   bottom: 0;
-  background-image: linear-gradient( to right, #0f9d58, #ea4335, #4285f4, #fbbc04);
+  background-image: linear-gradient(
+    to right,
+    #0f9d58,
+    #ea4335,
+    #4285f4,
+    #fbbc04
+  );
   height: 4px;
   -webkit-transition-property: right;
   transition-property: right;
@@ -98,6 +109,24 @@
   transition-timing-function: ease-out;
 }
 
-.hvr-underline-from-left:hover:before, .hvr-underline-from-left:focus:before, .hvr-underline-from-left:active:before {
+.hvr-underline-from-left:hover:before,
+.hvr-underline-from-left:focus:before,
+.hvr-underline-from-left:active:before {
   right: 0;
+}
+
+@media only screen and (min-width: 415px) {
+  #dsc-logo {
+    width: 340px;
+  }
+}
+@media only screen and (min-width: 321px) and (max-width: 414px) {
+  #dsc-logo {
+    width: 290px;
+  }
+}
+@media only screen and (max-width: 320px) {
+  #dsc-logo {
+    width: 260px;
+  }
 }

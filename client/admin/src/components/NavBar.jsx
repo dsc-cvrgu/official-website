@@ -10,6 +10,7 @@ const NavBar = () => {
     const Logout = (e) => {
         e.preventDefault();
         auth().signOut();
+        window.location.pathname = '/';
     }
     return (
         <div className="navbar-default">
@@ -18,21 +19,31 @@ const NavBar = () => {
                 <Navbar.Toggle aria-controls="collapsedNav" />
                 <Navbar.Collapse id="collapsedNav">
                     <Nav className="ml-auto">
-                        <li className="nav-item">
-                            <a className="nav-link" href="/">Dashboard</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/form">Add Event</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/events">Events</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/users">Users</a>
-                        </li>
-                        <li className="nav-item">
-                            {isAuth ? <p className="nav-link" onClick={Logout}>Logout</p> : <a className="nav-link" href="/login">Login</a>}
-                        </li>
+                        {
+                            isAuth ?
+                                <>
+                                    <li className="nav-item">
+                                        <a className="nav-link" href="/">Dashboard</a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a className="nav-link" href="/form">Add Event</a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a className="nav-link" href="/events">Events</a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a className="nav-link" href="/users">Users</a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a href='/' className="nav-link" style={{ cursor: 'pointer' }} onClick={Logout}>Logout</a>
+                                    </li>
+                                </>
+                                :
+                                <li className="nav-item">
+                                    <a className="nav-link" href="/">Login</a>
+                                </li>
+
+                        }
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

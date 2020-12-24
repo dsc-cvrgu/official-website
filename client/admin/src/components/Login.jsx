@@ -1,12 +1,16 @@
 import { auth } from 'firebase/app';
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import NavBar from './NavBar'
 import { useHistory } from "react-router-dom";
 import $ from 'jquery'
 import { ToastProvider, useToasts } from 'react-toast-notifications'
+import firebase from 'firebase/app'
 
 const Login = () => {
+    firebase.auth().onAuthStateChanged(user => {
+        if (user !== null) window.location.pathname = '/dashboard';
+    });
     return (
         <div>
             <NavBar />

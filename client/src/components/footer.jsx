@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import * as firebase from 'firebase/app'
+import firebase from 'firebase/app'
 // import 'firebase/auth'
-// import 'firebase/firestore'
-import { firestore } from 'firebase/app'
+import 'firebase/firestore'
+// import { firestore } from 'firebase/app'
 
 import { ToastContainer, toast } from "react-toastify";
 
@@ -27,11 +27,14 @@ const Footer = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    firestore().collection('Subscribers').add({ name: name, email: email })
+    firebase.firestore().collection('Subscribers').add({ name: name, email: email })
       .then(() => {
         setFormData({ ...formData, email: "", name: "" });
         toast.success("Subscribed");
-      }).catch(err => toast.error(err));
+      }).catch(err => {
+        console.log(err);
+        toast.error(err);
+      })
   }
 
   return (
@@ -57,21 +60,21 @@ const Footer = () => {
               <a href="/events">Upcoming events</a>
             </li>
             <li>
-              <a href="/events">Past events</a>
+              <a href="/team">Team</a>
             </li>
             <li>
-              <a href="/team">Team members</a>
+              <a href="https://docs.google.com/document/d/1oYqXeOgFACpqryMnQUtEE4Ez1cBGBq65f7E0bu-iYgA/edit?usp=sharing">Code of Conduct</a>
             </li>
             <li>
-              <a href="/contact">Contact us</a>
+              <a href="https://developers.google.com/community-guidelines">Community Guidelines</a>
             </li>
           </ul>
         </div>
         <div id="contact" className="content">
           <h1>Contact us</h1>
-          <p>Phone: 1800 000 000</p>
-          <p>Phone: 1800 000 000</p>
-          <p>Email: dsccvrgu@gmail.com</p>
+          <p>Phone: 79924 65784</p>
+          <p>Phone: 82495 77644</p>
+          <a href="mailto:lead@dsccvrgu.tech">Email: lead@dsccvrgu.tech</a>
           <div id="social">
             <a href="https://www.linkedin.com/company/69065757" className="z-2">
               <FontAwesomeIcon icon={faLinkedin} className="social-icon" />

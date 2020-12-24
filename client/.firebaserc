@@ -1,15 +1,12 @@
 {
-  "projects": {
-    "default": "dsc-cgu"
-  },
   "targets": {
     "dsc-cgu": {
       "hosting": {
+        "user": [
+          "dsc-cgu"
+        ],
         "admin": [
           "admindsccvrgu"
-        ],
-        "user": [
-          "dsccvrgu"
         ]
       }
     }

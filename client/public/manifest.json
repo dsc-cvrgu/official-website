@@ -1,6 +1,7 @@
 {
   "short_name": "DSC CVRGU",
   "name": "DSC C V Raman Global University",
+  "description": "Welcome to Developer Student Clubs C V Raman Global University",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,8 +19,8 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#ffffff",
   "background_color": "#ffffff"
 }

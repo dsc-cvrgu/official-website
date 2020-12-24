@@ -5,6 +5,7 @@ import NavBar from './NavBar'
 import { firestore, storage } from 'firebase/app'
 import { ToastProvider, useToasts } from 'react-toast-notifications'
 import $ from 'jquery'
+import { Form } from 'react-bootstrap'
 export const AddEvent = () => {
     return (
         <div>
@@ -56,9 +57,10 @@ export const EventForm = () => {
         EventPoster: "",
         EventHost: "",
         EventParticipants: [],
-        EventStatus: "upcoming",
+        EventStatus: "",
         From: "",
         To: "",
+        timestamp: ""
     });
 
     const handleChange = name => e => {
@@ -70,21 +72,21 @@ export const EventForm = () => {
         if (!file.type.match('image.*')) {
             addToast('Only select images you FOOL', { appearance: 'error', autoDismiss: true });
         } else {
-            storage().ref(file.name).put(file).then(fileSnapshot => {
-                return fileSnapshot.ref.getDownloadURL().then(url => setEventDetails({ ...eventDetails, EventPoster: url }));
+            storage().ref(file.name).put(file).then(async fileSnapshot => {
+                const url = await fileSnapshot.ref.getDownloadURL()
+                return setEventDetails({ ...eventDetails, EventPoster: url })
             }).catch(err => {
                 addToast(err.message_, { appearance: 'error', autoDismiss: true });
             })
         }
     }
-    const handleSubmit = () => {
-        if (eventDetails.EventId === '') {
-            return addToast("EventId can't be empty", { appearance: 'error', autoDismiss: true });
-        }
-        $('#submit').html('Adding...').addClass('disabled');
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(eventDetails);
+        $('#submit').html('Adding...');
         firestore().collection("Events").doc(eventDetails.EventId).set(eventDetails)
             .then(() => {
-                $('#submit').html('Saving...').addClass('disabled');
+                $('#submit').html('Saving...');
                 addToast("Event added successfully", { appearance: 'success', autoDismiss: true });
                 setEventDetails({
                     ...eventDetails,
@@ -93,9 +95,9 @@ export const EventForm = () => {
                     EventLocation: "",
                     EventPoster: "",
                     EventTitle: "",
-                    Status: "",
+                    EventStatus: "",
                     EventHost: "",
-                    Participants: [],
+                    EventParticipants: [],
                     From: "",
                     To: "",
                     EventId: ""
@@ -111,47 +113,59 @@ export const EventForm = () => {
     }
     return (
         <div className="card-body px-3 py-3 py-sm-4 px-md-4">
-            <table className="table table-striped table-hover">
-                <tbody>
-                    <tr>
-                        <td>Event Poster</td>
-                        <td><input type="file" placeholder="Drop an Image" accept="image/*" onChange={saveImg} style={{ width: "100%" }} /></td>
-                    </tr>
-                    <tr>
-                        <td>Event Title </td>
-                        <td><input type="text" placeholder="Event Title" onChange={handleChange('EventTitle')} /></td>
-                    </tr>
-                    <tr>
-                        <td>Event Id </td>
-                        <td><input type="text" placeholder="Event ID" onChange={handleChange('EventId')} /></td>
-                    </tr>
-                    <tr>
-                        <td>Event Link </td>
-                        <td><input type="url" placeholder="Event Url" onChange={handleChange('EventLink')} /></td>
-                    </tr>
-                    <tr>
-                        <td>Event Location </td>
-                        <td><input type="text" placeholder="Event Location" onChange={handleChange('EventLocation')} /></td>
-                    </tr>
-                    <tr>
-                        <td>From</td>
-                        <td><input type="datetime-local" onChange={handleChange('From')} /></td>
-                    </tr>
-                    <tr>
-                        <td>To </td>
-                        <td><input type="datetime-local" onChange={handleChange('To')} /></td>
-                    </tr>
-                    <tr>
-                        <td>Event Description</td>
-                        <td><textarea type="text" cols="26" placeholder="Event Description" onChange={handleChange('EventDescription')} ></textarea></td>
-                    </tr>
-                    <tr>
-                        <td>Event Host</td>
-                        <td><input type="text" placeholder="Host Name" onChange={handleChange('EventHost')} /></td>
-                    </tr>
-                </tbody>
-            </table>
-            <button className="btn btn-danger btn-block mt-3" id="submit" type="submit" onClick={handleSubmit}>Submit</button>
+            <form onSubmit={handleSubmit}>
+                <table className="table table-striped table-hover">
+                    <tbody>
+                        <tr>
+                            <td>Event Poster</td>
+                            <td><input type="file" placeholder="Drop an Image" accept="image/*" onChange={saveImg} style={{ width: "100%" }} /></td>
+                        </tr>
+                        <tr>
+                            <td>Event Title </td>
+                            <td><input type="text" className='form-control' placeholder="Event Title" onChange={handleChange('EventTitle')} required /></td>
+                        </tr>
+                        <tr>
+                            <td>Event Id </td>
+                            <td><input type="text" className='form-control' placeholder="Event ID" onChange={handleChange('EventId')} required /></td>
+                        </tr>
+                        <tr>
+                            <td>Event Link </td>
+                            <td><input type="text" className='form-control' placeholder="Event Url" onChange={handleChange('EventLink')} /></td>
+                        </tr>
+                        <tr>
+                            <td>Event Location </td>
+                            <td><input type="text" className='form-control' placeholder="Event Location" onChange={handleChange('EventLocation')} /></td>
+                        </tr>
+                        <tr>
+                            <td>From</td>
+                            <td><input type="datetime-local" className='form-control' onChange={handleChange('From')} required /></td>
+                        </tr>
+                        <tr>
+                            <td>To </td>
+                            <td><input type="datetime-local" className='form-control' onChange={handleChange('To')} required /></td>
+                        </tr>
+                        <tr>
+                            <td>Event Description</td>
+                            <td><textarea type="text" className='form-control' cols="3" placeholder="Event Description" onChange={handleChange('EventDescription')} ></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Event Host</td>
+                            <td><input type="text" className='form-control' placeholder="Host Name" onChange={handleChange('EventHost')} /></td>
+                        </tr>
+                        <tr>
+                            <td>Event Status</td>
+                            <td>
+                                <Form.Control as='select' onChange={handleChange('EventStatus')} required>
+                                    <option value="">Choose..</option>
+                                    <option value="past">Past</option>
+                                    <option value="upcoming">Upcoming</option>
+                                </Form.Control>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button className="btn main-color-bg btn-block mt-3" id="submit" type="submit">Submit</button>
+            </form>
         </div>
     )
 }

@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from './Header'
 import NavBar from './NavBar'
 import Dashboard from './Dashboard'
 import { firestore } from 'firebase/app'
-import { useEffect, useState } from 'react'
+import Paper from "@material-ui/core/Paper";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
 import TablePagination from "@material-ui/core/TablePagination";
+import TableRow from "@material-ui/core/TableRow";
+import { Form } from 'react-bootstrap'
+
 
 const Events = () => {
     const [eventArr, setEventArr] = useState([]);
@@ -22,21 +30,30 @@ const Events = () => {
         setPage(0);
     };
 
-    useEffect(() => {
-        firestore().collection('Events').get()
+    const handleChange = (e) => {
+        console.log(e.target.value);
+        console.log(e.target.id);
+        firestore().collection('Events').doc(e.target.id).update({
+            EventStatus: e.target.value
+        }).then(() => {
+            console.log('updated');
+        }).catch(err => console.log(err));
+    }
+
+    const fetchData = () => {
+        firestore().collection('Events').orderBy('timestamp', 'desc').get()
             .then(snapshot => {
                 snapshot.docs.forEach(doc => {
                     tempArr.push({
                         name: doc.data().EventTitle,
                         id: doc.data().EventId,
                         date: doc.data().From.split("T")[0],
-                        host: doc.data().EventHost
+                        status: doc.data().EventStatus
                     })
                 })
                 setEventArr(tempArr);
             }).catch(err => console.log(err.message));
-
-    }, [tempArr])
+    }
 
     return (
         <div>
@@ -58,51 +75,54 @@ const Events = () => {
                         </div>
                         <div className="col-md-9">
                             {/* <!-- Website Overview --> */}
-                            <div className="card">
-                                <div className="card-header main-color-bg">
-                                    <h5 className="card-title mb-0">Events</h5>
-                                </div>
-                                <div className="card-body">
-                                    <div className="row">
-                                        <div className="col-md-12">
-                                            <input className="form-control" type="text" placeholder="Filter Events..." />
-                                        </div>
-                                    </div>
-                                    <br />
-                                    <table className="table table-striped table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>Event Title</th>
-                                                <th>Event ID</th>
-                                                <th>Event Date</th>
-                                                <th>Hosted By</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {eventArr.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(event => {
-                                                return (
-                                                    <tr key={event.name}>
-                                                        <td>{event.name}</td>
-                                                        <td>{event.id}</td>
-                                                        <td>{event.date}</td>
-                                                        <td>{event.host}</td>
-                                                    </tr>
-                                                )
-                                            })}
-                                        </tbody>
-                                    </table>
-                                    <TablePagination
-                                        rowsPerPageOptions={[5, 10, 25, 100]}
-                                        component="div"
-                                        count={eventArr.length}
-                                        page={page}
-                                        onChangePage={handleChangePage}
-                                        rowsPerPage={rowsPerPage}
-                                        onChangeRowsPerPage={handleChangeRowsPerPage}
-                                    />
+                            <div className="card-header main-color-bg">
+                                <div className="row">
+                                    <h5 className="col card-title mb-0">Events</h5>
                                 </div>
                             </div>
+                            <button className='btn btn-block main-color-bg my-2' onClick={fetchData}>Fetch Data</button>
 
+                            <Paper>
+                                <TableContainer>
+                                    <Table stickyHeader aria-label="sticky table">
+                                        <TableHead>
+                                            <TableRow>
+                                                <TableCell className="font-weight-bold">Title</TableCell>
+                                                <TableCell className="font-weight-bold">Id</TableCell>
+                                                <TableCell className="font-weight-bold">Date</TableCell>
+                                                <TableCell className="font-weight-bold">Status</TableCell>
+                                            </TableRow>
+                                        </TableHead>
+                                        <TableBody>
+                                            {eventArr.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(event => {
+                                                return (
+                                                    <TableRow key={event.name}>
+                                                        <TableCell>{event.name}</TableCell>
+                                                        <TableCell>{event.id}</TableCell>
+                                                        <TableCell>{event.date}</TableCell>
+                                                        <TableCell>
+                                                            <Form.Control as='select' id={event.id} onChange={handleChange} style={{ width: '120px' }}>
+                                                                <option>{event.status}</option>
+                                                                <option value="upcoming">Upcoming</option>
+                                                                <option value="past">Past</option>
+                                                            </Form.Control>
+                                                        </TableCell>
+                                                    </TableRow>
+                                                )
+                                            })}
+                                        </TableBody>
+                                    </Table>
+                                </TableContainer>
+                                <TablePagination
+                                    rowsPerPageOptions={[5, 10, 25, 100]}
+                                    component="div"
+                                    count={eventArr.length}
+                                    rowsPerPage={rowsPerPage}
+                                    page={page}
+                                    onChangePage={handleChangePage}
+                                    onChangeRowsPerPage={handleChangeRowsPerPage}
+                                />
+                            </Paper>
                         </div>
                     </div>
                 </div>

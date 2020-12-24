@@ -1,16 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Dashboard from './Dashboard'
 import Header from './Header'
 import NavBar from './NavBar'
 import { firestore } from 'firebase/app'
-import { useEffect, useState } from 'react'
 import { TableContainer, TableBody, TableCell, TableHead, TableRow, Table } from '@material-ui/core'
 import TablePagination from "@material-ui/core/TablePagination";
 
 const Users = () => {
     const [userArr, setUserArr] = useState([]);
     const tempArr = [];
-    useEffect(() => {
+
+    const fetchData = () => {
         firestore().collection('User Data').get()
             .then((snapshot) => {
                 snapshot.docs.forEach(doc => {
@@ -23,7 +23,7 @@ const Users = () => {
                 });
                 setUserArr(tempArr);
             }).catch(err => console.log(err.message));
-    }, [tempArr])
+    }
 
     //table pagination
     const [page, setPage] = React.useState(0);
@@ -58,18 +58,13 @@ const Users = () => {
                         </div>
                         <div className="col-md-9">
                             {/* <!-- Website Overview --> */}
+                            <div className="card-header main-color-bg">
+                                <h5 className="card-title mb-0">Users</h5>
+                            </div>
+                            <button onClick={fetchData} className='btn btn-block main-color-bg my-2'>Fetch Data</button>
+
                             <div className="card">
-                                <div className="card-header main-color-bg">
-                                    <h5 className="card-title mb-0">Users</h5>
-                                </div>
                                 <div className="card-body">
-                                    <div className="row">
-                                        <div className="col-md-12">
-                                            <input className="form-control" type="text" placeholder="Filter Users..." />
-                                        </div>
-                                    </div>
-                                    <br />
-                                    {/* <Paper> */}
                                     <TableContainer>
                                         <Table>
                                             <TableHead>

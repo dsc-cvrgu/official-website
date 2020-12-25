@@ -15,6 +15,7 @@ const Users = () => {
     useEffect(() => {
         document.title = "Admin | Users";
         hideLoader();
+        console.clear();
     }, []);
 
     const [userArr, setUserArr] = useState([]);

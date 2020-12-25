@@ -1,11 +1,10 @@
-import { auth } from 'firebase/app';
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import NavBar from './NavBar'
 import { useHistory } from "react-router-dom";
 import $ from 'jquery'
 import { ToastProvider, useToasts } from 'react-toast-notifications'
-import firebase from 'firebase/app'
+import { auth } from "./Firebase";
 
 const Login = () => {
     const loader = document.querySelector('.loader');
@@ -16,7 +15,7 @@ const Login = () => {
         document.title = "Admin | Login";
     }, []);
 
-    firebase.auth().onAuthStateChanged(user => {
+    auth.onAuthStateChanged(user => {
         if (user !== null) window.location.pathname = '/dashboard';
     });
     return (
@@ -51,9 +50,8 @@ export const LoginForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         $('#submit').html('Logging in...').addClass('disabled');
-        auth().signInWithEmailAndPassword(email, passWd).then(() => history.push('/'))
+        auth.signInWithEmailAndPassword(email, passWd).then((res) => window.location.href = '/dashboard')
             .catch(err => {
-                $('#submit').html('Login').removeClass('disabled');
                 addToast(err.message, { appearance: 'error', autoDismiss: true });
             });
     }

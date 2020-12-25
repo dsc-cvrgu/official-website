@@ -2,12 +2,10 @@ import React, { useState, useEffect } from 'react'
 import Dashboard from './Dashboard'
 import Header from './Header'
 import NavBar from './NavBar'
-import { firestore, storage } from 'firebase/app'
+import { storage } from 'firebase/app'
 import { ToastProvider, useToasts } from 'react-toast-notifications'
-import $ from 'jquery'
-import { Form } from 'react-bootstrap'
-import admin from 'firebase-admin';
-
+import { Form, Button, Spinner } from 'react-bootstrap'
+import { db } from './Firebase'
 export const AddEvent = () => {
     const loader = document.querySelector('.loader');
     const hideLoader = () => loader.classList.add('loader--hide');
@@ -15,6 +13,7 @@ export const AddEvent = () => {
     useEffect(() => {
         document.title = "Admin | Add Event";
         hideLoader();
+        // eslint-disable-next-line
     }, []);
     return (
         <div>
@@ -56,16 +55,16 @@ export const AddEvent = () => {
 }
 
 export const EventForm = () => {
-    const { addToast } = useToasts()
+    const { addToast } = useToasts();
+    const [loading, setLoading] = useState(false);
+    const [file, setFile] = useState('');
     const [eventDetails, setEventDetails] = useState({
         EventTitle: "",
         EventId: "",
         EventLink: "",
         EventLocation: "",
         EventDescription: "",
-        EventPoster: "",
         EventHost: "",
-        EventParticipants: [],
         EventStatus: "",
         From: "",
         To: ""
@@ -74,64 +73,69 @@ export const EventForm = () => {
     const handleChange = name => e => {
         setEventDetails({ ...eventDetails, [name]: e.target.value });
     }
-    const saveImg = (e) => {
-        e.preventDefault();
-        let file = e.target.files[0];
-        if (!file.type.match('image.*')) {
-            addToast('Only select images you FOOL', { appearance: 'error', autoDismiss: true });
-        } else {
-            storage().ref(file.name).put(file).then(async fileSnapshot => {
-                const url = await fileSnapshot.ref.getDownloadURL()
-                return setEventDetails({ ...eventDetails, EventPoster: url })
-            }).catch(err => {
-                addToast(err.message_, { appearance: 'error', autoDismiss: true });
-            })
-        }
-    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
+        setLoading(true);
         console.log(eventDetails);
-        $('#submit').html('Adding...');
-        firestore().collection("Events").doc(eventDetails.EventId).set({
-            EventTitle: eventDetails.EventTitle,
-            EventId: eventDetails.EventId,
-            EventLink: eventDetails.EventLink,
-            EventLocation: eventDetails.EventLocation,
-            EventDescription: eventDetails.EventDescription,
-            EventPoster: eventDetails.EventPoster,
-            EventHost: eventDetails.EventHost,
-            EventParticipants: [],
-            EventStatus: eventDetails.EventStatus,
-            From: eventDetails.From,
-            To: eventDetails.To,
-            timestamp: admin.firestore.FieldValue.serverTimestamp()
-        })
-            .then(() => {
-                $('#submit').html('Saving...');
-                addToast("Event added successfully", { appearance: 'success', autoDismiss: true });
-                setEventDetails({
-                    ...eventDetails,
-                    EventDescription: "",
-                    EventLink: "",
-                    EventLocation: "",
-                    EventPoster: "",
-                    EventTitle: "",
-                    EventStatus: "",
-                    EventHost: "",
-                    EventParticipants: [],
-                    From: "",
-                    To: "",
-                    EventId: ""
-                });
-                $('input').val('');
-                return $('#submit').html('Submit').removeClass('disabled');
-            })
-            .catch((err) => {
-                $('#submit').html('Submit').removeClass('disabled');
-                addToast(err.message, { appearance: 'error', autoDismiss: true });
-                $('input').val('');
+        let myDate = eventDetails.From.split('T')[0];
+        myDate = myDate.split("-");
+        let newDate = new Date(myDate[0], myDate[1] - 1, myDate[2]);
+        let timestamp = newDate.getTime();
+
+        if (!file.type.match('image.*')) {
+            setLoading(false);
+            return addToast('Select only images', { appearance: 'warning', autoDismiss: true });
+        } else {
+            let uploadTask = storage().ref(file.name).put(file);
+            uploadTask.on('state_changed', function (snapshot) {
+                let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                document.getElementById('progress').innerHTML = Math.ceil(progress) + ' %';
+            }, function (err) {
+                document.getElementById('progress').innerHTML = "";
+                setLoading(false);
+                return addToast(err.message, { appearance: 'error', autoDismiss: true });
+            }, function () {
+                uploadTask.snapshot.ref.getDownloadURL().then(async function (URL) {
+                    try {
+                        await db.collection("Events").doc(eventDetails.EventId).set({
+                            EventTitle: eventDetails.EventTitle,
+                            EventId: eventDetails.EventId,
+                            EventLink: eventDetails.EventLink,
+                            EventLocation: eventDetails.EventLocation,
+                            EventDescription: eventDetails.EventDescription,
+                            EventPoster: URL,
+                            EventHost: eventDetails.EventHost,
+                            EventParticipants: [],
+                            EventStatus: eventDetails.EventStatus,
+                            From: eventDetails.From,
+                            To: eventDetails.To,
+                            timestamp: eventDetails.From
+                        }).then(() => {
+                            addToast("Event added successfully", { appearance: 'success', autoDismiss: true });
+                            setEventDetails({
+                                ...eventDetails,
+                                EventDescription: "",
+                                EventLink: "",
+                                EventLocation: "",
+                                EventTitle: "",
+                                EventStatus: "",
+                                EventHost: "",
+                                From: "",
+                                To: "",
+                                EventId: ""
+                            });
+                            return setLoading(false);
+                        });
+                    } catch (err) {
+                        addToast(err.message, { appearance: 'error', autoDismiss: true });
+                        return setLoading(false);
+                    }
+                })
             });
+        }
     }
+
     return (
         <div className="card-body px-3 py-3 py-sm-4 px-md-4">
             <form onSubmit={handleSubmit}>
@@ -139,7 +143,7 @@ export const EventForm = () => {
                     <tbody>
                         <tr>
                             <td>Event Poster</td>
-                            <td><input type="file" placeholder="Drop an Image" accept="image/*" onChange={saveImg} style={{ width: "100%" }} /></td>
+                            <td><input type="file" placeholder="Drop an Image" accept="image/*" onChange={e => setFile(e.target.files[0])} required /><span id='progress' className='ml-3'></span></td>
                         </tr>
                         <tr>
                             <td>Event Title </td>
@@ -185,7 +189,11 @@ export const EventForm = () => {
                         </tr>
                     </tbody>
                 </table>
-                <button className="btn main-color-bg btn-block mt-3" id="submit" type="submit">Submit</button>
+                {
+                    loading ?
+                        <Button className="btn main-color-bg btn-block mt-3" disabled><Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" /><span className='ml-2'>Adding...</span></Button> :
+                        <button className="btn main-color-bg btn-block mt-3" type='submit'>Add</button>
+                }
             </form>
         </div>
     )

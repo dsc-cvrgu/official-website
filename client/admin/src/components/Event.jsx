@@ -7,7 +7,7 @@ import { ToastProvider, useToasts } from 'react-toast-notifications'
 import { TableContainer, TableBody, TableCell, TableHead, TableRow, Table } from '@material-ui/core'
 import $ from 'jquery'
 import { Form, Button, Spinner } from 'react-bootstrap'
-import admin from 'firebase-admin';
+import { db } from './Firebase'
 
 export const Event = (props) => {
     const loader = document.querySelector('.loader');
@@ -63,6 +63,7 @@ export const EventForm = (props) => {
     });
     const [file, setFile] = useState('');
     let [loading, setLoading] = useState(false);
+    let [deleting, setDeleting] = useState(false);
 
     useEffect(() => {
         firestore().collection('Events').doc(props.id).get().then(doc => {
@@ -74,21 +75,6 @@ export const EventForm = (props) => {
 
     const handleChange = name => e => {
         setEventDetails({ ...eventDetails, [name]: e.target.value });
-    }
-
-    const saveImg = (e) => {
-        e.preventDefault();
-        let file = e.target.files[0];
-        if (!file.type.match('image.*')) {
-            addToast('Only select images you FOOL', { appearance: 'error', autoDismiss: true });
-        } else {
-            storage().ref(file.name).put(file).then(async fileSnapshot => {
-                const url = await fileSnapshot.ref.getDownloadURL()
-                return setEventDetails({ ...eventDetails, EventPoster: url })
-            }).catch(err => {
-                addToast(err.message_, { appearance: 'error', autoDismiss: true });
-            })
-        }
     }
 
     const updateData = async () => {
@@ -142,6 +128,19 @@ export const EventForm = (props) => {
                 })
             }
         }
+    }
+
+    const deleteEvent = (e) => {
+        e.preventDefault();
+        setDeleting(true);
+        db.collection('Events').doc(eventDetails.EventId).delete().then(() => {
+            setDeleting(false);
+            window.location.href = '/events';
+            return addToast("Event deleted successfully", { appearance: 'success', autoDismiss: true });
+        }).catch(err => {
+            setDeleting(false);
+            return addToast(err.message, { appearance: 'error', autoDismiss: true });
+        });
     }
     return (
         <div className="card-body px-3 py-3 py-sm-4 px-md-4">
@@ -203,63 +202,17 @@ export const EventForm = (props) => {
                         </TableBody>
                     </Table>
                 </TableContainer>
-                {/* <table className="table table-striped table-hover">
-                    <tbody>
-                        <tr>
-                            <td>Event Poster</td>
-                            <td><input type="file" placeholder="Drop an Image" accept="image/*" onChange={e => setFile(e.target.files[0])} /><span id="progress"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Event Title </td>
-                            <td><input type="text" className='form-control' placeholder="Event Title" value={eventDetails.EventTitle} onChange={handleChange('EventTitle')} required /></td>
-                        </tr>
-                        <tr>
-                            <td>Event Id </td>
-                            <td><input type="text" className='form-control' placeholder="Event ID" value={eventDetails.EventId} readOnly /></td>
-                        </tr>
-                        <tr>
-                            <td>Event Link </td>
-                            <td><input type="text" className='form-control' placeholder="Event Url" value={eventDetails.EventLink} onChange={handleChange('EventLink')} /></td>
-                        </tr>
-                        <tr>
-                            <td>Event Location </td>
-                            <td><input type="text" className='form-control' placeholder="Event Location" value={eventDetails.EventLocation} onChange={handleChange('EventLocation')} /></td>
-                        </tr>
-                        <tr>
-                            <td>From</td>
-                            <td><input type="datetime-local" className='form-control' value={eventDetails.From} onChange={handleChange('From')} required /></td>
-                        </tr>
-                        <tr>
-                            <td>To </td>
-                            <td><input type="datetime-local" className='form-control' value={eventDetails.To} onChange={handleChange('To')} required /></td>
-                        </tr>
-                        <tr>
-                            <td>Event Description</td>
-                            <td><textarea type="text" className='form-control' rows="6" placeholder="Event Description" value={eventDetails.EventDescription} onChange={handleChange('EventDescription')} ></textarea></td>
-                        </tr>
-                        <tr>
-                            <td>Event Host</td>
-                            <td><input type="text" className='form-control' placeholder="Host Name" value={eventDetails.EventHost} onChange={handleChange('EventHost')} /></td>
-                        </tr>
-                        <tr>
-                            <td>Event Status</td>
-                            <td>
-                                <Form.Control as='select' onChange={handleChange('EventStatus')} required>
-                                    <option>{eventDetails.EventStatus}</option>
-                                    <option value="past">Past</option>
-                                    <option value="upcoming">Upcoming</option>
-                                </Form.Control>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table> */}
                 {
                     loading ?
                         <Button className="btn main-color-bg btn-block mt-3" disabled><Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" /><span className='ml-2'>Updating...</span></Button> :
                         <button className="btn main-color-bg btn-block mt-3" type='submit'>Update</button>
                 }
-                {/* <button className="btn main-color-bg btn-block mt-3" id="submit" type="submit">Submit</button> */}
             </form>
+            {
+                deleting ?
+                    <Button className="btn main-color-bg btn-block mt-3" disabled><Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" /><span className='ml-2'>Deleting...</span></Button> :
+                    <button className="btn main-color-bg btn-block mt-3" onClick={deleteEvent}>Delete Event</button>
+            }
         </div>
     )
 }

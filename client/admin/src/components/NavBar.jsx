@@ -5,9 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 const NavBar = () => {
-    const [isAuth, setIsAuth] = useState(false);
+    const [isAuth, setIsAuth] = useState(true);
     useEffect(() => {
-        auth().onAuthStateChanged(user => { setIsAuth(!!user); });
+        auth().onAuthStateChanged(user => { setIsAuth(user); });
     }, []);
     const Logout = (e) => {
         e.preventDefault();
@@ -42,7 +42,6 @@ const NavBar = () => {
                                 </>
                                 :
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/">Login</a>
                                 </li>
 
                         }

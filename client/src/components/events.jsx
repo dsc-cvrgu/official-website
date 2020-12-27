@@ -18,9 +18,6 @@ import { ToastContainer } from "react-toastify";
 function Events(state) {
 
   const useStyles = makeStyles({
-    root: {
-      width: "100%",
-    },
     container: {
       maxHeight: 440,
     },
@@ -30,10 +27,11 @@ function Events(state) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [upcomingEvents, setUpcomingEvents] = useState([]);
-  const [pastEvents, setPastEvents] = useState([])
+  const [pastEvents, setPastEvents] = useState([]);
 
   useEffect(() => {
     getAllEvents();
+    document.title = "DSC CVRGU | Events";
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -138,7 +136,7 @@ function Events(state) {
       <Navbar isSignedIn={state.isSignedIn} />
       <ToastContainer />
       {/*list of upcoming events */}
-      <div className="container px-3" style={{ margin: "100px auto 50px auto" }}>
+      <div className="container px-2" style={{ margin: "100px auto 50px auto" }}>
         <h1>Our<span className="text-primary"> Events</span></h1>
         <h5 className="mb-3">Connect, Learn, Develop, Grow</h5>
         <h3><span className="text-primary">Upcoming</span> Events</h3>
@@ -164,13 +162,13 @@ function Events(state) {
         </div>
       </div>
 
-      <div style={{ width: "90%", margin: "10px auto 50px auto" }}>
+      <div className="container px-2" style={{ margin: "10px auto 50px auto" }}>
         <div className="row" style={{ marginBottom: "20px" }}>
           <div className="col-md-8">
             <h3><span className="text-primary">Past</span> Events</h3>
           </div>
         </div>
-        <Paper className={classes.root}>
+        <Paper>
           <TableContainer className={classes.container} >
             <Table stickyHeader aria-label="sticky table">
               <TableHead>

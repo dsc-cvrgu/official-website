@@ -38,7 +38,7 @@ import Abhidey from "../img/team/abhidey.jpg";
 
 // fontawesome
 import { faLinkedin, faFacebook } from "@fortawesome/free-brands-svg-icons";
-import { faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faInstagram, faAdobe } from "@fortawesome/free-brands-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 // data
@@ -58,7 +58,7 @@ export const Faculties = [
     src: Monalisa,
     name: "Monalisa Mishra",
     des: "Faculty Advisor",
-    social: [{ href: "#", icon: faLinkedin }],
+    social: [{ href: "#", icon: faAdobe }],
   },
   {
     src: Rashmi,
@@ -68,6 +68,10 @@ export const Faculties = [
       {
         href: "https://www.facebook.com/rasmiranjan.khansama",
         icon: faFacebook,
+      },
+      {
+        href: "https://www.linkedin.com/in/rasmi-ranjan-khansama-29325169/",
+        icon: faLinkedin,
       },
     ],
   },

@@ -1,6 +1,11 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import firebase, { auth } from 'firebase/app';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
+import firebase, { auth } from "firebase/app";
 
 //global css
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -14,8 +19,8 @@ import Home from "./components/home.jsx";
 import Events from "./components/events.jsx";
 import Team from "./components/team.jsx";
 import Contact from "./components/contact.jsx";
-import Login from "./components/Login.jsx"
-import UserProfile from "./components/Profile.js"
+import Login from "./components/Login.jsx";
+import UserProfile from "./components/Profile.js";
 
 // initialize firebase
 firebase.initializeApp({
@@ -26,33 +31,46 @@ firebase.initializeApp({
   storageBucket: process.env.REACT_APP_storageBucket,
   messagingSenderId: process.env.REACT_APP_messagingSenderId,
   appId: process.env.REACT_APP_appId,
-  measurementId: process.env.REACT_APP_measurementId
+  measurementId: process.env.REACT_APP_measurementId,
 });
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isSignedIn: false
-    }
-    auth().onAuthStateChanged(user => {
+      isSignedIn: false,
+    };
+    auth().onAuthStateChanged((user) => {
       this.setState({ isSignedIn: !!user });
-    })
+    });
   }
 
   render() {
     return (
       <Router>
         <Switch>
-          <Route path="/" exact><Home isSignedIn={this.state.isSignedIn} /></Route>
-          <Route path="/events" exact><Events isSignedIn={this.state.isSignedIn} /></Route>
-          <Route path="/team" exact><Team isSignedIn={this.state.isSignedIn} /></Route>
-          <Route path="/contact" exact ><Contact isSignedIn={this.state.isSignedIn} /></Route>
-          <Route path="/login" exact><Login isSignedIn={this.state.isSignedIn} /></Route>
-          <Route path="/user" exact><UserProfile isSignedIn={this.state.isSignedIn} /></Route>
+          <Route path="/" exact>
+            <Home isSignedIn={this.state.isSignedIn} />
+          </Route>
+          <Route path="/events" exact>
+            <Events isSignedIn={this.state.isSignedIn} />
+          </Route>
+          <Route path="/team" exact>
+            <Team isSignedIn={this.state.isSignedIn} />
+          </Route>
+          <Route path="/contact" exact>
+            <Contact isSignedIn={this.state.isSignedIn} />
+          </Route>
+          <Route path="/login" exact>
+            <Login isSignedIn={this.state.isSignedIn} />
+          </Route>
+          <Route path="/user" exact>
+            <UserProfile isSignedIn={this.state.isSignedIn} />
+          </Route>
+          <Redirect from="*" to="/" />
         </Switch>
       </Router>
     );
   }
 }
-export default App
+export default App;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 // components
 import Navbar from "./navbar";
@@ -11,6 +11,10 @@ import "../css/team.css";
 import { Lead, Faculties, Board_members, Technical_team, Design_team, Management_team, Public_relation_team } from '../data/Team_Data.js'
 
 const Team = (state) => {
+  useEffect(() => {
+    document.title = "DSC CVRGU | Team";
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div>

@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
-// import $ from "jquery";
-// import { ToastContainer, toast } from "react-toastify";
 import Navbar from "./navbar";
 import Footer from "./footer";
-import * as firebase from 'firebase/app'
+import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
@@ -12,13 +10,14 @@ import $ from 'jquery'
 
 const Login = (state) => {
   useEffect(() => {
+    document.title = "DSC CVRGU | Login";
     $('#bubble').css('z-index', '0');
-  }, [])
+  }, []);
 
   // Configure FirebaseUI.
   const uiConfig = {
     // Popup signin flow rather than redirect flow.
-    signInFlow: 'popup',
+    signInFlow: 'redirect',
     // Redirect to home page after sign in is successful
     signInSuccessUrl: '/',
     // Auth providers.

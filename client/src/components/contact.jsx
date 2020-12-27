@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "@material-ui/core";
 import Contactlogo from "../img/contact.png";
 
@@ -12,8 +12,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram, faLinkedin, faYoutube, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 
-
 const Contact = (state) => {
+  useEffect(() => {
+    document.title = "DSC CVRGU | Contact us";
+  }, []);
+
   return (
     <div>
       <Navbar isSignedIn={state.isSignedIn} />
@@ -77,7 +80,7 @@ const Contact = (state) => {
         </div>
       </div>
       <Footer />
-    </div>
+    </div >
   );
 };
 

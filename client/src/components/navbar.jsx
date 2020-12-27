@@ -14,7 +14,7 @@ const Navigation = (state) => {
   return (
     <div>
       <Navbar bg="light" expand="lg" className="px-1 px-md-2 fixed-top" style={{ minHeight: '63.68px' }}>
-        <a href="/"><img src={logo} alt="dsc-logo" className='img-fluid' id='dsc-logo' />        </a>
+        <a href="/"><img src={logo} alt="dsc-logo" className='img-fluid ml-md-4' id='dsc-logo' />        </a>
         <Navbar.Toggle aria-controls="collapsedNav" className="z-2 pl-1" />
         <Navbar.Collapse id="collapsedNav">
           <Nav className="ml-auto">

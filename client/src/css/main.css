@@ -23,65 +23,50 @@
   border-left: 1px solid var(--mred);
 }
 
-#one, #two, #three, #four {
+#one,
+#two,
+#three,
+#four {
   font-size: 26px;
 }
 
-@keyframes fontalicious {
-  0% {
-    font-family: Geneva;
-  }
-  10% {
-    font-family: times;
-  }
-  20% {
-    font-family: Geneva;
-  }
-  30% {
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  }
-  40% {
-    font-family: Palatino;
-  }
-  50% {
-    font-family: Tahoma;
-  }
-  60% {
-    font-family: impact;
-  }
-  70% {
-    font-family: cursive;
-  }
-  80% {
-    font-family: Times New Roman;
-  }
-  85% {
-    font-family: Tahoma, Geneva, sans-serif;
-  }
-  90% {
-    font-family: Arial;
-  }
-  99% {
-    font-family: futura;
-  }
-  100% {
-    font-family: Helvetica;
-  }
+red {
+  color: var(--mred);
+}
+green {
+  color: var(--mgreen);
+}
+blue {
+  color: var(--mblue);
+}
+yellow {
+  color: var(--myellow);
 }
 
-.fontalicious {
-  animation-name: fontalicious;
-  animation-iteration-count: 4;
-  animation-duration: 0.8s;
+blue,
+red,
+yellow,
+green {
+  font-weight: 700;
+  font-size: 30px;
+}
+.typed-cursor {
+  font-weight: bold;
+  font-size: 2rem;
+  margin: 0 0.5rem;
 }
 
 .text-142849 {
+  text-align: justify;
   color: #142849;
+  font-size: 18px;
 }
 
 #who-we-are {
   position: relative;
   background: rgba(82, 171, 255, 0.1);
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 #community {

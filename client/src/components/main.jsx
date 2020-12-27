@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Typed from 'react-typed'
 import Study from "../img/studyc.png";
 import "../particles";
 import web from '../img/web.svg'
@@ -22,9 +23,16 @@ export default class main extends Component {
             <img src={Study} className="img-fluid" alt="alt" />
           </div>
           <div className="col-sm-12 col-md-5 p-0 mt-3 mt-md-5 container">
-            <h3 className="text-primary my-4 pl-4 fontalicious ff-fantasy" style={{ fontSize: "38px" }}>
-              FUEL YOUR PASSION
-            </h3>
+            <div className='typed-content my-4 pl-4'>
+              <Typed
+                strings={["<blue>FUEL YOUR PASSION</blue>", "<blue>Connect</blue>", "<green>Learn</green>", "<yellow>Develop</yellow>", "<red>Grow</red>"]}
+                typeSpeed={40}
+                backSpeed={30}
+                backDelay={1500}
+                cursorChar={["_"]}
+                loop
+              />
+            </div>
             <p className="text-142849 mx-auto mt-3 px-4 md-px-5">
               Developer Student Clubs are university based community groups for
               students interested in Google developer technologies. Students
@@ -32,7 +40,7 @@ export default class main extends Component {
               growing as a developer are welcome. By joining a DSC, students
               grow their knowledge in a peer-to-peer learning environment and
               build solutions for local businesses and their community.
-            </p>
+              </p>
             <div className="container row">
               <div className="col-6 pr-0 pl-4">
                 <a href="https://dsc.community.dev/c-v-raman-global-university/"
@@ -52,14 +60,14 @@ export default class main extends Component {
             <img src={Study} className="img-fluid" alt="alt" />
           </div>
         </div>
-        <hr className="mt-5" />
+        {/* <hr className="mt-5" />
         <div className="container mx-auto row py-3">
           <div className="col text-blue text-center py-3" id="one">Connect</div>
           <div className="col text-green text-center py-3" id="two">Learn</div>
           <div className="col text-yellow text-center py-3" id="three">Develop</div>
           <div className="col text-red text-center py-3" id="four">Grow</div>
         </div>
-        <hr className="mb-3" />
+        <hr className="mb-3" /> */}
         <div id="who-we-are" className="my-5">
           <p className="text-center pt-4 fs-40">Who We Are</p>
           <div className="col-md-8 pt-3 pb-5 text-142849 fs-20 mx-auto">
@@ -72,17 +80,19 @@ export default class main extends Component {
         </div>
         {/* what we do */}
         <p className="text-center pt-4 fs-40">What We Do</p>
-        <div className="row mb-2 mr-0 mx-auto">
-          <TechStack data={{ src: web, name: "Web Development", style: { width: "60px" } }} />
-          <TechStack data={{ src: ml, name: "Machine Learning", style: { width: "60px" } }} />
-          <TechStack data={{ src: flutter, name: "Flutter", style: { height: "60px" } }} />
-          <TechStack data={{ src: android, name: "Android Development", style: { width: "60px" } }} />
-        </div>
-        <div className="row mb-5 mx-auto mr-0 d-flex justify-content-center">
-          <TechStack data={{ src: competitive, name: "Competitive Coding", style: { width: "60px" } }} />
-          <TechStack data={{ src: google, name: "Actions on Google", style: { width: "85px" } }} />
-          <TechStack data={{ src: ui, name: "UI / UX", style: { width: "60px" } }} />
-          <TechStack data={{ src: cyber, name: "Cyber Security", style: { width: "60px" } }} />
+        <div className="container">
+          <div className="row mb-2 pt-3 mr-0 mx-auto d-flex justify-content-center">
+            <TechStack data={{ src: web, name: "Web Development", style: { width: "60px" } }} />
+            <TechStack data={{ src: ml, name: "Machine Learning", style: { width: "60px" } }} />
+            <TechStack data={{ src: flutter, name: "Flutter", style: { height: "60px" } }} />
+            <TechStack data={{ src: android, name: "Android Development", style: { width: "60px" } }} />
+          </div>
+          <div className="row mb-5 mx-auto mr-0 d-flex justify-content-center">
+            <TechStack data={{ src: competitive, name: "Competitive Coding", style: { width: "60px" } }} />
+            <TechStack data={{ src: google, name: "Actions on Google", style: { width: "85px" } }} />
+            <TechStack data={{ src: ui, name: "UI / UX", style: { width: "60px" } }} />
+            <TechStack data={{ src: cyber, name: "Cyber Security", style: { width: "60px" } }} />
+          </div>
         </div>
       </div>
     );

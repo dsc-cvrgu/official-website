@@ -4,6 +4,9 @@ import React, { useEffect } from "react";
 import Navbar from "./navbar";
 import Footer from "./footer";
 import TeamCard from "./TeamCard.jsx"
+import Spinner from './Spinner'
+import LazyLoad from 'react-lazyload'
+
 // local css
 import "../css/team.css";
 
@@ -35,7 +38,7 @@ const Team = (state) => {
           <div className="border"></div>
           <div className="row">
             {
-              Faculties.map(member => { return (<TeamCard key={Math.random()} data={member} />) })
+              Faculties.map(member => (<TeamCard key={Math.random()} data={member} />))
             }
           </div>
         </div>

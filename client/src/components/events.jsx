@@ -14,8 +14,10 @@ import Footer from './footer';
 import { firestore } from 'firebase/app';
 import "../css/events.css";
 import { ToastContainer } from "react-toastify";
+import Skeleton from '@material-ui/lab/Skeleton';
 
 function Events(state) {
+  const [fetching, setFetching] = useState(true);
 
   const useStyles = makeStyles({
     container: {
@@ -118,6 +120,7 @@ function Events(state) {
 
         setPastEvents(row);
         setUpcomingEvents(upEvents);
+        setFetching(false);
       })
       .catch(err => console.log(err))
   }
@@ -179,15 +182,35 @@ function Events(state) {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {pastEvents.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(event => {
-                  return (
-                    <TableRow key={event.name}>
-                      <TableCell>{event.name}</TableCell>
-                      <TableCell>{event.date}</TableCell>
-                      <TableCell align={"right"}>See more</TableCell>
-                    </TableRow>
-                  )
-                })}
+                {
+                  fetching ?
+                    <>
+                      <TableRow>
+                        <TableCell className='py-0'><Skeleton width="100%" style={{ height: '30px' }} /></TableCell>
+                        <TableCell className='py-0'><Skeleton width="100%" style={{ height: '30px' }} /></TableCell>
+                        <TableCell className='py-0'><Skeleton width="100%" style={{ height: '30px' }} /></TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell className='py-0'><Skeleton width="100%" style={{ height: '30px' }} /></TableCell>
+                        <TableCell className='py-0'><Skeleton width="100%" style={{ height: '30px' }} /></TableCell>
+                        <TableCell className='py-0'><Skeleton width="100%" style={{ height: '30px' }} /></TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell className='py-0'><Skeleton width="100%" style={{ height: '30px' }} /></TableCell>
+                        <TableCell className='py-0'><Skeleton width="100%" style={{ height: '30px' }} /></TableCell>
+                        <TableCell className='py-0'><Skeleton width="100%" style={{ height: '30px' }} /></TableCell>
+                      </TableRow>
+                    </> :
+                    pastEvents.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(event => {
+                      return (
+                        <TableRow key={event.name}>
+                          <TableCell>{event.name}</TableCell>
+                          <TableCell>{event.date}</TableCell>
+                          <TableCell align={"right"}>See more</TableCell>
+                        </TableRow>
+                      )
+                    })
+                }
               </TableBody>
             </Table>
           </TableContainer>

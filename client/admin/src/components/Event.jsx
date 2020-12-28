@@ -1,21 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import Dashboard from './Dashboard'
 import Header from './Header'
 import NavBar from './NavBar'
 import { firestore, storage } from 'firebase/app'
 import { ToastProvider, useToasts } from 'react-toast-notifications'
 import { TableContainer, TableBody, TableCell, TableHead, TableRow, Table } from '@material-ui/core'
-import $ from 'jquery'
 import { Form, Button, Spinner } from 'react-bootstrap'
 import { db } from './Firebase'
 
 export const Event = (props) => {
-    const loader = document.querySelector('.loader');
-    const hideLoader = () => loader.classList.add('loader--hide');
-
     useEffect(() => {
         document.title = `Admin | ${props.match.params.id}`;
-        hideLoader();
     }, []);
     return (
         <div>
@@ -59,7 +53,7 @@ export const EventForm = (props) => {
         EventHost: "",
         From: "",
         To: "",
-        EventId: ""
+        // EventId: ""
     });
     const [file, setFile] = useState('');
     let [loading, setLoading] = useState(false);
@@ -79,7 +73,7 @@ export const EventForm = (props) => {
 
     const updateData = async () => {
         try {
-            await firestore().collection("Events").doc(eventDetails.EventId).update({
+            await firestore().collection("Events").doc(props.id).update({
                 EventTitle: eventDetails.EventTitle,
                 EventLink: eventDetails.EventLink,
                 EventLocation: eventDetails.EventLocation,
@@ -133,7 +127,7 @@ export const EventForm = (props) => {
     const deleteEvent = (e) => {
         e.preventDefault();
         setDeleting(true);
-        db.collection('Events').doc(eventDetails.EventId).delete().then(() => {
+        db.collection('Events').doc(props.id).delete().then(() => {
             setDeleting(false);
             window.location.href = '/events';
             return addToast("Event deleted successfully", { appearance: 'success', autoDismiss: true });
@@ -163,7 +157,7 @@ export const EventForm = (props) => {
                             </TableRow>
                             <TableRow>
                                 <TableCell>Event Id</TableCell>
-                                <TableCell><input type="text" className='form-control' placeholder="Event ID" value={eventDetails.EventId} readOnly /></TableCell>
+                                <TableCell><input type="text" className='form-control' placeholder="Event ID" value={props.id} readOnly /></TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell>Event Link</TableCell>

@@ -11,16 +11,12 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
-import { Form, Button, Spinner } from 'react-bootstrap'
-
+import { Button, Spinner } from 'react-bootstrap'
 
 const Events = () => {
-    const loader = document.querySelector('.loader');
-    const hideLoader = () => loader.classList.add('loader--hide');
-
     useEffect(() => {
         document.title = "Admin | Events";
-        hideLoader();
+        // eslint-disable-next-line
     }, []);
 
     const [eventArr, setEventArr] = useState([]);
@@ -39,24 +35,15 @@ const Events = () => {
         setPage(0);
     };
 
-    const handleChange = (e) => {
-        console.log(e.target.value);
-        console.log(e.target.id);
-        firestore().collection('Events').doc(e.target.id).update({
-            EventStatus: e.target.value
-        }).then(() => {
-            console.log('updated');
-        }).catch(err => console.log(err));
-    }
-
     const fetchData = () => {
         setLoading(true);
         firestore().collection('Events').orderBy('timestamp', 'desc').get()
             .then(snapshot => {
                 snapshot.docs.forEach(doc => {
+                    console.log(doc.id);
                     tempArr.push({
                         name: doc.data().EventTitle,
-                        id: doc.data().EventId,
+                        id: doc.id,
                         date: doc.data().From.split("T")[0],
                         status: doc.data().EventStatus
                     })

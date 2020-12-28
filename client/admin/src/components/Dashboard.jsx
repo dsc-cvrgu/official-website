@@ -8,7 +8,6 @@ function Dashboard() {
             <a href="/form" className="list-group-item black"><FontAwesomeIcon icon={faEdit} /> Add Event</a>
             <a href="/events" className="list-group-item black"><FontAwesomeIcon icon={faCalendarAlt} /> Events</a>
             <a href="/users" className="list-group-item black"><FontAwesomeIcon icon={faUser} /> Users</a>
-            {/* <span className="badge badge-pill badge-secondary">203</span> */}
         </div>
     )
 }

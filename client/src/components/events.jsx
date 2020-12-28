@@ -63,7 +63,7 @@ function Events(state) {
             row.push({
               name: doc.data().EventTitle,
               seemore: "See More",
-              eventId: doc.data().EventId,
+              eventId: doc.id,
               date: doc.data().From.split("T")[0],
             })
           }
@@ -108,7 +108,7 @@ function Events(state) {
               eventLocation: doc.data().EventLocation,
               eventTime: time,
               posterLink: doc.data().EventPoster,
-              eventId: doc.data().EventId,
+              eventId: doc.id,
               hostedBy: doc.data().EventHost,
               eventDescription: doc.data().EventDescription,
               eventLink: doc.data().EventLink,
@@ -139,7 +139,7 @@ function Events(state) {
       <Navbar isSignedIn={state.isSignedIn} />
       <ToastContainer />
       {/*list of upcoming events */}
-      <div className="container px-2" style={{ margin: "100px auto 50px auto" }}>
+      <div className="container px-4 px-md-2" style={{ margin: "100px auto 50px auto" }}>
         <h1>Our<span className="text-primary"> Events</span></h1>
         <h5 className="mb-3">Connect, Learn, Develop, Grow</h5>
         <h3><span className="text-primary">Upcoming</span> Events</h3>
@@ -168,7 +168,7 @@ function Events(state) {
       <div className="container px-2" style={{ margin: "10px auto 50px auto" }}>
         <div className="row" style={{ marginBottom: "20px" }}>
           <div className="col-md-8">
-            <h3><span className="text-primary">Past</span> Events</h3>
+            <h3><span className="text-primary ml-3 ml-md-0">Past</span> Events</h3>
           </div>
         </div>
         <Paper>

@@ -117,7 +117,6 @@ body {
 
 .card-container .cards {
   width: 40%;
-  height: 90%;
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   cursor: pointer;
@@ -126,17 +125,6 @@ body {
 
 .card-container .cards p {
   font-size: 14px;
-}
-
-.card-container .cards .poster {
-  width: 100%;
-  height: 80%;
-  overflow-y: hidden;
-}
-
-.card-container .cards .poster .event-poster {
-  width: 100%;
-  height: 100%;
 }
 
 @media only screen and (max-width: 1034px) {
@@ -169,16 +157,10 @@ body {
   }
   .card-container .cards {
     width: 270px;
-    height: 200px;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     cursor: pointer;
     margin-bottom: 20px;
-  }
-  .card-container .cards .poster {
-    width: 100%;
-    height: 152px;
-    overflow-y: hidden;
   }
 }
 

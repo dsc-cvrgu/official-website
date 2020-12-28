@@ -76,4 +76,5 @@ green {
 
 .tech-stack-card {
   border-radius: "5px";
+  border: 1px solid #d9e7fd;
 }

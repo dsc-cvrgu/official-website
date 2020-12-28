@@ -7,15 +7,9 @@ import { TableContainer, TableBody, TableCell, TableHead, TableRow, Table } from
 import TablePagination from "@material-ui/core/TablePagination";
 import { Button, Spinner } from 'react-bootstrap'
 
-
 const Users = () => {
-    const loader = document.querySelector('.loader');
-    const hideLoader = () => loader.classList.add('loader--hide');
-
     useEffect(() => {
         document.title = "Admin | Users";
-        hideLoader();
-        console.clear();
     }, []);
 
     const [userArr, setUserArr] = useState([]);
@@ -24,7 +18,7 @@ const Users = () => {
 
     const fetchData = () => {
         setLoading(true);
-        firestore().collection('User Data').get()
+        firestore().collection('User Data').orderBy('timestamp', 'desc').get()
             .then((snapshot) => {
                 snapshot.docs.forEach(doc => {
                     tempArr.push({
@@ -38,7 +32,7 @@ const Users = () => {
                 setLoading(false);
             }).catch(err => {
                 setLoading(false);
-                console.log(err.message)
+                console.log(err);
             });
     }
 

@@ -9,7 +9,7 @@ function TeamCard(props) {
         <div className="col-11 col-sm-6 col-md-4 mx-auto my-4">
             <div className="card pb-4 px-3 mx-auto team-card text-center">
                 <div className='filler' />
-                <LazyLoad placeholder={<Spinner />} once={true} offset={[-150, 100]}>
+                <LazyLoad placeholder={<Spinner />} once={true} offset={[-90, 100]}>
                     <img src={props.data.src} alt={props.data.name} className="mx-auto img-fluid rounded-circle mb-2 mt-3 z-depth-1" />
                 </LazyLoad>
                 <div className='filler' />

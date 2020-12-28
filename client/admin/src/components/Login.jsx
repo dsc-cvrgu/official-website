@@ -7,11 +7,7 @@ import { ToastProvider, useToasts } from 'react-toast-notifications'
 import { auth } from "./Firebase";
 
 const Login = () => {
-    const loader = document.querySelector('.loader');
-    const hideLoader = () => loader.classList.add('loader--hide');
-
     useEffect(() => {
-        hideLoader();
         document.title = "Admin | Login";
     }, []);
 

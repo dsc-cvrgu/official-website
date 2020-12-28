@@ -226,13 +226,11 @@ const Profile = (state) => {
               {eventArr.map((e) => {
                 return (
                   <div className="cards" key={e.title}>
-                    <div className="poster">
-                      <img
-                        src={e.poster}
-                        alt="event-poster"
-                        className="event-poster"
-                      />
-                    </div>
+                    <img
+                      src={e.poster}
+                      alt="event-poster"
+                      className="img-fluid"
+                    />
                     <div className="py-3">
                       <h5>{e.title}</h5>
                       <p id="name">{e.date}</p>

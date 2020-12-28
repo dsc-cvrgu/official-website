@@ -7,12 +7,8 @@ import { ToastProvider, useToasts } from 'react-toast-notifications'
 import { Form, Button, Spinner } from 'react-bootstrap'
 import { db } from './Firebase'
 export const AddEvent = () => {
-    const loader = document.querySelector('.loader');
-    const hideLoader = () => loader.classList.add('loader--hide');
-
     useEffect(() => {
         document.title = "Admin | Add Event";
-        hideLoader();
         // eslint-disable-next-line
     }, []);
     return (
@@ -60,7 +56,7 @@ export const EventForm = () => {
     const [file, setFile] = useState('');
     const [eventDetails, setEventDetails] = useState({
         EventTitle: "",
-        EventId: "",
+        // EventId: "",
         EventLink: "",
         EventLocation: "",
         EventDescription: "",
@@ -78,10 +74,10 @@ export const EventForm = () => {
         e.preventDefault();
         setLoading(true);
         console.log(eventDetails);
-        let myDate = eventDetails.From.split('T')[0];
-        myDate = myDate.split("-");
-        let newDate = new Date(myDate[0], myDate[1] - 1, myDate[2]);
-        let timestamp = newDate.getTime();
+        // let myDate = eventDetails.From.split('T')[0];
+        // myDate = myDate.split("-");
+        // let newDate = new Date(myDate[0], myDate[1] - 1, myDate[2]);
+        // let timestamp = newDate.getTime();
 
         if (!file.type.match('image.*')) {
             setLoading(false);
@@ -98,9 +94,9 @@ export const EventForm = () => {
             }, function () {
                 uploadTask.snapshot.ref.getDownloadURL().then(async function (URL) {
                     try {
-                        await db.collection("Events").doc(eventDetails.EventId).set({
+                        await db.collection("Events").add({
                             EventTitle: eventDetails.EventTitle,
-                            EventId: eventDetails.EventId,
+                            // EventId: eventDetails.EventId,
                             EventLink: eventDetails.EventLink,
                             EventLocation: eventDetails.EventLocation,
                             EventDescription: eventDetails.EventDescription,
@@ -123,7 +119,6 @@ export const EventForm = () => {
                                 EventHost: "",
                                 From: "",
                                 To: "",
-                                EventId: ""
                             });
                             return setLoading(false);
                         });
@@ -149,10 +144,10 @@ export const EventForm = () => {
                             <td>Event Title </td>
                             <td><input type="text" className='form-control' placeholder="Event Title" onChange={handleChange('EventTitle')} required /></td>
                         </tr>
-                        <tr>
+                        {/* <tr>
                             <td>Event Id </td>
                             <td><input type="text" className='form-control' placeholder="Event ID" onChange={handleChange('EventId')} required /></td>
-                        </tr>
+                        </tr> */}
                         <tr>
                             <td>Event Link </td>
                             <td><input type="text" className='form-control' placeholder="Event Url" onChange={handleChange('EventLink')} /></td>

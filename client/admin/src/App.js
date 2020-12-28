@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/style.css";
 import Index from "./components/Index";
@@ -8,8 +13,6 @@ import Events from "./components/Events";
 import { Event } from "./components/Event";
 import Users from "./components/Users";
 import Login from "./components/Login";
-import Error404 from "./components/404";
-import Unauthorized from "./components/Unauthorized";
 import { auth } from "./components/Firebase";
 
 const App = () => {
@@ -32,7 +35,7 @@ const App = () => {
             <Route exact path="/form" component={AddEvent} />
             <Route exact path="/dashboard" component={Index} />
             <Route exact path="/events/:id" component={Event} />
-            <Route component={Error404} />
+            <Redirect from="*" to="/" />
           </Switch>
         </Router>
       </>
@@ -42,12 +45,7 @@ const App = () => {
       <Router>
         <Switch>
           <Route exact path="/" component={Login} />
-          <Route exact path="/events" component={Unauthorized} />
-          <Route exact path="/users" component={Unauthorized} />
-          <Route exact path="/form" component={Unauthorized} />
-          <Route exact path="/dashboard" component={Unauthorized} />
-          <Route exact path="/events/:id" component={Unauthorized} />
-          <Route component={Error404} />
+          <Redirect from="*" to="/" />
         </Switch>
       </Router>
     );

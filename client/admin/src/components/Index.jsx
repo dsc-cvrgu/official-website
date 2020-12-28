@@ -8,12 +8,9 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 
 const Index = () => {
-    const loader = document.querySelector('.loader');
-    const hideLoader = () => loader.classList.add('loader--hide');
-
     useEffect(() => {
         document.title = "Admin | Dashboard";
-        hideLoader();
+        // eslint-disable-next-line
     }, []);
 
     let [userCount, setUserCount] = useState(0);

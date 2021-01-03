@@ -1,6 +1,6 @@
 footer {
   width: 100%;
-  background-color: rgb(32, 32, 32);
+  background-color: #242424;
   font-family: "Poppins", sans-serif;
   color: white;
 }
@@ -19,7 +19,9 @@ footer {
   font-size: 18px;
   text-transform: uppercase;
 }
-
+#footer-container p {
+  color: white;
+}
 #footer-container h1::before {
   content: "| ";
   color: #3a96ff;

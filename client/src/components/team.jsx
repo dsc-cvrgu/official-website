@@ -18,7 +18,7 @@ const Team = (state) => {
 
   return (
     <div>
-      <section id="team" style={{ margin: '70px auto auto auto' }}>
+      <section id="team" style={{ margin: '120px auto auto auto' }}>
         <div className="container">
           <h2 className="py-2 text-center">DSC Lead</h2>
           <div className="border"></div>

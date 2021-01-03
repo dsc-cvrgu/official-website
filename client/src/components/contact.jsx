@@ -11,16 +11,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram, faLinkedin, faYoutube, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 
-const Contact = (state) => {
+const Contact = () => {
   useEffect(() => {
     document.title = "DSC CVRGU | Contact us";
   }, []);
 
   return (
     <>
-      <div className="container mt-5">
+      <div className="container mt-120 mb-50">
         <div className="row">
-          <div className="col-12 col-md-8 mt-5 mb-5">
+          <div className="col-12 col-md-9 mb-5">
             <h1>
               <span className="text-primary">Contact</span> DSC CVRGU
             </h1>
@@ -72,9 +72,9 @@ const Contact = (state) => {
               <Button variant="contained">#JOIN US</Button>
             </span>
           </div>
-          <div className="col-12 col-md-4 d-none d-md-block">
+          {/* <div className="col-12 col-md-4 d-none d-md-block">
             <img className="img-fluid" src={Contactlogo} alt="cvrgu" />
-          </div>
+          </div> */}
         </div>
       </div>
       <Footer />

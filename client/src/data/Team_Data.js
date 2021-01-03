@@ -7,7 +7,7 @@ import Aman from "../img/team/aman.jpg";
 import Amisha from "../img/team/amisha.jpg";
 import Anita from "../img/team/anita.png";
 import Ashirbad from "../img/team/ashirbad.jpg";
-import Atman from "../img/team/atman.JPG";
+import Atman from "../img/team/atman.jpg";
 import Bharat from "../img/team/bharat.jpg";
 import Bunny from "../img/team/bunny.jpg";
 import Divanti from "../img/team/divanti.jpeg";
@@ -323,22 +323,6 @@ export const Technical_team = [
     ],
   },
   {
-    src: NabaRatan,
-    name: "Naba Ratan Patra",
-    des: "Associate Cyber Security Lead",
-    social: [
-      {
-        href: "https://www.linkedin.com/in/naba-ratan-b904991a7/",
-        icon: faLinkedin,
-      },
-      {
-        href: "https://www.instagram.com/nabaratanpatra/",
-        icon: faInstagram,
-      },
-      { href: "https://twitter.com/RatanNaba", icon: faTwitter },
-    ],
-  },
-  {
     src: Abhidey,
     name: "Abhishake Banerjee",
     des: "Cyber Security Lead",
@@ -352,6 +336,22 @@ export const Technical_team = [
         icon: faInstagram,
       },
       { href: "https://twitter.com/abhisha27795619", icon: faTwitter },
+    ],
+  },
+  {
+    src: NabaRatan,
+    name: "Naba Ratan Patra",
+    des: "Associate Cyber Security Lead",
+    social: [
+      {
+        href: "https://www.linkedin.com/in/naba-ratan-b904991a7/",
+        icon: faLinkedin,
+      },
+      {
+        href: "https://www.instagram.com/nabaratanpatra/",
+        icon: faInstagram,
+      },
+      { href: "https://twitter.com/RatanNaba", icon: faTwitter },
     ],
   },
 ];
@@ -384,6 +384,42 @@ export const Design_team = [
 ];
 
 export const Management_team = [
+  {
+    src: Saurabh,
+    name: "Saurabh Kumar",
+    des: "Marketing and Sponsorship Lead",
+    social: [
+      {
+        href: "https://www.linkedin.com/in/saurabh-kumar-7214aa176/",
+        icon: faLinkedin,
+      },
+      { href: "https://www.instagram.com/_ska_03/", icon: faInstagram },
+    ],
+  },
+  {
+    src: Aditi,
+    name: "Aditi Kumari",
+    des: "Associate Marketing and Sponsorship lead",
+    social: [
+      {
+        href: "https://www.linkedin.com/in/aditi-kumari-65797a1ab",
+        icon: faLinkedin,
+      },
+      { href: "https://www.instagram.com/aditi_sah143", icon: faInstagram },
+    ],
+  },
+  {
+    src: Ashirbad,
+    name: "Ashirbad Nayak",
+    des: "Associate Marketing and Sponsorship Lead",
+    social: [
+      {
+        href: "https://www.linkedin.com/in/ashirbad-nayak-5515491b1",
+        icon: faLinkedin,
+      },
+      { href: "https://instagram.com/aditi_sah143", icon: faInstagram },
+    ],
+  },
   {
     src: Bharat,
     name: "Bharat Shubham",
@@ -451,42 +487,6 @@ export const Management_team = [
         icon: faLinkedin,
       },
       { href: "https://www.instagram.com/__cerca_trova_/", icon: faInstagram },
-    ],
-  },
-  {
-    src: Saurabh,
-    name: "Saurabh Kumar",
-    des: "Marketing and Sponsorship Lead",
-    social: [
-      {
-        href: "https://www.linkedin.com/in/saurabh-kumar-7214aa176/",
-        icon: faLinkedin,
-      },
-      { href: "https://www.instagram.com/_ska_03/", icon: faInstagram },
-    ],
-  },
-  {
-    src: Aditi,
-    name: "Aditi Kumari",
-    des: "Associate Marketing and Sponsorship lead",
-    social: [
-      {
-        href: "https://www.linkedin.com/in/aditi-kumari-65797a1ab",
-        icon: faLinkedin,
-      },
-      { href: "https://www.instagram.com/aditi_sah143", icon: faInstagram },
-    ],
-  },
-  {
-    src: Ashirbad,
-    name: "Ashirbad Nayak",
-    des: "Associate Marketing and Sponsorship Lead",
-    social: [
-      {
-        href: "https://www.linkedin.com/in/ashirbad-nayak-5515491b1",
-        icon: faLinkedin,
-      },
-      { href: "https://instagram.com/aditi_sah143", icon: faInstagram },
     ],
   },
   {

@@ -20,6 +20,7 @@ html {
   --home-color: black;
   --bg-dark: white;
   --text-142849: #142849;
+  --bg-login: #e8e8e8;
 }
 html.dark {
   --bg-color: #0c0c0c;
@@ -31,6 +32,7 @@ html.dark {
   --home-color: white;
   --bg-card: #000000;
   --text-142849: #ffffff;
+  --bg-login: #0c0c0c;
 }
 body {
   background-color: var(--bg-color);
@@ -67,6 +69,9 @@ button.MuiToggleButton-root {
 }
 h1,
 h2,
+h3,
+h4,
+h5,
 p {
   color: var(--color);
 }
@@ -75,6 +80,37 @@ p {
   text-align: justify;
   font-size: 18px;
 }
+.typed-cursor {
+  color: var(--color);
+}
+#left-containers {
+  background-color: var(--bg-login);
+}
+/* .MuiPaper-root table */
+div#event-table.MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
+  background-color: var(--bg-card);
+}
+.MuiTableRow-root.MuiTableRow-head th {
+  background-color: var(--bg-card);
+  color: var(--color);
+}
+/* .MuiToolbar-root.MuiToolbar-regular.MuiTablePagination-toolbar.MuiToolbar-gutters {
+  color: white;
+} */
+.MuiTablePagination-root svg {
+  fill: var(--bg-theme-switcher);
+}
+.MuiTablePagination-root p,
+.MuiTablePagination-root div {
+  color: var(--color);
+}
+
+td.MuiTableCell-root.MuiTableCell-body {
+  color: var(--color) !important;
+}
+/* tr .MuiTableCell-root .MuiTableCell-body {
+  color: white !important;
+} */
 .my-50 {
   margin: 50px 0;
 }

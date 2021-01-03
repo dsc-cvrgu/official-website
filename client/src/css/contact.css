@@ -5,7 +5,7 @@
 .Contact_social_icons {
   display: flex;
   justify-content: left;
-  margin: 15px auto;
+  margin: 30px auto;
 }
 
 .social-icons {
@@ -16,4 +16,10 @@
 
 .Contact_l a {
   text-decoration: none;
+}
+.mt-120 {
+  margin-top: 120px;
+}
+.mb-50 {
+  margin-bottom: 50px;
 }

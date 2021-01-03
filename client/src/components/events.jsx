@@ -137,7 +137,7 @@ function Events(state) {
     <div>
       <ToastContainer />
       {/*list of upcoming events */}
-      <div className="container px-4 px-md-2" style={{ margin: "100px auto 50px auto" }}>
+      <div className="container px-4 px-md-2" style={{ margin: "120px auto 50px auto" }}>
         <h1>Our<span className="text-primary"> Events</span></h1>
         <h5 className="mb-3">Connect, Learn, Develop, Grow</h5>
         <h3><span className="text-primary">Upcoming</span> Events</h3>
@@ -163,13 +163,13 @@ function Events(state) {
         </div>
       </div>
 
-      <div className="container px-2" style={{ margin: "10px auto 50px auto" }}>
+      <div className="container px-2" style={{ margin: "10px auto 80px auto" }}>
         <div className="row" style={{ marginBottom: "20px" }}>
           <div className="col-md-8">
             <h3><span className="text-primary ml-3 ml-md-0">Past</span> Events</h3>
           </div>
         </div>
-        <Paper>
+        <Paper id='event-table'>
           <TableContainer className={classes.container} >
             <Table stickyHeader aria-label="sticky table">
               <TableHead>

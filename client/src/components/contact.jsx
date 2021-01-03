@@ -6,7 +6,6 @@ import Contactlogo from "../img/contact.png";
 import "../css/contact.css";
 
 // components
-import Navbar from "./navbar";
 import Footer from "./footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram, faLinkedin, faYoutube, faTwitter } from "@fortawesome/free-brands-svg-icons";
@@ -18,8 +17,7 @@ const Contact = (state) => {
   }, []);
 
   return (
-    <div>
-      <Navbar isSignedIn={state.isSignedIn} />
+    <>
       <div className="container mt-5">
         <div className="row">
           <div className="col-12 col-md-8 mt-5 mb-5">
@@ -80,7 +78,7 @@ const Contact = (state) => {
         </div>
       </div>
       <Footer />
-    </div >
+    </>
   );
 };
 

@@ -9,8 +9,72 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: all 0.25s linear;
 }
-
+html {
+  --bg-color: #ffffff;
+  --color: black;
+  --logo: url("../img/logo-light.png") !important;
+  /* --nav-bg: #ffffff; */
+  --bg-theme-switcher: #7e7e7e;
+  --home-color: black;
+  --bg-dark: white;
+  --text-142849: #142849;
+}
+html.dark {
+  --bg-color: #0c0c0c;
+  --color: #ffffff;
+  /* background-color: var(--bg-color); */
+  --logo: url("../img/logo-dark.png") !important;
+  /* --nav-bg: black; */
+  --bg-theme-switcher: white;
+  --home-color: white;
+  --bg-card: #000000;
+  --text-142849: #ffffff;
+}
+body {
+  background-color: var(--bg-color);
+}
+#sign-in-containers {
+  background-color: var(--bg-color);
+}
+nav.bg-dark {
+  background-color: var(--bg-color) !important;
+}
+.card {
+  background-color: var(--bg-card) !important;
+  color: var(--color);
+}
+#HOME {
+  color: var(--home-color);
+}
+#dsc-logo {
+  max-width: 100%;
+  height: auto;
+  content: var(--logo);
+}
+button.navbar-toggler,
+button.MuiToggleButton-root {
+  outline: none;
+  border: none;
+}
+.faBars,
+.MuiToggleButton-root {
+  color: var(--bg-theme-switcher) !important;
+}
+.faBars {
+  font-size: larger;
+}
+h1,
+h2,
+p {
+  color: var(--color);
+}
+.text-142849 {
+  color: var(--text-142849);
+  text-align: justify;
+  font-size: 18px;
+}
 .my-50 {
   margin: 50px 0;
 }
@@ -90,7 +154,6 @@ a,
 input {
   z-index: 2 !important;
 }
-
 /* breakpoints
 // Small devices (landscape phones, 576px and up) sm
 
@@ -100,3 +163,8 @@ input {
 
 // Extra large devices (large desktops, 1200px and up) xl
 */
+
+/* body {
+  background: #363537 !important;
+  color: #fff !important;
+} */

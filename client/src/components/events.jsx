@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "./navbar";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
@@ -136,7 +135,6 @@ function Events(state) {
 
   return (
     <div>
-      <Navbar isSignedIn={state.isSignedIn} />
       <ToastContainer />
       {/*list of upcoming events */}
       <div className="container px-4 px-md-2" style={{ margin: "100px auto 50px auto" }}>

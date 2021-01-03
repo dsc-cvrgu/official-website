@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -15,6 +15,7 @@ import "./css/magic.css";
 import "./css/Style.css";
 
 // components
+import Navbar from "./components/navbar";
 import Home from "./components/home.jsx";
 import Events from "./components/events.jsx";
 import Team from "./components/team.jsx";
@@ -34,43 +35,41 @@ firebase.initializeApp({
   measurementId: process.env.REACT_APP_measurementId,
 });
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isSignedIn: false,
-    };
+const App = () => {
+  const [isSignedIn, setIsSignedIn] = useState(false);
+  useEffect(() => {
     auth().onAuthStateChanged((user) => {
-      this.setState({ isSignedIn: !!user });
+      setIsSignedIn(!!user);
     });
-  }
+  }, []);
 
-  render() {
-    return (
+  return (
+    <>
+      <Navbar isSignedIn={isSignedIn} />
       <Router>
         <Switch>
           <Route path="/" exact>
-            <Home isSignedIn={this.state.isSignedIn} />
+            <Home isSignedIn={isSignedIn} />
           </Route>
           <Route path="/events" exact>
-            <Events isSignedIn={this.state.isSignedIn} />
+            <Events isSignedIn={isSignedIn} />
           </Route>
           <Route path="/team" exact>
-            <Team isSignedIn={this.state.isSignedIn} />
+            <Team isSignedIn={isSignedIn} />
           </Route>
           <Route path="/contact" exact>
-            <Contact isSignedIn={this.state.isSignedIn} />
+            <Contact isSignedIn={isSignedIn} />
           </Route>
           <Route path="/login" exact>
-            <Login isSignedIn={this.state.isSignedIn} />
+            <Login isSignedIn={isSignedIn} />
           </Route>
           <Route path="/user" exact>
-            <UserProfile isSignedIn={this.state.isSignedIn} />
+            <UserProfile isSignedIn={isSignedIn} />
           </Route>
           <Redirect from="*" to="/" />
         </Switch>
       </Router>
-    );
-  }
-}
+    </>
+  );
+};
 export default App;

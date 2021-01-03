@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 
 // components
-import Navbar from "./navbar";
 import Footer from "./footer";
 import TeamCard from "./TeamCard.jsx"
 
@@ -19,7 +18,6 @@ const Team = (state) => {
 
   return (
     <div>
-      <Navbar isSignedIn={state.isSignedIn} />
       <section id="team" style={{ margin: '70px auto auto auto' }}>
         <div className="container">
           <h2 className="py-2 text-center">DSC Lead</h2>

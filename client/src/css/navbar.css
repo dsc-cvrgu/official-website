@@ -25,10 +25,7 @@
 .LOGINOUT {
   color: var(--myellow) !important;
 }
-button.navbar-toggler {
-  outline: none;
-  border: none;
-}
+
 /* hover pulse */
 
 @-webkit-keyframes hvr-pulse {

@@ -15,24 +15,23 @@ html {
   --bg-color: #ffffff;
   --color: black;
   --logo: url("../img/logo-light.png") !important;
-  /* --nav-bg: #ffffff; */
   --bg-theme-switcher: #7e7e7e;
   --home-color: black;
   --bg-dark: white;
   --text-142849: #142849;
   --bg-login: #e8e8e8;
+  --bg-nav: #f8f9fa;
 }
 html.dark {
   --bg-color: #0c0c0c;
   --color: #ffffff;
-  /* background-color: var(--bg-color); */
   --logo: url("../img/logo-dark.png") !important;
-  /* --nav-bg: black; */
   --bg-theme-switcher: white;
   --home-color: white;
   --bg-card: #000000;
   --text-142849: #ffffff;
   --bg-login: #0c0c0c;
+  --bg-nav: #0c0c0c;
 }
 body {
   background-color: var(--bg-color);
@@ -41,7 +40,7 @@ body {
   background-color: var(--bg-color);
 }
 nav.bg-dark {
-  background-color: var(--bg-color) !important;
+  background-color: var(--bg-nav) !important;
 }
 .card {
   background-color: var(--bg-card) !important;
@@ -86,7 +85,6 @@ p {
 #left-containers {
   background-color: var(--bg-login);
 }
-/* .MuiPaper-root table */
 div#event-table.MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
   background-color: var(--bg-card);
 }
@@ -94,9 +92,6 @@ div#event-table.MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
   background-color: var(--bg-card);
   color: var(--color);
 }
-/* .MuiToolbar-root.MuiToolbar-regular.MuiTablePagination-toolbar.MuiToolbar-gutters {
-  color: white;
-} */
 .MuiTablePagination-root svg {
   fill: var(--bg-theme-switcher);
 }

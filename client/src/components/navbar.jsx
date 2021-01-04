@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import logoLight from '../img/logo-light.png'
-import logoDark from '../img/logo-dark.png'
 import { DarkToggle } from './DarkToggle'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from '@fortawesome/free-solid-svg-icons'

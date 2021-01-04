@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Button } from "@material-ui/core";
-import Contactlogo from "../img/contact.png";
+// import Contactlogo from "../img/contact.png";
 
 // css
 import "../css/contact.css";

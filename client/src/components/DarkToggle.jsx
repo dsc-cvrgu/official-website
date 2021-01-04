@@ -3,33 +3,34 @@ import { useMediaQuery } from "react-responsive";
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
-import $ from 'jquery'
 const DARK_CLASS = "dark";
 
 export const DarkToggle = () => {
-    const systemPrefersDark = useMediaQuery(
-        {
-            query: "(prefers-color-scheme: dark)"
-        },
-        undefined,
-        prefersDark => {
-            setIsDark(prefersDark);
-        }
-    );
-
-    const [isDark, setIsDark] = useState(systemPrefersDark);
-
-    useEffect(() => {
-        if (isDark) {
-            document.documentElement.classList.add(DARK_CLASS);
-        } else {
+    const [theme, setTheme] = useState('light');
+    const toggleTheme = () => {
+        if (theme === 'dark') {
             document.documentElement.classList.remove(DARK_CLASS);
+            window.localStorage.setItem('theme', 'light');
+            setTheme('light');
+        } else {
+            document.documentElement.classList.add(DARK_CLASS);
+            window.localStorage.setItem('theme', 'dark');
+            setTheme('dark');
         }
-    }, [isDark]);
+    }
+    if (theme === 'dark') {
+        document.documentElement.classList.add(DARK_CLASS);
+    } else if (theme === 'light') {
+        document.documentElement.classList.remove(DARK_CLASS);
+    }
+    useEffect(() => {
+        const localTheme = window.localStorage.getItem('theme');
+        setTheme(localTheme);
+    }, []);
 
     return (
-        <ToggleButton onChange={() => setIsDark(!isDark)}>
-            {isDark ? <Brightness7Icon /> : <Brightness4Icon />}
+        <ToggleButton onChange={toggleTheme}>
+            {theme === 'light' ? <Brightness7Icon /> : <Brightness4Icon />}
         </ToggleButton>
     );
 };

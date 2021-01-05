@@ -6,7 +6,7 @@ import { Button } from "@material-ui/core";
 import "../css/contact.css";
 
 // components
-import Footer from "./footer";
+import Footer from "./Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram, faLinkedin, faYoutube, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
@@ -18,7 +18,7 @@ const Contact = () => {
 
   return (
     <>
-      <div className="container mt-120 mb-50">
+      <div className="container mt-100 mb-50">
         <div className="row">
           <div className="col-12 col-md-9 mb-5">
             <h1>

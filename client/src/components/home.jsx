@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 // import { Link } from "react-router-dom";
 import Main from "./main";
-import Footer from "./footer";
+import Footer from "./Footer";
 
 const Home = () => {
   useEffect(() => {

@@ -9,13 +9,13 @@ import TableHead from "@material-ui/core/TableHead";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
 import EventCard from "./eventcard";
-import Footer from './footer';
-import { firestore } from 'firebase/app';
+import Footer from './Footer';
+import { firestore } from './Firebase';
 import "../css/events.css";
 import { ToastContainer } from "react-toastify";
 import Skeleton from '@material-ui/lab/Skeleton';
 
-function Events(state) {
+function Events() {
   const [fetching, setFetching] = useState(true);
 
   const useStyles = makeStyles({
@@ -55,7 +55,7 @@ function Events(state) {
       11: "Nov",
       12: "Dec"
     }
-    firestore().collection('Events').orderBy('timestamp', 'desc').get()
+    firestore.collection('Events').orderBy('timestamp', 'desc').get()
       .then(snapshot => {
         snapshot.docs.forEach(doc => {
           if (doc.data().EventStatus === 'past') {
@@ -137,7 +137,7 @@ function Events(state) {
     <div>
       <ToastContainer />
       {/*list of upcoming events */}
-      <div className="container px-4 px-md-2" style={{ margin: "120px auto 50px auto" }}>
+      <div className="container px-4 px-md-2 mt-100 mb-50">
         <h1>Our<span className="text-primary"> Events</span></h1>
         <h5 className="mb-3">Connect, Learn, Develop, Grow</h5>
         <h3><span className="text-primary">Upcoming</span> Events</h3>

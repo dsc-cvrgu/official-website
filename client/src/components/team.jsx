@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 // components
-import Footer from "./footer";
+import Footer from "./Footer";
 import TeamCard from "./TeamCard.jsx"
 
 // local css
@@ -18,7 +18,7 @@ const Team = (state) => {
 
   return (
     <div>
-      <section id="team" style={{ margin: '120px auto auto auto' }}>
+      <section id="team" className='mt-100 mb-50'>
         <div className="container">
           <h2 className="py-2 text-center">DSC Lead</h2>
           <div className="border"></div>

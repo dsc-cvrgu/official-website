@@ -5,7 +5,6 @@ import Abhishekkumar from "../img/team/abhishekkumar.jpg";
 import Aditi from "../img/team/aditi.jpg";
 import Aman from "../img/team/aman.jpg";
 import Amisha from "../img/team/amisha.jpg";
-import Anita from "../img/team/anita.png";
 import Ashirbad from "../img/team/ashirbad.jpg";
 import Atman from "../img/team/atman.jpg";
 import Bharat from "../img/team/bharat.jpg";
@@ -130,22 +129,6 @@ export const Board_members = [
       },
       { href: "https://www.instagram.com/__ippsaaa__/", icon: faInstagram },
       { href: "https://twitter.com/asppi2806", icon: faTwitter },
-    ],
-  },
-  {
-    src: Anita,
-    name: "Anita kumari Jena",
-    des: "Women tech lead",
-    social: [
-      {
-        href: "https://www.linkedin.com/in/anitakumarijena/",
-        icon: faLinkedin,
-      },
-      {
-        href: "https://www.instagram.com/___ani_jena_714___/",
-        icon: faInstagram,
-      },
-      { href: "https://twitter.com/AnitakumariJen1", icon: faTwitter },
     ],
   },
 ];

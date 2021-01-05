@@ -30,7 +30,7 @@ export default class main extends Component {
                   typeSpeed={40}
                   backSpeed={30}
                   backDelay={1500}
-                  cursorChar={["_"]}
+                  cursorChar={"_"}
                   loop
                 />
               </div>
@@ -69,7 +69,7 @@ export default class main extends Component {
             building a strong community where people can learn and grow
             together. Our goal is to combine new ideas with technical skills to
             build something innovative and exemplary. Share your ideas with us
-            and be a part of this amazing family . <span className="text-green">#Join_Us !!!</span>
+            and be a part of this amazing family . <span className="text-green ml-md-3">#Join_Us</span>
           </div>
         </div>
         <div className="container-fluid">

@@ -5,8 +5,7 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
-import firebase, { auth } from "firebase/app";
-
+import { auth } from "./components/Firebase";
 //global css
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,30 +14,18 @@ import "./css/magic.css";
 import "./css/Style.css";
 
 // components
-import Navbar from "./components/navbar";
-import Home from "./components/home.jsx";
-import Events from "./components/events.jsx";
-import Team from "./components/team.jsx";
-import Contact from "./components/contact.jsx";
+import Navbar from "./components/Navbar";
+import Home from "./components/Home.jsx";
+import Events from "./components/Events.jsx";
+import Team from "./components/Team.jsx";
+import Contact from "./components/Contact.jsx";
 import Login from "./components/Login.jsx";
 import UserProfile from "./components/Profile.js";
-
-// initialize firebase
-firebase.initializeApp({
-  apiKey: process.env.REACT_APP_apiKey,
-  authDomain: process.env.REACT_APP_authDomain,
-  databaseURL: process.env.REACT_APP_databaseURL,
-  projectId: process.env.REACT_APP_projectId,
-  storageBucket: process.env.REACT_APP_storageBucket,
-  messagingSenderId: process.env.REACT_APP_messagingSenderId,
-  appId: process.env.REACT_APP_appId,
-  measurementId: process.env.REACT_APP_measurementId,
-});
 
 const App = () => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   useEffect(() => {
-    auth().onAuthStateChanged((user) => {
+    auth.onAuthStateChanged((user) => {
       setIsSignedIn(!!user);
     });
   }, []);
@@ -48,24 +35,12 @@ const App = () => {
       <Navbar isSignedIn={isSignedIn} />
       <Router>
         <Switch>
-          <Route path="/" exact>
-            <Home isSignedIn={isSignedIn} />
-          </Route>
-          <Route path="/events" exact>
-            <Events isSignedIn={isSignedIn} />
-          </Route>
-          <Route path="/team" exact>
-            <Team isSignedIn={isSignedIn} />
-          </Route>
-          <Route path="/contact" exact>
-            <Contact isSignedIn={isSignedIn} />
-          </Route>
-          <Route path="/login" exact>
-            <Login isSignedIn={isSignedIn} />
-          </Route>
-          <Route path="/user" exact>
-            <UserProfile isSignedIn={isSignedIn} />
-          </Route>
+          <Route path="/" exact component={Home} />
+          <Route path="/events" exact component={Events} />
+          <Route path="/team" exact component={Team} />
+          <Route path="/contact" exact component={Contact} />
+          <Route path="/login" exact component={Login} />
+          <Route path="/user" exact component={UserProfile} />
           <Redirect from="*" to="/" />
         </Switch>
       </Router>

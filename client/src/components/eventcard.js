@@ -5,7 +5,8 @@ import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Modall from "./modal";
-import firebase, { auth, firestore } from "firebase/app";
+import { auth, firestore } from "./Firebase";
+import firebase from "firebase/app";
 import { toast } from "react-toastify";
 import $ from "jquery";
 const Eventcard = (props) => {
@@ -28,7 +29,7 @@ const Eventcard = (props) => {
 
   useEffect(() => {
     if (showModal) {
-      auth().onAuthStateChanged((user) => {
+      auth.onAuthStateChanged((user) => {
         const EventParticipants = Participants;
         if (user == null) {
           setLoginMessage("Please Login First");
@@ -51,8 +52,8 @@ const Eventcard = (props) => {
   //REGISTER FOR EVENT
   const onRegister = () => {
     $("#submit").html("Registering...").addClass("disabled");
-    auth().onAuthStateChanged((user) => {
-      firestore()
+    auth.onAuthStateChanged((user) => {
+      firestore
         .collection("Events")
         .doc(eventId)
         .update({
@@ -88,7 +89,6 @@ const Eventcard = (props) => {
               alt="alt"
               style={{
                 maxHeight: "200px",
-                // objectFit: "fill",
               }}
             />
           </div>

@@ -2,11 +2,11 @@ import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../css/team.css";
 import LazyLoad from 'react-lazyload'
-import Spinner from './Spinner'
+import Spinner from './spinner'
 
 function TeamCard(props) {
     return (
-        <div className="col-11 col-sm-6 col-md-4 mx-auto my-4">
+        <div className="col-11 col-sm-6 col-md-4 col-lg-3 mx-auto my-4">
             <div className="card pb-4 px-3 mx-auto team-card text-center">
                 <div className='filler' />
                 <LazyLoad placeholder={<Spinner />} once={true} offset={[-90, 100]}>

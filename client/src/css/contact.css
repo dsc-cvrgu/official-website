@@ -1,3 +1,9 @@
+html {
+  --social-icon-color: gray;
+}
+html.dark {
+  --social-icon-color: #e6e6e6;
+}
 .Contact p {
   font-size: 22px;
   font-weight: 400;
@@ -7,13 +13,11 @@
   justify-content: left;
   margin: 30px auto;
 }
-
 .social-icons {
   font-size: 25px;
-  color: gray;
+  color: var(--social-icon-color);
   margin: 0 10px;
 }
-
 .Contact_l a {
   text-decoration: none;
 }

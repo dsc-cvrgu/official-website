@@ -22,7 +22,7 @@ const Contact = () => {
         <div className="row">
           <div className="col-12 col-md-9 mb-5">
             <h1>
-              <span className="text-primary">Contact</span> DSC CVRGU
+              <span className="text-primary">Contact</span>  Us
             </h1>
             <p>
               Our events are open to newbies, developers, managers, and

@@ -18,18 +18,32 @@ html {
   --bg-dark: white;
   --text-142849: #142849;
   --bg-login: #e8e8e8;
-  --bg-nav: #f8f9fa;
+  /* --bg-nav: #f8f9fa; */
+  --bg-nav: #f7f7f7;
   --bg-card: #ffffff;
+  --bg-input: #ffffff;
 }
 html.dark {
-  --bg-color: #0c0c0c;
-  --color: #ffffff;
+  --bg-color: #1d212a;
+  /* --bg-color: #20252f; */
+  /* --bg-color: #1f2933; */
+  /* --bg-color: #121212; */
+  /* --bg-color: #1a1a1a; */
+
+  /* --color: #ffffff; */
+  --color: #e6e6e6;
+
   --bg-theme-switcher: white;
-  --home-color: white;
-  --bg-card: #000000;
-  --text-142849: #ffffff;
-  --bg-login: #0c0c0c;
-  --bg-nav: #0c0c0c;
+  --home-color: #e6e6e6;
+  /* --bg-card: #1f2933; */
+  --bg-card: #111722;
+  --text-142849: #e6e6e6;
+  --bg-login: #1d212a;
+  /* --bg-nav: #0c0c0c; */
+  /* --bg-nav: #222222; */
+  /* --bg-nav: #17223b; */
+  --bg-nav: #111722;
+  --bg-input: #797c82;
 }
 body {
   background-color: var(--bg-color);

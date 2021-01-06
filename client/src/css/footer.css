@@ -1,6 +1,16 @@
+html {
+  --bg-footer: #323232;
+  --bg-footer-copyright: #191919;
+}
+html.dark {
+  --bg-footer: #1b1e27;
+  --bg-footer-copyright: #060c16;
+}
 footer {
   width: 100%;
-  background-color: #242424;
+  /* background-color: #0d1b31; */
+  /* background-color: #323232; */
+  background-color: var(--bg-footer);
   font-family: "Poppins", sans-serif;
   color: white;
 }
@@ -14,13 +24,13 @@ footer {
 }
 
 #footer-container h1 {
-  color: white;
+  color: #e6e6e6;
   margin: 20px 0;
   font-size: 18px;
   text-transform: uppercase;
 }
 #footer-container p {
-  color: white;
+  color: #e6e6e6;
 }
 #footer-container h1::before {
   content: "| ";
@@ -47,7 +57,7 @@ footer {
 
 #quick-links ul li a {
   text-decoration: none;
-  color: white;
+  color: #e6e6e6;
 }
 
 #contact #social {
@@ -68,7 +78,7 @@ footer {
 }
 
 #contact #social .social-icon {
-  color: #fff;
+  color: #e6e6e6;
   font-size: 20px;
   width: 100%;
   height: 100%;
@@ -77,13 +87,15 @@ footer {
 
 #copyright {
   width: 100%;
-  background-color: #0c0c0c;
+  /* background-color: #060c16; */
+  /* background-color: #191919; */
+  background-color: var(--bg-footer-copyright);
   text-align: center;
 }
 
 #copyright h5 {
   margin-top: 2px;
-  color: white;
+  color: #e6e6e6;
 }
 
 #copyright h5 span {
@@ -100,7 +112,7 @@ footer {
 
 #newsletter input[type="submit"] {
   background-color: #3a96ff;
-  color: white;
+  color: #e6e6e6;
   height: 35px;
   cursor: pointer;
 }
@@ -118,7 +130,7 @@ footer {
   }
   #newsletter input[type="submit"] {
     background-color: #3a96ff;
-    color: white;
+    color: #e6e6e6;
     cursor: pointer;
     font-size: 12px;
   }

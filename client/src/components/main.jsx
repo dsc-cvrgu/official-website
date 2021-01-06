@@ -10,7 +10,7 @@ import competitive from '../img/competitive.svg'
 import google from '../img/google.png'
 import ui from '../img/ui.png'
 import cyber from '../img/cyber.png'
-import TechStack from './TechStack'
+import TechStack from './techStack'
 // local css
 import "../css/main.css";
 

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 // components
 import Footer from "./Footer";
-import TeamCard from "./TeamCard.jsx"
+import TeamCard from "./teamCard.jsx"
 
 // local css
 import "../css/team.css";
@@ -10,7 +10,7 @@ import "../css/team.css";
 // Team data
 import { Lead, Faculties, Board_members, Technical_team, Design_team, Management_team, Public_relation_team } from '../data/Team_Data.js'
 
-const Team = (state) => {
+const Team = () => {
   useEffect(() => {
     document.title = "DSC CVRGU | Team";
     // eslint-disable-next-line

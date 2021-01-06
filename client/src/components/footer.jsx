@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import firebase from 'firebase/app'
-// import 'firebase/auth'
-import 'firebase/firestore'
-// import { firestore } from 'firebase/app'
-
+import { firestore } from './Firebase'
 import { ToastContainer, toast } from "react-toastify";
 
 // local css
@@ -27,7 +23,7 @@ const Footer = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    firebase.firestore().collection('Subscribers').add({ name: name, email: email })
+    firestore.collection('Subscribers').add({ name: name, email: email })
       .then(() => {
         setFormData({ ...formData, email: "", name: "" });
         toast.success("Subscribed");

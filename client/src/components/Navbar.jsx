@@ -14,8 +14,8 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 import "../css/navbar.css";
 
 // components
-import Login from "./LoginButton"
-import Profile from "./ProfileButton"
+import Login from "./loginButton"
+import Profile from "./profileButton"
 
 const DARK_CLASS = "dark";
 

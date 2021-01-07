@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 
 // components
-import Navbar from "./navbar";
-import Footer from "./footer";
-import TeamCard from "./TeamCard.jsx"
+import Footer from "./Footer";
+import TeamCard from "./teamCard.jsx"
 
 // local css
 import "../css/team.css";
@@ -11,7 +10,7 @@ import "../css/team.css";
 // Team data
 import { Lead, Faculties, Board_members, Technical_team, Design_team, Management_team, Public_relation_team } from '../data/Team_Data.js'
 
-const Team = (state) => {
+const Team = () => {
   useEffect(() => {
     document.title = "DSC CVRGU | Team";
     // eslint-disable-next-line
@@ -19,8 +18,7 @@ const Team = (state) => {
 
   return (
     <div>
-      <Navbar isSignedIn={state.isSignedIn} />
-      <section id="team" style={{ margin: '70px auto auto auto' }}>
+      <section id="team" className='mt-100 mb-50'>
         <div className="container">
           <h2 className="py-2 text-center">DSC Lead</h2>
           <div className="border"></div>

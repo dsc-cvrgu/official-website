@@ -3,33 +3,6 @@
   margin: 0;
 }
 
-#one {
-  border-right: 1px solid var(--mblue);
-  border-left: 1px solid var(--mblue);
-}
-
-#two {
-  border-right: 1px solid var(--mgreen);
-  border-left: 1px solid var(--mgreen);
-}
-
-#three {
-  border-right: 1px solid var(--myellow);
-  border-left: 1px solid var(--myellow);
-}
-
-#four {
-  border-right: 1px solid var(--mred);
-  border-left: 1px solid var(--mred);
-}
-
-#one,
-#two,
-#three,
-#four {
-  font-size: 26px;
-}
-
 red {
   color: var(--mred);
 }
@@ -54,12 +27,6 @@ green {
   font-weight: bold;
   font-size: 2rem;
   margin: 0 0.5rem;
-}
-
-.text-142849 {
-  text-align: justify;
-  color: #142849;
-  font-size: 18px;
 }
 
 #who-we-are {

@@ -4,11 +4,103 @@
   --mgreen: #0f9d58;
   --mred: #ea4335;
 }
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: all 0.25s linear;
+}
+html {
+  --bg-color: #ffffff;
+  --color: black;
+  --bg-theme-switcher: #7e7e7e;
+  --home-color: black;
+  --bg-dark: white;
+  --text-142849: #142849;
+  --bg-login: #e8e8e8;
+  --bg-nav: #f7f7f7;
+  --bg-card: #ffffff;
+  --bg-input: #ffffff;
+}
+html.dark {
+  --bg-color: #1d212a;
+  --color: #e6e6e6;
+  --bg-theme-switcher: white;
+  --home-color: #e6e6e6;
+  --bg-card: #111722;
+  --text-142849: #e6e6e6;
+  --bg-login: #1d212a;
+  --bg-nav: #111722;
+  --bg-input: #797c82;
+}
+body {
+  background-color: var(--bg-color);
+}
+#sign-in-containers {
+  background-color: var(--bg-color);
+}
+nav.bg-dark {
+  background-color: var(--bg-nav) !important;
+}
+.card {
+  background-color: var(--bg-card) !important;
+  color: var(--color);
+}
+#HOME {
+  color: var(--home-color);
+}
+button.navbar-toggler,
+button.MuiToggleButton-root {
+  outline: none;
+  border: none;
+}
+.faBars,
+.MuiToggleButton-root {
+  color: var(--bg-theme-switcher) !important;
+}
+.faBars {
+  font-size: larger;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  color: var(--color);
+}
+.text-142849 {
+  color: var(--text-142849);
+  text-align: justify;
+  font-size: 18px;
+}
+.typed-cursor {
+  color: var(--color);
+}
+#left-containers {
+  background-color: var(--bg-login);
+}
+div#event-table.MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
+  background-color: var(--bg-card);
+}
+.MuiTableRow-root.MuiTableRow-head th {
+  background-color: var(--bg-card);
+  color: var(--color);
+}
+.MuiTablePagination-root svg {
+  fill: var(--bg-theme-switcher);
+}
+.MuiTablePagination-root p,
+.MuiTablePagination-root div {
+  color: var(--color);
+}
+
+td.MuiTableCell-root.MuiTableCell-body {
+  color: var(--color) !important;
+}
+/* login error message */
+.firebaseui-info-bar-message {
+  color: var(--color);
 }
 
 .my-50 {

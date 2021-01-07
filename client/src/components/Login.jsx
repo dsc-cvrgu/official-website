@@ -1,17 +1,13 @@
 import React, { useEffect } from "react";
-import Navbar from "./navbar";
-import Footer from "./footer";
+import Footer from "./Footer";
 import firebase from 'firebase/app'
 import 'firebase/auth'
-import 'firebase/firestore'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import "../css/login.css"
-import $ from 'jquery'
 
-const Login = (state) => {
+const Login = () => {
   useEffect(() => {
     document.title = "DSC CVRGU | Login";
-    $('#bubble').css('z-index', '0');
   }, []);
 
   // Configure FirebaseUI.
@@ -30,8 +26,6 @@ const Login = (state) => {
 
   return (
     <div>
-      <Navbar isSignedIn={state.isSignedIn} />
-      {/* <ToastContainer /> */}
       <section id="sign-in-containers">
         <div id="left-containers" className="containers">
           <div id="welcome">

@@ -1,7 +1,7 @@
 {
   "hosting": [
     {
-      "target": "user",
+      "target": "client",
       "public": "build",
       "ignore": [
         "firebase.json",

@@ -20,7 +20,6 @@ const Modall = (props) => {
 
   return (
     <Modal show={modalShow} onHide={handleClose}>
-
       <Modal.Header closeButton>
         <Modal.Title>Event Details</Modal.Title>
       </Modal.Header>

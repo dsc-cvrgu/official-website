@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { auth, firestore } from "firebase/app";
+import { auth, firestore } from "./Firebase";
 import "../css/profile.css";
-import Navbar from "./navbar";
 import { useHistory } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { Button, Modal } from "react-bootstrap";
 import $ from "jquery";
-const Profile = (state) => {
+const Profile = () => {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [displayName, setDisplayName] = useState("");
@@ -15,7 +14,7 @@ const Profile = (state) => {
   const tempArr = [];
 
   useEffect(() => {
-    auth().onAuthStateChanged((user) => {
+    auth.onAuthStateChanged((user) => {
       if (user == null) {
         history.push("/login");
       } else {
@@ -23,7 +22,7 @@ const Profile = (state) => {
         setDisplayName(user.displayName);
         setPhotoUrl(user.photoURL);
         // events
-        firestore()
+        firestore
           .collection("Events")
           .get()
           .then((snapshot) => {
@@ -41,7 +40,7 @@ const Profile = (state) => {
           })
           .catch((err) => console.log(err.message));
 
-        firestore()
+        firestore
           .collection("User Data")
           .doc(user.uid)
           .get()
@@ -73,10 +72,10 @@ const Profile = (state) => {
   async function handleSubmit(e) {
     e.preventDefault();
     $("#submit").html("Saving...").addClass("disabled");
-    const user = auth().currentUser;
+    const user = auth.currentUser;
     if (user != null) {
       try {
-        await firestore().collection("User Data").doc(user.uid).update({
+        await firestore.collection("User Data").doc(user.uid).update({
           CollegeName: college,
           Stream: stream,
         });
@@ -95,9 +94,8 @@ const Profile = (state) => {
 
   return (
     <div>
-      <Navbar isSignedIn={state.isSignedIn} />
       <ToastContainer />
-      <section id="user-profile" style={{ margin: "65px auto auto auto" }}>
+      <section id="user-profile" style={{ margin: "70px auto auto auto" }}>
         <section id="details">
           <img src={photoUrl} alt="profile-pic" id="profile-pic" />
           <form className="px-3">
@@ -183,7 +181,6 @@ const Profile = (state) => {
                   name="college"
                   value={college}
                   placeholder="College Name"
-                  required
                   className="input-box"
                   onChange={handleChange("college")}
                 />
@@ -199,7 +196,6 @@ const Profile = (state) => {
                   name="stream"
                   value={stream}
                   placeholder="Stream"
-                  required
                   className="input-box"
                   onChange={handleChange("stream")}
                 />
@@ -225,15 +221,19 @@ const Profile = (state) => {
             <div className="card-container">
               {eventArr.map((e) => {
                 return (
-                  <div className="cards" key={e.title}>
-                    <img
-                      src={e.poster}
-                      alt="event-poster"
-                      className="img-fluid"
-                    />
-                    <div className="py-3">
-                      <h5>{e.title}</h5>
-                      <p id="name">{e.date}</p>
+                  <div className="row" key={Math.random()}>
+                    <div className="col-11 col-sm-6 col-md-4 mx-auto my-4">
+                      <div className="card text-center" key={e.title}>
+                        <img
+                          src={e.poster}
+                          alt="event-poster"
+                          className="img-fluid mx-auto"
+                        />
+                        <div className="py-3">
+                          <h5>{e.title}</h5>
+                          <p id="name">{e.date}</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 );

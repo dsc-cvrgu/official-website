@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { Dropdown } from "react-bootstrap";
-import { auth } from 'firebase/app';
+import { auth } from './Firebase';
 import "../css/profile.css"
 
 function ProfileButton() {
     function handleAuth(e) {
         e.preventDefault();
-        auth().signOut();
+        auth.signOut();
     }
     const [open, setOpen] = useState(false);
 

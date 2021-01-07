@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "./navbar";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
@@ -9,14 +8,13 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
-import EventCard from "./eventcard";
-import Footer from './footer';
-import { firestore } from 'firebase/app';
-import "../css/events.css";
+import EventCard from "./eventCard";
+import Footer from './Footer';
+import { firestore } from './Firebase';
 import { ToastContainer } from "react-toastify";
 import Skeleton from '@material-ui/lab/Skeleton';
 
-function Events(state) {
+function Events() {
   const [fetching, setFetching] = useState(true);
 
   const useStyles = makeStyles({
@@ -56,7 +54,7 @@ function Events(state) {
       11: "Nov",
       12: "Dec"
     }
-    firestore().collection('Events').orderBy('timestamp', 'desc').get()
+    firestore.collection('Events').orderBy('timestamp', 'desc').get()
       .then(snapshot => {
         snapshot.docs.forEach(doc => {
           if (doc.data().EventStatus === 'past') {
@@ -136,10 +134,9 @@ function Events(state) {
 
   return (
     <div>
-      <Navbar isSignedIn={state.isSignedIn} />
       <ToastContainer />
       {/*list of upcoming events */}
-      <div className="container px-4 px-md-2" style={{ margin: "100px auto 50px auto" }}>
+      <div className="container px-4 px-md-2 mt-100 mb-50">
         <h1>Our<span className="text-primary"> Events</span></h1>
         <h5 className="mb-3">Connect, Learn, Develop, Grow</h5>
         <h3><span className="text-primary">Upcoming</span> Events</h3>
@@ -165,13 +162,13 @@ function Events(state) {
         </div>
       </div>
 
-      <div className="container px-2" style={{ margin: "10px auto 50px auto" }}>
+      <div className="container px-2" style={{ margin: "10px auto 80px auto" }}>
         <div className="row" style={{ marginBottom: "20px" }}>
           <div className="col-md-8">
             <h3><span className="text-primary ml-3 ml-md-0">Past</span> Events</h3>
           </div>
         </div>
-        <Paper>
+        <Paper id='event-table'>
           <TableContainer className={classes.container} >
             <Table stickyHeader aria-label="sticky table">
               <TableHead>

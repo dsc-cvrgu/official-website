@@ -18,30 +18,18 @@ html {
   --bg-dark: white;
   --text-142849: #142849;
   --bg-login: #e8e8e8;
-  /* --bg-nav: #f8f9fa; */
   --bg-nav: #f7f7f7;
   --bg-card: #ffffff;
   --bg-input: #ffffff;
 }
 html.dark {
   --bg-color: #1d212a;
-  /* --bg-color: #20252f; */
-  /* --bg-color: #1f2933; */
-  /* --bg-color: #121212; */
-  /* --bg-color: #1a1a1a; */
-
-  /* --color: #ffffff; */
   --color: #e6e6e6;
-
   --bg-theme-switcher: white;
   --home-color: #e6e6e6;
-  /* --bg-card: #1f2933; */
   --bg-card: #111722;
   --text-142849: #e6e6e6;
   --bg-login: #1d212a;
-  /* --bg-nav: #0c0c0c; */
-  /* --bg-nav: #222222; */
-  /* --bg-nav: #17223b; */
   --bg-nav: #111722;
   --bg-input: #797c82;
 }
@@ -109,6 +97,10 @@ div#event-table.MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
 
 td.MuiTableCell-root.MuiTableCell-body {
   color: var(--color) !important;
+}
+/* login error message */
+.firebaseui-info-bar-message {
+  color: var(--color);
 }
 
 .my-50 {

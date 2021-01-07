@@ -3,33 +3,6 @@
   margin: 0;
 }
 
-#one {
-  border-right: 1px solid var(--mblue);
-  border-left: 1px solid var(--mblue);
-}
-
-#two {
-  border-right: 1px solid var(--mgreen);
-  border-left: 1px solid var(--mgreen);
-}
-
-#three {
-  border-right: 1px solid var(--myellow);
-  border-left: 1px solid var(--myellow);
-}
-
-#four {
-  border-right: 1px solid var(--mred);
-  border-left: 1px solid var(--mred);
-}
-
-#one,
-#two,
-#three,
-#four {
-  font-size: 26px;
-}
-
 red {
   color: var(--mred);
 }

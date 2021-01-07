@@ -11,7 +11,6 @@ import TableRow from "@material-ui/core/TableRow";
 import EventCard from "./eventCard";
 import Footer from './Footer';
 import { firestore } from './Firebase';
-import "../css/events.css";
 import { ToastContainer } from "react-toastify";
 import Skeleton from '@material-ui/lab/Skeleton';
 

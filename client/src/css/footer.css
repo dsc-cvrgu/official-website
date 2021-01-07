@@ -8,8 +8,6 @@ html.dark {
 }
 footer {
   width: 100%;
-  /* background-color: #0d1b31; */
-  /* background-color: #323232; */
   background-color: var(--bg-footer);
   font-family: "Poppins", sans-serif;
   color: white;

@@ -29,18 +29,14 @@
       .loader {
         position: absolute;
         top: calc(50% - 4em);
-        left: calc(50% - 4em);
+        left: calc(50% - 3em);
         width: 6em;
         height: 6em;
-        border: 1.1em solid rgba(0, 123, 255, 0.2);
-        border-left: 1.1em solid #007bff;
+        border: 0.8em solid rgba(0, 123, 255, 0.2);
+        border-left: 0.8em solid #007bff;
         border-radius: 50%;
         animation: load8 1.1s infinite linear;
         transition: opacity 0.3s;
-      }
-
-      .loader--hide {
-        opacity: 0;
       }
 
       @keyframes load8 {
@@ -61,6 +57,7 @@
     <div id="root">
       <div class="loader"></div>
     </div>
+
     <script>
       if (window.location.hostname == "dsc-cgu.web.app" ||
         window.location.hostname == "dsc-cgu.firebaseapp.com") {

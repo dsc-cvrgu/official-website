@@ -32,7 +32,7 @@ const Eventcard = (props) => {
       auth.onAuthStateChanged((user) => {
         const EventParticipants = Participants;
         if (user == null) {
-          setLoginMessage("Please Login First");
+          setLoginMessage("Please signin  to continue!");
         } else {
           for (let i = 0; i < EventParticipants.length; i++) {
             if (EventParticipants[i] === user.uid) {

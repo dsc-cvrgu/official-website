@@ -24,7 +24,7 @@ const Modall = (props) => {
       <Modal.Header closeButton>
         <Modal.Title style={{color:"#757575"}}>Event Details</Modal.Title>
       </Modal.Header>
-      {LoginMessage ? <Modal.Body><h3>{LoginMessage}</h3></Modal.Body> :
+      {LoginMessage ? <Modal.Body><h4 style={{color:'#E21717'}}>{LoginMessage}</h4></Modal.Body> :
         <React.Fragment>
           <Modal.Body>
             <div>
@@ -36,7 +36,7 @@ const Modall = (props) => {
               <p style={{fontFamily:"sans-serif", color:"#757575"}}>Hosted by</p>
               <p  className="modalText" style={{ fontSize:"16px", color:"#212121", fontFamily:"sans-serif"}}>{HostedBy}</p>
               <br/>
-              <p className="modalText" style={{fontSize:"20px", color:"212121", fontWeight:"500"}}>Description</p>
+              <p className="modalText" style={{fontSize:"20px", color:"#212121", fontWeight:"500"}}>Description</p>
               <p style={{color:"#757575"}}>{EventDescription}</p>
               
             </div>

@@ -8,7 +8,7 @@ import "../css/contact.css";
 // components
 import Footer from "./Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook, faInstagram, faLinkedin, faYoutube, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook, faInstagram, faLinkedin, faYoutube, faTwitter, faDiscord } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 
 const Contact = () => {
@@ -37,11 +37,8 @@ const Contact = () => {
             <p>Questions? you can reach us out at the following handles.</p>
             <div className="Contact_social_icons">
               <a
-                href="https://www.facebook.com/dsccvrgu/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="z-2">
-                <FontAwesomeIcon icon={faFacebook} className="social-icons" />
+                href="https://www.facebook.com/dsccvrgu/" target="_blank" rel="noopener noreferrer" className="z-2">
+                <FontAwesomeIcon icon={faFacebook} className="social-icons ml-0" />
               </a>
               <a href="https://www.instagram.com/dsccvrgu/" target="_blank" rel="noopener noreferrer" className="z-2" >
                 <FontAwesomeIcon icon={faInstagram} className="social-icons" />
@@ -61,6 +58,9 @@ const Contact = () => {
               <a href="mailto:lead@dsccvrgu.tech" target="_blank" rel="noopener noreferrer" className="z-2" >
                 <FontAwesomeIcon icon={faEnvelope} className="social-icons" />
               </a>
+              <a href="https://discord.com/invite/q93kZAuHuP" target="_blank" rel="noopener noreferrer" className="z-2" >
+                <FontAwesomeIcon icon={faDiscord} className="social-icons" />
+              </a>
             </div>
             <span>
               <Button variant="contained">#DSC</Button>
@@ -72,9 +72,6 @@ const Contact = () => {
               <Button variant="contained">#JOIN US</Button>
             </span>
           </div>
-          {/* <div className="col-12 col-md-4 d-none d-md-block">
-            <img className="img-fluid" src={Contactlogo} alt="cvrgu" />
-          </div> */}
         </div>
       </div>
       <Footer />

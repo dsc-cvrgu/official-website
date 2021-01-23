@@ -11,6 +11,7 @@ import google from '../img/google.png'
 import ui from '../img/ui.png'
 import cyber from '../img/cyber.png'
 import TechStack from './techStack'
+import globalAiHub from '../img/global-ai-hub.png'
 // local css
 import "../css/main.css";
 
@@ -73,7 +74,6 @@ export default class main extends Component {
           </div>
         </div>
         <div className="container-fluid">
-
           {/* what we do */}
           <p className="text-center pt-4 fs-40">What We Do</p>
           <div className="container">
@@ -90,6 +90,10 @@ export default class main extends Component {
               <TechStack data={{ src: cyber, name: "Cyber Security", style: { width: "60px" } }} />
             </div>
           </div>
+        </div>
+        <div className='text-center mb-3'>
+          <p className="text-center pt-4 fs-40">Education Partner</p>
+          <a href="https://globalaihub.com/" target='_blank'><img src={globalAiHub} alt="global-ai-hub" className='img-fluid' style={{ width: '400px' }} /></a>
         </div>
       </>
     );

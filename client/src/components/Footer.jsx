@@ -10,6 +10,8 @@ import {
   faFacebook,
   faTwitter,
   faInstagram,
+  faYoutube,
+  faDiscord
 } from "@fortawesome/free-brands-svg-icons";
 
 const Footer = () => {
@@ -71,7 +73,7 @@ const Footer = () => {
           <p>Phone: 79924 65784</p>
           <p>Phone: 82495 77644</p>
           <a href="mailto:lead@dsccvrgu.tech">Email: lead@dsccvrgu.tech</a>
-          <div id="social">
+          <div className="social">
             <a href="https://www.linkedin.com/company/69065757" className="z-2">
               <FontAwesomeIcon icon={faLinkedin} className="social-icon" />
             </a>
@@ -83,6 +85,14 @@ const Footer = () => {
             </a>
             <a href="https://www.instagram.com/dsccvrgu/" className="z-2">
               <FontAwesomeIcon icon={faInstagram} className="social-icon" />
+            </a>
+          </div>
+          <div className="social">
+            <a href="https://www.youtube.com/channel/UCim8zUhSy9SRfV6faRTYRiw" className="z-2">
+              <FontAwesomeIcon icon={faYoutube} className="social-icon" />
+            </a>
+            <a href="https://discord.com/invite/q93kZAuHuP" className="z-2">
+              <FontAwesomeIcon icon={faDiscord} className="social-icon" />
             </a>
           </div>
         </div>

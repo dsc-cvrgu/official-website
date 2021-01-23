@@ -58,7 +58,7 @@ footer {
   color: #e6e6e6;
 }
 
-#contact #social {
+#contact .social {
   width: 100%;
   height: 60px;
   overflow: hidden;
@@ -66,7 +66,7 @@ footer {
   align-items: center;
 }
 
-#contact #social a {
+#contact .social a {
   background-color: #494848;
   border-radius: 50%;
   height: 40px;
@@ -75,7 +75,7 @@ footer {
   margin-left: 5px;
 }
 
-#contact #social .social-icon {
+#contact .social .social-icon {
   color: #e6e6e6;
   font-size: 20px;
   width: 100%;

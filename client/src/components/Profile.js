@@ -49,6 +49,7 @@ const Profile = () => {
               setFormData({
                 college: doc.data().CollegeName,
                 stream: doc.data().Stream,
+                year: doc.data().Year,
               });
             }
           })
@@ -62,9 +63,10 @@ const Profile = () => {
   const [formData, setFormData] = useState({
     college: "",
     stream: "",
+    year: "",
   });
 
-  const { college, stream } = formData;
+  const { college, stream, year } = formData;
   const handleChange = (text) => (e) => {
     setFormData({ ...formData, [text]: e.target.value });
   };
@@ -78,6 +80,7 @@ const Profile = () => {
         await firestore.collection("User Data").doc(user.uid).update({
           CollegeName: college,
           Stream: stream,
+          Year: year,
         });
         toast.success("Successfully Updated");
         setShow(false);
@@ -155,6 +158,21 @@ const Profile = () => {
                 disabled
               />
             </div>
+            {/* <p>{year}</p> */}
+            <div className="input-container details-value">
+              <img
+                src={require("../img/user/calendar.svg")}
+                alt="year"
+                id="year"
+              />
+              <input
+                type="text"
+                value={year || ""}
+                placeholder="Year"
+                className="input-box"
+                disabled
+              />
+            </div>
             <div id="buttons">
               <Button
                 variant="secondary"
@@ -198,6 +216,21 @@ const Profile = () => {
                   placeholder="Stream"
                   className="input-box"
                   onChange={handleChange("stream")}
+                />
+              </div>
+              <div className="input-container details-value">
+                <img
+                  src={require("../img/user/calendar.svg")}
+                  alt="year"
+                  id="year"
+                />
+                <input
+                  type="text"
+                  name="year"
+                  value={year}
+                  placeholder="Year"
+                  className="input-box"
+                  onChange={handleChange("year")}
                 />
               </div>
             </Modal.Body>

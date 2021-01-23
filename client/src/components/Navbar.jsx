@@ -6,7 +6,6 @@ import { Navbar, Nav } from "react-bootstrap";
 import logoLight from '../img/logo-light.png'
 import logoDark from '../img/logo-dark.png'
 
-// import { DarkToggle } from './DarkToggle'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 
@@ -39,7 +38,10 @@ const Navigation = (props) => {
   }
   useEffect(() => {
     const localTheme = window.localStorage.getItem('theme');
-    setTheme(localTheme);
+    if (localTheme === null)
+      setTheme('light');
+    else
+      setTheme(localTheme);
   }, []);
 
   return (
@@ -51,7 +53,7 @@ const Navigation = (props) => {
           <Nav className="ml-auto">
             <li className="nav-item active hvr-underline-from-left z-2">
               <ToggleButton onChange={toggleTheme} value={theme}>
-                {theme === 'light' ? <Brightness7Icon /> : <Brightness4Icon />}
+                {theme === 'light' ? <Brightness4Icon /> : <Brightness7Icon />}
               </ToggleButton>
             </li>
             <li className="nav-item active hvr-underline-from-left z-2">

@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import NavBar from './NavBar'
-import { useHistory } from "react-router-dom";
 import $ from 'jquery'
 import { ToastProvider, useToasts } from 'react-toast-notifications'
 import { auth } from "./Firebase";
@@ -9,6 +8,7 @@ import { auth } from "./Firebase";
 const Login = () => {
     useEffect(() => {
         document.title = "Admin | Login";
+        // eslint-disable-next-line
     }, []);
 
     auth.onAuthStateChanged(user => {
@@ -40,7 +40,6 @@ export default Login
 
 export const LoginForm = () => {
     const { addToast } = useToasts();
-    const history = useHistory();
     const [email, setEmail] = useState('');
     const [passWd, setPassWd] = useState('');
     const handleSubmit = (e) => {

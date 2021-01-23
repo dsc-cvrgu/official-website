@@ -3,13 +3,15 @@ import Header from './Header'
 import NavBar from './NavBar'
 import { firestore, storage } from 'firebase/app'
 import { ToastProvider, useToasts } from 'react-toast-notifications'
-import { TableContainer, TableBody, TableCell, TableHead, TableRow, Table } from '@material-ui/core'
+import { TableContainer, TableBody, TableCell, TableRow, Table } from '@material-ui/core'
 import { Form, Button, Spinner } from 'react-bootstrap'
 import { db } from './Firebase'
+import { CSVLink } from "react-csv";
 
 export const Event = (props) => {
     useEffect(() => {
         document.title = `Admin | ${props.match.params.id}`;
+        // eslint-disable-next-line
     }, []);
     return (
         <div>
@@ -53,17 +55,38 @@ export const EventForm = (props) => {
         EventHost: "",
         From: "",
         To: "",
-        // EventId: ""
     });
     const [file, setFile] = useState('');
-    let [loading, setLoading] = useState(false);
-    let [deleting, setDeleting] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [deleting, setDeleting] = useState(false);
+    const [preparing, setPreparing] = useState(true);
+    const [dataCSV, setDataCSV] = useState([]);
 
-    useEffect(() => {
-        firestore().collection('Events').doc(props.id).get().then(doc => {
-            setEventDetails(doc.data());
-        }).catch(err => console.log(err));
-    }, []);
+    const prepareCSV = async () => {
+        try {
+            const data = await firestoreToArray();
+            setDataCSV(data);
+            setTimeout(() => setPreparing(false), 2000);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    const participantData = [["name", "email", "college", "stream", "year"]];
+
+    const firestoreToArray = async () => {
+        await eventDetails.EventParticipants.forEach(participant => {
+            const data = [];
+            db.collection('User Data').doc(participant).get().then((doc) => {
+                data.push(doc.data().Name);
+                data.push(doc.data().Email);
+                data.push(doc.data().College);
+                data.push(doc.data().Stream);
+                data.push(doc.data().Year);
+            }).catch(err => console.log(err));
+            participantData.push(data);
+        });
+        return participantData;
+    }
 
     const { addToast } = useToasts()
 
@@ -136,8 +159,25 @@ export const EventForm = (props) => {
             return addToast(err.message, { appearance: 'error', autoDismiss: true });
         });
     }
+
+    useEffect(() => {
+        firestore().collection('Events').doc(props.id).get().then(doc => {
+            setEventDetails(doc.data());
+        }).catch(err => console.log(err));
+        // eslint-disable-next-line
+    }, []);
+    useEffect(() => {
+        prepareCSV();
+        // eslint-disable-next-line
+    }, [eventDetails])
+
     return (
         <div className="card-body px-3 py-3 py-sm-4 px-md-4">
+            {
+                preparing ?
+                    <Button className="btn main-color-bg btn-block mb-3" disabled><Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" /><span className='ml-2'>Preparing</span></Button> :
+                    <CSVLink data={dataCSV} className="btn main-color-bg btn-block mb-3">Download CSV</CSVLink>
+            }
             <form onSubmit={handleSubmit}>
                 <div className="row">
                     <div className="col-md-4 mx-auto">

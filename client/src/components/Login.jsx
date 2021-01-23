@@ -15,7 +15,7 @@ const Login = () => {
     // Popup signin flow rather than redirect flow.
     signInFlow: 'redirect',
     // Redirect to home page after sign in is successful
-    signInSuccessUrl: '/',
+    signInSuccessUrl: '/user',
     // Auth providers.
     signInOptions: [
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
